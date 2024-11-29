@@ -1,0 +1,18 @@
+{
+	"id": "balatro_plus",
+	"name": "Balatro+",
+	"display_name": "Balatro+",
+	"author": ["SomeCoder99"],
+	"description": "An Expandsion Mod For Balatro.",
+	"prefix": "bplus",
+	"main_file": "bplus/init.lua",
+	"priority": 0,
+	"badge_colour": "E55561",
+	"version": "1.0.0",
+	"dependencies": [
+		{
+			"id": "Steamodded",
+			"min_version": "1.0.0~ALPHA-1030e"
+		}
+	],
+}

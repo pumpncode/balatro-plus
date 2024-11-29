@@ -1,0 +1,17 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "if self.seal == 'Blue' and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then"
+position = "at"
+payload = """
+if self.seal == 'Blue' and (
+  (#G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit)
+  or next(find_joker("j_bplus_space_invader"))
+) then
+"""
+match_indent = true
