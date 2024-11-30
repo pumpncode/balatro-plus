@@ -20,7 +20,7 @@ function j:calculate(_, ctx)
     local is_numeric = true
     local total = 0
     for _, c in ipairs(ctx.full_hand) do
-      if not c.debuff then
+      if not c.debuff and not c:is_face() then
         local id = c:get_id()
         if id < 2 or id > 10 then
           is_numeric = false
