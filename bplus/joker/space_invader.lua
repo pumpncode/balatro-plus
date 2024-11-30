@@ -5,6 +5,10 @@ local j = {
       "{C:planet}Planet{} card added to",
       "{C:attention}Consumable{} become {C:dark_edition}Negative{}",
     },
+    unlock = {
+      "Have 3 or more {C:planet}Planet{} cards",
+      "in your {C:attention}Consumable{} slot",
+    },
   },
   rarity = 3,
   cost = 9,

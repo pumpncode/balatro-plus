@@ -12,7 +12,7 @@ local j = {
   config = {
     extra = {
       min = 10,
-      max = 20,
+      max = 25,
       remaining = 3,
       every = 4,
     },

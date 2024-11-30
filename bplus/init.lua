@@ -51,8 +51,10 @@ for k, j in pairs(jokers) do
     end
 
     j.key = k
-    j.unlocked = true
-    j.discovered = true
+    if type(j.unlocked) ~= "boolean" then
+      j.unlocked = true
+    end
+    j.discovered = false
     SMODS.Joker(j)
   end
 end
