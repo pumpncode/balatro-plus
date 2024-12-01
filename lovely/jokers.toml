@@ -3,6 +3,7 @@ version = "1.0.0"
 dump_lua = true
 priority = 0
 
+# Space Invader Joker
 [[patches]]
 [patches.pattern]
 target = "card.lua"

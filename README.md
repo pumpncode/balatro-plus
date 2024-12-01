@@ -3,6 +3,7 @@ A Balatro mod that add new things to balatro
 
 # What This Mod Adds?
 - 6 New Jokers
+- 2 New Decks
 
 # How To Install
 - Install [Steamodded](https://github.com/Steamopollys/Steamodded)
