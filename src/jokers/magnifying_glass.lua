@@ -2,7 +2,7 @@ local j = {
   loc_txt = {
     name = "Magnifying Glass",
     text = {
-      "add {C:attention}triple{} of each",
+      "Add {C:attention}triple{} of each",
       "played {C:attention}2{} and {C:attention}3{} Chips",
       "value to the {C:chips}Chips{}",
     },

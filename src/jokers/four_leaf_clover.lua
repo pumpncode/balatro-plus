@@ -2,9 +2,10 @@ local j = {
   loc_txt = {
     name = "4 Leaf Clover",
     text = {
-      "{C:green}X4{} all {C:green,E:1,S:1.1}probabilities{} after playing hand",
-      "thats contain exactly {C:attention}4{} {C:clubs}Clubs{},",
-      "inactive after {C:attention}Boss Blind{} is defeated",
+      "{X:green,C:white} X4 {} all {C:green,E:1,s:1.1}probabilities{} after",
+      "playing hand that is contain",
+      "exactly {C:attention}4{} {C:clubs}Clubs{}, inactive",
+      "after {C:attention}Boss Blind{} is defeated",
     },
   },
   config = { extra = false },

@@ -2,10 +2,10 @@ local j = {
   loc_txt = {
     name = "Toilet",
     text = {
-      "Gain {C:chips}Chips{} from half {C:chips}Chips{} value",
-      "of {C:attention}Flush{} poker hand when",
-      "{C:attention}Flush{} is discarded",
-      "{S:0.8}only work once each round{}",
+      "Gain {C:chips}Chips{} from half {C:chips}Chips{}",
+      "value of {C:attention}Flush{} poker hand",
+      "when {C:attention}Flush{} is discarded",
+      "{s:0.8}only work once each round{}",
       "{C:inactive}(Currently {C:chips}+#1#{C:inactive})",
     },
   },
