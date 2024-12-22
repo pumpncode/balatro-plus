@@ -2,6 +2,7 @@ print("TEST BALATRO PLUS")
 BalatroPlus = {
   path = SMODS.current_mod.path:gsub("/$", ""),
   load_chace = {},
+  extra = {},
 }
 
 function BalatroPlus.load(path)

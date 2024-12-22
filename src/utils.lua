@@ -98,3 +98,30 @@ function bplus_open_pack(key)
   G.FUNCS.use_card({ config = { ref_table = card } })
   card:start_materialize()
 end
+
+function bplus_parse_text(lines)
+  local text = {}
+  for _, line in ipairs(lines) do
+    local parts = {}
+    for _, part in ipairs(line) do
+      if type(part) == "string" then
+        part = { part }
+      end
+      parts[#parts + 1] = { n = G.UIT.T, config = { text = part[1], colour = part[2] or G.C.GREY, scale = 0.33 } }
+      if part[3] then
+        parts[#parts] = {
+          n = G.UIT.C,
+          config = { align = "m", colour = part[3], r = 0.05, padding = 0.03, res = 0.15 },
+          nodes = { parts[#parts] },
+        }
+      end
+    end
+    text[#text + 1] = {
+      n = G.UIT.R,
+      config = { align = "cm" },
+      nodes = parts,
+    }
+  end
+
+  return { { n = G.UIT.C, nodes = text } }
+end
