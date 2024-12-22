@@ -1,23 +1,23 @@
 return function(joker_dir)
   local jokers = {}
 
-  for _, file in ipairs(NFS.getDirectoryItems(BalatroPlus.path .. "/bplus/" .. joker_dir)) do
+  for _, file in ipairs(NFS.getDirectoryItems(BalatroPlus.path .. "/src/" .. joker_dir)) do
     jokers[#jokers + 1] = string.gsub(file, "%.lua$", "")
   end
 
-  SMODS.Atlas({
+  SMODS.Atlas {
     key = "jokers",
     px = 71,
     py = 95,
     path = "jokers.png",
-  })
+  }
 
   for k, j in pairs(jokers) do
     if type(j) == "string" then
       if type(k) == "number" then
         k = j
       end
-      j = assert(SMODS.load_file("bplus/" .. joker_dir .. "/" .. j .. ".lua"))() or j
+      j = BalatroPlus.load(joker_dir .. "/" .. j) or j
     end
     if type(j) == "table" then
       if type(j.atlas) == "number" then

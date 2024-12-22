@@ -2,7 +2,7 @@ local j = {
   loc_txt = {
     name = "Treasure Map",
     text = {
-      "Earn {C:money}$#1#{} to {C:money}$#2#{}",
+      "Earn {C:money}$#1#{} up to {C:money}$#2#{}",
       "every {C:attention}#3#{} trigger",
       "{C:inactive}(#4#){}",
     },

@@ -1,7 +1,7 @@
 return function(deck_dir)
   local decks = {}
 
-  for _, file in ipairs(NFS.getDirectoryItems(BalatroPlus.path .. "/bplus/" .. deck_dir)) do
+  for _, file in ipairs(NFS.getDirectoryItems(BalatroPlus.path .. "/src/" .. deck_dir)) do
     decks[#decks + 1] = string.gsub(file, "%.lua$", "")
   end
 
@@ -17,7 +17,7 @@ return function(deck_dir)
       if type(k) == "number" then
         k = d
       end
-      d = assert(SMODS.load_file("bplus/" .. deck_dir .. "/" .. d .. ".lua"))() or d
+      d = BalatroPlus.load(deck_dir .. "/" .. d) or d
     end
     if type(d) == "table" then
       if type(d.atlas) == "number" then

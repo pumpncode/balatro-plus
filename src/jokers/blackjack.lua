@@ -2,8 +2,8 @@ local j = {
   loc_txt = {
     name = "Blackjack",
     text = {
-      "Gains {C:chips}#1#{} Chips if",
-      "played cards is {C:attention}Blackjack{}",
+      "Gains {C:chips}#1#{} Chips if played",
+      "hand is {C:attention}Blackjack{}",
       "{C:inactive}(Currently {C:chips}+#2#{C:inactive})",
     },
   },
