@@ -10,6 +10,7 @@ local j = {
   config = { hands_above = 2, mult_each_hand = 0.5 },
   rarity = 1,
   cost = 5,
+  atlas = 12,
 
   blueprint_compat = true,
 }

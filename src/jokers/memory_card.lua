@@ -10,6 +10,7 @@ local j = {
   config = { extra = 0, max_saved_hand = 6 },
   rarity = 1,
   cost = 4,
+  atlas = 13,
 
   blueprint_compat = false,
 }
