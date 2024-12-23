@@ -5,7 +5,7 @@ local j = {
       "At the end of shop destroy all",
       "{C:attention}Food Jokers{} and gain {X:mult,C:white} X1 {} Mult",
       "for each destroyed joker",
-      "{C:inactive}(Currently {X:mult,C:white} X#1# {}{C:inactive}){}",
+      "{C:inactive}(Currently {X:mult,C:white} X#1# {}{C:inactive} Mult)",
     },
   },
   config = { extra = 1, Xmult = 1 },

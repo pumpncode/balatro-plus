@@ -6,7 +6,7 @@ local j = {
       "value of {C:attention}Flush{} poker hand",
       "when {C:attention}Flush{} is discarded",
       "{s:0.8}only work once each round{}",
-      "{C:inactive}(Currently {C:chips}+#1#{C:inactive})",
+      "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)",
     },
   },
   config = { extra = { flushed = false, chips = 0 } },

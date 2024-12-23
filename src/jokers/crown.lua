@@ -4,7 +4,7 @@ local j = {
     text = {
       "Gain {X:mult,C:white} X#1# {} Mult when",
       "playing {C:attention}Royal Flush{}",
-      "{C:inactive}(Currently {X:mult,C:white} X#2# {}{C:inactive})",
+      "{C:inactive}(Currently {X:mult,C:white} X#2# {}{C:inactive} Mult)",
     },
   },
   config = { extra = 1, Xmult = 1 },
