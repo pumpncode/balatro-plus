@@ -19,3 +19,4 @@ BalatroPlus.load("utils")
 
 BalatroPlus.load("joker")("jokers")
 BalatroPlus.load("deck")("decks")
+BalatroPlus.load("blind")("blinds")

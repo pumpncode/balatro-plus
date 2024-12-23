@@ -7,8 +7,8 @@ local j = {
     },
   },
   config = { extra = 1 },
-  rarity = 2,
-  cost = 7,
+  rarity = 1,
+  cost = 5,
   atlas = 9,
 
   blueprint_compat = true,
