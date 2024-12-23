@@ -12,6 +12,7 @@ local j = {
   config = { extra = { flushed = false, chips = 0 } },
   rarity = 2,
   cost = 6,
+  atlas = 11,
 
   blueprint_compat = true,
 }
