@@ -10,8 +10,10 @@ local j = {
   config = { extra = { money = 10, loss = 2 } },
   rarity = 1,
   cost = 5,
+  atlas = 16,
 
   blueprint_compat = false,
+  bplus_food_joker = true,
 }
 
 function j:loc_vars(_, card)
