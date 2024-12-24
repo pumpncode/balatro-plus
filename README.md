@@ -4,7 +4,7 @@ A Balatro mod that add new things to balatro
 # What This Mod Adds?
 - 13 New Jokers
 - 2 New Decks
-- 3 New Boss Blinds
+- 5 New Boss Blinds
 
 # How To Install
 - Install [Steamodded](https://github.com/Steamopollys/Steamodded)

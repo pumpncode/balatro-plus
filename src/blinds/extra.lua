@@ -24,7 +24,6 @@ function b:press_play()
       return true
     end
   })
-  self.triggered = true
   return true
 end
 
