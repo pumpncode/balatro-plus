@@ -14,6 +14,8 @@ local j = {
   cost = 9,
   atlas = 4,
   soul_pos = 5,
+
+  blueprint_compat = false,
 }
 
 function j:calculate(_, ctx)
