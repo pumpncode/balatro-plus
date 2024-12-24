@@ -7,29 +7,34 @@ return function(tag_dir)
     end
   end
 
-  -- SMODS.Atlas({
-  --   key = "tags",
-  --   px = 34,
-  --   py = 34,
-  --   path = "tags.png",
-  -- })
+  SMODS.Atlas({
+    key = "tags",
+    px = 34,
+    py = 34,
+    path = "tags.png",
+  })
 
-  for k, b in pairs(tags) do
-    if type(b) == "string" then
+  for k, t in pairs(tags) do
+    if type(t) == "string" then
       if type(k) == "number" then
-        k = b
+        k = t
       end
-      b = BalatroPlus.load(tag_dir .. "/" .. b) or b
+      t = BalatroPlus.load(tag_dir .. "/" .. t) or t
     end
-    if type(b) == "table" then
-      if type(b.atlas) == "number" then
-        b.pos = { y = b.atlas - 1, x = 0 }
-        b.atlas = "tags"
+    if type(t) == "table" then
+      if type(t.atlas) == "number" then
+        local n = t.atlas
+        t.atlas = "tags"
+        local x = n % 6
+        if x == 0 then
+          x = 6
+        end
+        t.pos = { x = x - 1, y = math.ceil(n / 6) - 1 }
       end
 
-      b.key = k
-      b.discovered = false
-      SMODS.Tag(b)
+      t.key = k
+      t.discovered = false
+      SMODS.Tag(t)
     end
   end
 end

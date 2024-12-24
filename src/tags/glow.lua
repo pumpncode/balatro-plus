@@ -7,6 +7,7 @@ local t = {
     },
   },
   min_ante = 3,
+  atlas = 1,
 }
 
 local function set_edition(tag, joker)

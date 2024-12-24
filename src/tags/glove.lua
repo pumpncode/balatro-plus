@@ -7,6 +7,7 @@ local t = {
     },
   },
   config = { hand = 5 },
+  atlas = 2,
 }
 
 function t:loc_vars()

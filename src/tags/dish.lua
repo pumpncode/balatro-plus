@@ -7,6 +7,7 @@ local t = {
       "{C:inactive}(Must have room)",
     },
   },
+  atlas = 5,
 }
 
 function t:loc_vars(infoq)

@@ -7,6 +7,7 @@ local t = {
     },
   },
   config = { reward = 4 },
+  atlas = 6,
 }
 
 function t:loc_vars()

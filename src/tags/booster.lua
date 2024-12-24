@@ -7,6 +7,7 @@ local t = {
     },
   },
   config = { booster = 2 },
+  atlas = 4,
 }
 
 function t:loc_vars()

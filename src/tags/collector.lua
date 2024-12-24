@@ -10,6 +10,7 @@ local t = {
     },
   },
   config = { above = 50, max = 45, each = 3 },
+  atlas = 3,
 }
 
 local function calc_money(self)
