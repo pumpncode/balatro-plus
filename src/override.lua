@@ -19,14 +19,27 @@ function localize(args, misc_cat)
   if type(args.key) == "table" and args.key.bplus_custom then
     return args.key.bplus_custom(args, misc_cat)
   end
-  return old_localize(args, misc_cat)
+
+  if args.key == "bplus_food_jokers" then
+    if args.nodes then
+      args.nodes[#args.nodes + 1] = bplus_food_jokers_tooltip()
+      return
+    else
+      return "Food Jokers"
+    end
+  else
+    return old_localize(args, misc_cat)
+  end
 end
 
 local cardarea_emplace = CardArea.emplace
 function CardArea:emplace(card, location, stay_flipped)
   if G.jokers then
     for _, j in ipairs(G.jokers.cards) do
-      j:calculate_joker({ card_added = true, other_card = card, cardarea = self })
+      j:calculate_joker { card_added = true, other_card = card, cardarea = self }
+    end
+    for _, t in ipairs(G.GAME.tags) do
+      t:apply_to_run { type = "card_added", card = card, cardarea = self }
     end
   end
   return cardarea_emplace(self, card, location, stay_flipped)

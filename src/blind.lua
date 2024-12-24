@@ -43,9 +43,6 @@ return function(blind_dir)
       end
 
       b.key = k
-      if type(b.unlocked) ~= "boolean" then
-        b.unlocked = true
-      end
       b.discovered = false
       SMODS.Blind(b)
     end

@@ -1,8 +1,7 @@
-print("TEST BALATRO PLUS")
 BalatroPlus = {
   path = SMODS.current_mod.path:gsub("/$", ""),
   load_chace = {},
-  extra = {},
+  G = {},
 }
 
 function BalatroPlus.load(path)
@@ -20,3 +19,4 @@ BalatroPlus.load("utils")
 BalatroPlus.load("joker")("jokers")
 BalatroPlus.load("deck")("decks")
 BalatroPlus.load("blind")("blinds")
+BalatroPlus.load("tag")("tags")

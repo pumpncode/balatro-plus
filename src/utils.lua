@@ -99,29 +99,13 @@ function bplus_open_pack(key)
   card:start_materialize()
 end
 
-function bplus_parse_text(lines)
-  local text = {}
-  for _, line in ipairs(lines) do
-    local parts = {}
-    for _, part in ipairs(line) do
-      if type(part) == "string" then
-        part = { part }
-      end
-      parts[#parts + 1] = { n = G.UIT.T, config = { text = part[1], colour = part[2] or G.C.GREY, scale = 0.33 } }
-      if part[3] then
-        parts[#parts] = {
-          n = G.UIT.C,
-          config = { align = "m", colour = part[3], r = 0.05, padding = 0.03, res = 0.15 },
-          nodes = { parts[#parts] },
-        }
-      end
+function bplus_get_editions()
+  local editions = {}
+  for key, center in pairs(G.P_CENTERS) do
+    local key = key:match("^e_(.+)")
+    if key and key ~= "base" then
+      editions[#editions + 1] = key
     end
-    text[#text + 1] = {
-      n = G.UIT.R,
-      config = { align = "cm" },
-      nodes = parts,
-    }
   end
-
-  return { { n = G.UIT.C, nodes = text } }
+  return editions
 end

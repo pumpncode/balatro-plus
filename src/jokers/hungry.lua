@@ -17,18 +17,7 @@ local j = {
 }
 
 function j:loc_vars(infoq, card)
-  infoq[#infoq + 1] = {
-    set = "Other",
-    key = {
-      bplus_custom = function(args)
-        if args.nodes then
-          args.nodes[#args.nodes + 1] = bplus_food_jokers_tooltip()
-        else
-          return "Food Jokers"
-        end
-      end,
-    },
-  }
+  infoq[#infoq + 1] = { set = "Other", key = "bplus_food_jokers" }
   return { vars = { card.ability.x_mult } }
 end
 
