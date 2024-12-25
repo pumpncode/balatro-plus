@@ -12,6 +12,7 @@ local j = {
   cost = 10,
   atlas = 8,
 
+  perishable_compat = false,
   blueprint_compat = true,
 }
 

@@ -12,6 +12,7 @@ local j = {
   config = { extra = { chips = 0, chip_mod = 21 } },
   atlas = 2,
 
+  perishable_compat = false,
   blueprint_compat = true,
 }
 

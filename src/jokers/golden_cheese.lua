@@ -13,6 +13,7 @@ local j = {
   atlas = 16,
 
   blueprint_compat = false,
+  eternal_compat = false,
   bplus_food_joker = true,
 }
 

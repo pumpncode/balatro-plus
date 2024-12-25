@@ -3,16 +3,62 @@ version = "1.0.0"
 dump_lua = true
 priority = 0
 
+# Trigger Joker dollars effect at the end of round
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "if effects[ii].h_dollars then"
+position = "before"
+match_indent = true
+payload = """
+if effects[ii].dollars then
+  if effects[ii].card then juice_card(effects[ii].card) end
+  ease_dollars(effects[ii].dollars)
+  card_eval_status_text(G.hand.cards[i], 'dollars', effects[ii].dollars, percent)
+end
+
+"""
+
+# Modify joker level_up effect
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "level_up_hand(G.jokers.cards[i], text)"
+position = "before"
+match_indent = true
+payload = """
+  local level = effects.jokers.level_up
+  if type(level) ~= "number" then
+    level = 1
+  end
+  level_up_hand(G.jokers.cards[i], text, nil, level)
+end
+if false then
+"""
+
 # Space Invader Joker
 [[patches]]
 [patches.pattern]
 target = "card.lua"
 pattern = "if self.seal == 'Blue' and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then"
 position = "at"
+match_indent = true
 payload = """
 if self.seal == 'Blue' and (
   (#G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit)
   or next(find_joker("j_bplus_space_invader"))
 ) then
 """
+
+# Anonymous Mask Joker
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "function Card:set_debuff(should_debuff)"
+position = "after"
 match_indent = true
+payload = """
+if next(find_joker("j_bplus_anonymous_mask")) and self:is_face() then
+  should_debuff = false
+end
+"""
