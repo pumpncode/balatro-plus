@@ -9,8 +9,8 @@ local j = {
   },
   config = {
     extra = {
-      remaining = 1,
-      every = 1,
+      remaining = 12,
+      every = 12,
     },
   },
   rarity = 2,
