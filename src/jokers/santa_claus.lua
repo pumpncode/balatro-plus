@@ -15,6 +15,7 @@ local j = {
   },
   rarity = 2,
   cost = 7,
+  atlas = 18,
 
   blueprint_compat = true,
 }
