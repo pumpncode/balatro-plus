@@ -2,7 +2,7 @@ local j = {
   loc_txt = {
     name = "Zombie Hand",
     text = {
-      "Upgrade played {C:attention}poker hand{}",
+      "Level up played {C:attention}poker hand{}",
       "by {C:attention}#1#{} level on final hand",
     },
   },
