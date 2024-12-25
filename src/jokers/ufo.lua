@@ -15,6 +15,12 @@ local j = {
       planet_chips = 12,
     },
   },
+  rarity = 1,
+  cost = 5,
+  atlas = 20,
+
+  perishable_compat = false,
+  blueprint_compat = true,
 }
 
 function j:loc_vars(_, card)
