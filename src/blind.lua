@@ -11,15 +11,7 @@ function Blind:hand_played()
   end
 end
 
-return function(blind_dir)
-  local decks = {}
-
-  for _, file in ipairs(NFS.getDirectoryItems(BalatroPlus.path .. "/src/" .. blind_dir)) do
-    if string.match(file, "%.lua$") then
-      decks[#decks + 1] = string.gsub(file, "%.lua$", "")
-    end
-  end
-
+return function(blind_dir, blinds)
   SMODS.Atlas({
     key = "blinds",
     px = 34,
@@ -29,7 +21,7 @@ return function(blind_dir)
     frames = 21,
   })
 
-  for k, b in pairs(decks) do
+  for k, b in pairs(blinds) do
     if type(b) == "string" then
       if type(k) == "number" then
         k = b

@@ -1,12 +1,4 @@
-return function(joker_dir)
-  local jokers = {}
-
-  for _, file in ipairs(NFS.getDirectoryItems(BalatroPlus.path .. "/src/" .. joker_dir)) do
-    if string.match(file, "%.lua$") then
-      jokers[#jokers + 1] = string.gsub(file, "%.lua$", "")
-    end
-  end
-
+return function(joker_dir, jokers)
   SMODS.Atlas {
     key = "jokers",
     px = 71,

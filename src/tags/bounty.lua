@@ -2,7 +2,7 @@ local t = {
   loc_txt = {
     name = "Bounty Tag",
     text = {
-      "Give {X:money,C:white}X#1#{} of the {C:attention}Blinds",
+      "Earn {X:money,C:white}X#1#{} {C:money}dollars{} of the {C:attention}Blinds",
       "reward when defeated",
     },
   },

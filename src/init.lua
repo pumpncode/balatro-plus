@@ -16,7 +16,53 @@ end
 BalatroPlus.load("override")
 BalatroPlus.load("utils")
 
-BalatroPlus.load("joker")("jokers")
-BalatroPlus.load("deck")("decks")
-BalatroPlus.load("blind")("blinds")
-BalatroPlus.load("tag")("tags")
+BalatroPlus.load("joker")("jokers", {
+  -- Common
+  "pickpocket",
+  "archeologist",
+  "memory_card",
+  "golden_cheese",
+  "zombie_hand",
+  "ufo",
+  "shopping_bill",
+  "calculator",
+  "boxer",
+  "blackjack",
+  "treasure_map",
+
+  -- Uncommon
+  "four_leaf_clover",
+  "jim130",
+  "santa_claus",
+  "hungry",
+  "magnifying_glass",
+  "anonymous_mask",
+  "toilet",
+
+  -- Rare
+  "crown",
+  "space_invader",
+})
+
+BalatroPlus.load("deck")("decks", {
+  "purple",
+  "illusion",
+  "jokered",
+})
+
+BalatroPlus.load("blind")("blinds", {
+  "extra",
+  "hammer",
+  "loop",
+  "low",
+  "thunder",
+})
+
+BalatroPlus.load("tag")("tags", {
+  "glow",
+  "glove",
+  "dish",
+  "collector",
+  "booster",
+  "bounty",
+})

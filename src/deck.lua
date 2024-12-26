@@ -1,11 +1,4 @@
-return function(deck_dir)
-  local decks = {}
-
-  for _, file in ipairs(NFS.getDirectoryItems(BalatroPlus.path .. "/src/" .. deck_dir)) do
-    if string.match(file, "%.lua$") then
-      decks[#decks + 1] = string.gsub(file, "%.lua$", "")
-    end
-  end
+return function(deck_dir, decks)
 
   SMODS.Atlas({
     key = "decks",

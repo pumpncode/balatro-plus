@@ -1,12 +1,4 @@
-return function(tag_dir)
-  local tags = {}
-
-  for _, file in ipairs(NFS.getDirectoryItems(BalatroPlus.path .. "/src/" .. tag_dir)) do
-    if string.match(file, "%.lua$") then
-      tags[#tags + 1] = string.gsub(file, "%.lua$", "")
-    end
-  end
-
+return function(tag_dir, tags)
   SMODS.Atlas({
     key = "tags",
     px = 34,
