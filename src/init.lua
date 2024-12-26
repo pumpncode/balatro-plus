@@ -66,3 +66,7 @@ BalatroPlus.load("tag")("tags", {
   "booster",
   "bounty",
 })
+
+BalatroPlus.load("consumable")("consumables", {
+  "sigil",
+})

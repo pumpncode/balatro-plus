@@ -1,0 +1,20 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# Blank Sigil ease round played
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "G.FUNCS.draw_from_hand_to_discard()"
+position = "before"
+match_indent = true
+payload = """
+for _, c in ipairs(G.consumeables.cards) do
+  if c.ability.name == "c_bplus_sigil_blank" then
+    c.ability.extra.remaining = math.max(c.ability.extra.remaining - 1, 0)
+  end
+end
+
+"""
