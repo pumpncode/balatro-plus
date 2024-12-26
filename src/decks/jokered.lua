@@ -16,7 +16,7 @@ function d:loc_vars()
 end
 
 function d:apply()
-  G.GAME.starting_params.dollars = 0
+  G.GAME.starting_params.dollars = self.config.start_dollars
 end
 
 return d

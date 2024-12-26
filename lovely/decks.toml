@@ -25,6 +25,7 @@ match_indent = true
 target = "functions/button_callbacks.lua"
 pattern = "for i = 1, G.GAME.shop.joker_max - #G.shop_jokers.cards do"
 position = "before"
+match_indent = true
 payload = """
 if G.GAME.selected_back.name == "b_bplus_purple" then
   for i = 1, 2 do
@@ -44,7 +45,6 @@ if G.GAME.selected_back.name == "b_bplus_purple" then
   end
 end
 """
-match_indent = true
 
 # Jokered Deck
 [[patches]]
@@ -52,6 +52,7 @@ match_indent = true
 target = "game.lua"
 pattern = "G.blind_select.alignment.offset.x = 0"
 position = "after"
+match_indent = true
 payload = """
 if G.GAME.selected_back and G.GAME.selected_back.name == "b_bplus_jokered" and not G.GAME.selected_back.effect.pack_opened then
   G.GAME.selected_back.effect.pack_opened = true
@@ -65,4 +66,33 @@ if G.GAME.selected_back and G.GAME.selected_back.name == "b_bplus_jokered" and n
   })
 end
 """
+
+# Illusion Deck
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "elseif self.base.suit == 'Spades' then self.base.suit_nominal = 0.04;  self.base.suit_nominal_original = suit_base_nominal_original or 0.004 end"
+position = "after"
 match_indent = true
+payload = """
+
+if G.GAME.selected_back and G.GAME.selected_back.name == "b_bplus_illusion" and self.base.nominal then
+  self.base.nominal = self.base.nominal * G.GAME.selected_back.effect.config.card_nominal_mult
+end
+"""
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "for k, v in ipairs(card_protos) do"
+position = "before"
+match_indent = true
+payload = """
+if G.GAME.selected_back.name == "b_bplus_illusion" then
+  for i = 1, G.GAME.selected_back.effect.config.destroyed_cards do
+    local idx = pseudorandom("b_bplus_illusion_card_destroy", 1, #card_protos)
+    table.remove(card_protos, idx)
+  end
+end
+
+"""

@@ -7,7 +7,7 @@ local j = {
       "each blind is {C:attention}skipped",
     },
   },
-  config = { extra = { money = 10, loss = 2 } },
+  config = { extra = { money = 6, loss = 2 } },
   rarity = 1,
   cost = 5,
   atlas = 16,
