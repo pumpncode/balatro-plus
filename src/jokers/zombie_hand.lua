@@ -9,6 +9,9 @@ local j = {
   config = { extra = 2 },
   rarity = 1,
   cost = 4,
+  atlas = 21,
+
+  blueprint_compat = true,
 }
 
 function j:loc_vars(_, card)

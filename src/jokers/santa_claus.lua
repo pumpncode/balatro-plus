@@ -53,7 +53,7 @@ function j:calculate(card, ctx)
         end
       })
       card_eval_status_text(ctx.blueprint_card or card, 'extra', nil, nil, nil, {
-        message = localize('k_plus_joker'),
+        message = "Ho Ho Ho!",
         colour = G.C.RED,
       })
     end
