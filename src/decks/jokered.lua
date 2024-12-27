@@ -17,6 +17,7 @@ end
 
 function d:apply()
   G.GAME.starting_params.dollars = self.config.start_dollars
+  G.GAME.selected_back.effect.open_pack = true
 end
 
 return d

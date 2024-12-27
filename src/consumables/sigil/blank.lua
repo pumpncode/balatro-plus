@@ -3,8 +3,8 @@ local s = {
     name = "Blank",
     text = {
       "Use this card after",
-      "{C:attention}#1#{} rounds to",
-      "Create other {C:attention}Sigil",
+      "{C:attention}#1#{} rounds to create",
+      "other {C:attention}Sigil",
       "{C:inactive}(Must have room)",
       "{C:inactive}(#2#)",
     },

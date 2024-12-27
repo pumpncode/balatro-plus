@@ -54,8 +54,8 @@ pattern = "G.blind_select.alignment.offset.x = 0"
 position = "after"
 match_indent = true
 payload = """
-if G.GAME.selected_back and G.GAME.selected_back.name == "b_bplus_jokered" and not G.GAME.selected_back.effect.pack_opened then
-  G.GAME.selected_back.effect.pack_opened = true
+if G.GAME.selected_back and G.GAME.selected_back.name == "b_bplus_jokered" and G.GAME.selected_back.effect.open_pack then
+  G.GAME.selected_back.effect.open_pack = nil
   G.E_MANAGER:add_event(Event{
     trigger = 'after',
     delay = 0.5,
