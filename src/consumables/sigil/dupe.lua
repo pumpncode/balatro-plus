@@ -7,7 +7,8 @@ local s = {
       "{C:blue}-#1#{} Hand",
     },
   },
-  config = { extra = 1 }
+  config = { extra = 1 },
+  atlas = 4,
 }
 
 function s:loc_vars(_, card)

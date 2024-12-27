@@ -7,6 +7,7 @@ local s = {
       "selected Joker",
     },
   },
+  atlas = 2,
 }
 
 function s:can_use(card)

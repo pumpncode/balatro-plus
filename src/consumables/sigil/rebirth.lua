@@ -8,6 +8,7 @@ local s = {
       "Jokers with same {C:attention}Rarity",
     },
   },
+  atlas = 3,
 }
 
 function s:can_use(card)

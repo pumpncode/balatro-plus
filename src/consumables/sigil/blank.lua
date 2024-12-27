@@ -4,12 +4,13 @@ local s = {
     text = {
       "Use this card after",
       "{C:attention}#1#{} rounds to create",
-      "other {C:attention}Sigil",
+      "other {C:attention}Sigil{} card",
       "{C:inactive}(Must have room)",
       "{C:inactive}(#2#)",
     },
   },
   config = { extra = { after = 3, remaining = 3 } },
+  atlas = 1,
 }
 
 function s:loc_vars(_, card)

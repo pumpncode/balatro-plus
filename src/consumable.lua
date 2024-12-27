@@ -12,6 +12,18 @@ return function(consumable_dir, consumables)
         ct.collection_rows = { 5, 5 }
       end
 
+      if ct.atlas then
+        SMODS.Atlas {
+          key = ct.key,
+          path = ct.atlas,
+          px = ct.atlas_px or 71,
+          py = ct.atlas_py or 95,
+        }
+        ct.atlas_px = nil
+        ct.atlas_py = nil
+        ct.atlas = nil
+      end
+
       if type(ct.cards) == "table" then
         local dir = ct.cards.dir or ("consumables/" .. k)
         local prefix = ct.cards.key_prefix or ct.key
@@ -25,9 +37,21 @@ return function(consumable_dir, consumables)
           c.set = ct.key
           c.key = key
           c.cost = c.cost or 4
+
           if type(c.unlocked) ~= "boolean" then
             c.unlocked = true
           end
+
+          if type(c.atlas) == "number" then
+            local n = c.atlas
+            c.atlas = ct.key
+            local x = n % 5
+            if x == 0 then
+              x = 5
+            end
+            c.pos = { x = x - 1, y = math.ceil(n / 5) - 1 }
+          end
+
           c.discovered = false
           SMODS.Consumable(c)
 

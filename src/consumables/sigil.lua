@@ -1,6 +1,6 @@
 local c = {
-  primary_colour = HEX("7f1aea"),
-  secondary_colour = HEX("db09b8"),
+  primary_colour = HEX("8e32db"),
+  secondary_colour = HEX("7a29ba"),
   loc_txt = {
     name = "Sigil",
     collection = "Sigil Cards",
@@ -16,6 +16,7 @@ local c = {
   },
   shop_rate = 0.05,
   default = "c_bplus_sigil_blank",
+  atlas = "consumables/sigils.png",
   cards = {
     "blank",
     "polyc",
