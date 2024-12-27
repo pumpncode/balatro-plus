@@ -20,6 +20,7 @@ local c = {
     "blank",
     "polyc",
     "rebirth",
+    "dupe",
   },
 }
 
