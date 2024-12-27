@@ -23,7 +23,7 @@ end
 function j:calculate(card, ctx)
   if ctx.end_of_round and ctx.individual and ctx.cardarea == G.hand then
     local id = ctx.other_card:get_id()
-    if id > 1 and id < 11 and pseudorandom("shopping_bill") <= G.GAME.probabilities.normal / card.ability.extra then
+    if id > 1 and id < 11 and pseudorandom("j_bplus_shopping_bill_money") <= G.GAME.probabilities.normal / card.ability.extra then
       if ctx.other_card.debuff then
         return {
           message = localize('k_debuffed'),

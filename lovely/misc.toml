@@ -47,3 +47,15 @@ if opt.forced_rarity then
   rarity = opt.forced_rarity
 end
 """
+
+# Add some colors to loc_colour function
+[[patches]]
+[patches.pattern]
+target = "functions/misc_functions.lua"
+pattern = "G.ARGS.LOC_COLOURS = G.ARGS.LOC_COLOURS or {"
+position = "after"
+match_indent = true
+payload = """
+eternal = G.C.ETERNAL,
+"""
+

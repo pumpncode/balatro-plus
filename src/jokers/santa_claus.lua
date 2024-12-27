@@ -43,7 +43,9 @@ function j:calculate(card, ctx)
     if card.ability.extra.remaining <= 0 then
       G.E_MANAGER:add_event(Event {
         func = function()
-          local joker = create_card("Joker", G.jokers, nil, 3, nil, nil, nil, "bplus_santa_claus_gift")
+          local joker = create_card("Joker", G.jokers, nil, nil, nil, nil, nil, "bplus_santa_claus_gift", {
+            forced_rarity = 3,
+          })
           joker:set_edition({ negative = true }, true)
           joker:add_to_deck()
           G.jokers:emplace(joker)

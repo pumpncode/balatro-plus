@@ -10,6 +10,10 @@ local s = {
   atlas = 2,
 }
 
+function s:loc_vars(infoq)
+  infoq[#infoq+1] = G.P_CENTERS.e_polychrome
+end
+
 function s:can_use(card)
   local cond = G.jokers and G.jokers.config.card_limit > 1
   cond = cond and (#G.jokers.highlighted == 1) and (not G.jokers.highlighted[1].edition)

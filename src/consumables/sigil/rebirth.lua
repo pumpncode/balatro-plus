@@ -45,9 +45,6 @@ function s:use(card)
             joker:add_to_deck()
             G.jokers:emplace(joker)
             joker:start_materialize()
-            if rarity == 4 then
-              check_for_unlock { type = 'spawn_legendary' }
-            end
           end
           card:juice_up(0.3, 0.5)
           return true

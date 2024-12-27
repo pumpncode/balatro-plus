@@ -22,6 +22,8 @@ local c = {
     "polyc",
     "rebirth",
     "dupe",
+    "curse",
+    "astra",
   },
 }
 

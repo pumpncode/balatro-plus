@@ -12,7 +12,9 @@ return function(consumable_dir, consumables)
         ct.collection_rows = { 5, 5 }
       end
 
+      local has_atlas
       if ct.atlas then
+        has_atlas = true
         SMODS.Atlas {
           key = ct.key,
           path = ct.atlas,
@@ -50,6 +52,8 @@ return function(consumable_dir, consumables)
               x = 5
             end
             c.pos = { x = x - 1, y = math.ceil(n / 5) - 1 }
+          elseif has_atlas then
+            c.atlas = ct.key
           end
 
           c.discovered = false
