@@ -7,7 +7,7 @@ A Balatro mod that add new things to balatro
 - 5 New Boss Blinds
 - 6 New Tags
 - 1 New Consumable Type
-- 4 New Consumables
+- 7 New Consumables
 
 # How To Install
 - Install [Steamodded](https://github.com/Steamopollys/Steamodded)
