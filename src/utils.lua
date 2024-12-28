@@ -109,3 +109,22 @@ function bplus_get_editions()
   end
   return editions
 end
+
+function bplus_random_seal(seed_key)
+  return pseudorandom_element({
+    "Red",
+    "Blue",
+    "Purple",
+    "Gold",
+  }, pseudoseed(seed_key))
+end
+
+function bplus_random_enhancement(seed_key)
+  local enhancements = {}
+  for key, center in pairs(G.P_CENTERS) do
+    if key:match "m_.+" then
+      enhancements[#enhancements + 1] = center
+    end
+  end
+  return pseudorandom_element(enhancements, pseudoseed(seed_key))
+end

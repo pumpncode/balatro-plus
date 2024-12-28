@@ -7,7 +7,7 @@ local s = {
       "{C:attention}+#2#{} hand size",
     },
   },
-  config = { extra = { above = 12, hand_size = 1 } },
+  config = { extra = { above = 15, hand_size = 1 } },
   atlas = 6,
 }
 

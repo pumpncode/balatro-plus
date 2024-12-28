@@ -2,8 +2,8 @@ local s = {
   loc_txt = {
     name = "Dupe",
     text = {
-      "Covert all cards {C:attention}held in",
-      "{C:attention}hand{} to selected card",
+      "Covert all {C:attention}unselected",
+      "cards to {C:attention}selected{} card",
       "{C:blue}-#1#{} Hand",
     },
   },

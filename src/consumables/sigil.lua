@@ -24,6 +24,7 @@ local c = {
     "dupe",
     "curse",
     "astra",
+    "beast",
   },
 }
 
