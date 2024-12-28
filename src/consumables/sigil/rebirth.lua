@@ -2,10 +2,11 @@ local s = {
   loc_txt = {
     name = "Rebirth",
     text = {
-      "Destroy all Jokers to",
-      "{C:attention}create{} Jokers with the",
-      "same amount of {C:attention}destroyed",
-      "Jokers with same {C:attention}Rarity",
+      "Destroy all non {C:dark_edition}negative{}",
+      "Jokers to {C:attention}create{} Jokers",
+      "with the same amount of",
+      "{C:attention}destroyed{} Jokers with",
+      "same {C:attention}Rarity",
     },
   },
   atlas = 3,
@@ -14,7 +15,7 @@ local s = {
 function s:can_use(card)
   local compat = 0
   for _, joker in ipairs(G.jokers.cards) do
-    if not joker.ability.eternal then
+    if not joker.ability.eternal and not (joker.edition and joker.edition.negative) then
       compat = compat + 1
     end
   end
@@ -27,7 +28,7 @@ function s:use(card)
       local rarities = {}
       play_sound('slice1', 0.96 + math.random() * 0.08)
       for _, joker in ipairs(G.jokers.cards) do
-        if not joker.ability.eternal then
+        if not joker.ability.eternal and not (joker.edition and joker.edition.negative) then
           rarities[#rarities + 1] = joker.config.center.rarity
           joker:start_dissolve()
         end

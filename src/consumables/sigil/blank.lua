@@ -2,39 +2,31 @@ local s = {
   loc_txt = {
     name = "Blank",
     text = {
-      "Use this card after",
-      "{C:attention}#1#{} rounds to create",
-      "other {C:attention}Sigil{} card",
-      "{C:inactive}(Must have room)",
-      "{C:inactive}(#2#)",
+      "{C:green}#1# in #2#{} chance to",
+      "create other {C:attention}Sigil{} card",
+      "{s:0.8}chance is increasing",
+      "{s:0.8}at the end of round",
     },
   },
-  config = { extra = { after = 3, remaining = 3 } },
+  config = { extra = 6 },
   atlas = 1,
 }
 
 function s:loc_vars(_, card)
-  return {
-    vars = {
-      card.ability.extra.after,
-      localize {
-        type = "variable",
-        key = card.ability.extra.remaining == 0 and "loyalty_active" or "loyalty_inactive",
-        vars = { card.ability.extra.remaining },
-      },
-    }
-  }
+  return { vars = { G.GAME.probabilities.normal, card.ability.extra } }
 end
 
-function s:can_use(card)
-  local cond = card.ability.extra.remaining == 0
-  if cond and (card.edition and card.edition.negative) then
-    cond = #G.consumeables.cards < G.consumeables.config.card_limit
-  end
-  return cond
+function s:can_use()
+  return true
 end
 
 function s:use(card)
+  if #G.consumeables.cards >= G.consumeables.config.card_limit then
+    return
+  end
+  if pseudorandom("c_bplus_sigil_blank_create") > G.GAME.probabilities.normal / card.ability.extra then
+    return
+  end
   G.E_MANAGER:add_event(Event {
     func = function()
       local sigils = {}

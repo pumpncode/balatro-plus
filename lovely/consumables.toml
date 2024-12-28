@@ -13,7 +13,7 @@ match_indent = true
 payload = """
 for _, c in ipairs(G.consumeables.cards) do
   if c.ability.name == "c_bplus_sigil_blank" then
-    c.ability.extra.remaining = math.max(c.ability.extra.remaining - 1, 0)
+    c.ability.extra = math.max(c.ability.extra - 1, 1)
   end
 end
 

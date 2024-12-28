@@ -81,7 +81,7 @@ function s:use(card)
         local percent = 0.85 - (i - 0.999) / (#G.hand.cards - 0.998) * 0.3
         G.E_MANAGER:add_event(Event {
           trigger = "after",
-          delay = 0.15,
+          delay = 0.3,
           func = function()
             card:flip()
             play_sound("tarot2", percent, 0.6)

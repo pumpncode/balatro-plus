@@ -8,6 +8,7 @@ A Balatro mod that add new things to balatro
 - 6 New Tags
 - 1 New Consumable Type
 - 7 New Consumables
+- 4 New Booster Packs
 
 # How To Install
 - Install [Steamodded](https://github.com/Steamopollys/Steamodded)

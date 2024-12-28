@@ -1,6 +1,6 @@
 local c = {
   primary_colour = HEX("8e32db"),
-  secondary_colour = HEX("7a29ba"),
+  secondary_colour = HEX("6826b2"),
   loc_txt = {
     name = "Sigil",
     collection = "Sigil Cards",

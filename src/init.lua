@@ -70,3 +70,11 @@ BalatroPlus.load("tag")("tags", {
 BalatroPlus.load("consumable")("consumables", {
   "sigil",
 })
+
+BalatroPlus.load("booster")("boosters", {
+  -- Mysthic Pack for Sigil cards
+  "mysthic_normal1",
+  "mysthic_normal2",
+  "mysthic_jumbo",
+  "mysthic_mega",
+})
