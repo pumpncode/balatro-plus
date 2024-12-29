@@ -39,7 +39,6 @@ function j:calculate(card, ctx)
       return {
         message = localize("k_upgrade_ex"),
         colour = G.C.MULT,
-        card = card,
       }
     end
   end

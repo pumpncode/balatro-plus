@@ -29,6 +29,8 @@ BalatroPlus.load("joker")("jokers", {
   "boxer",
   "blackjack",
   "treasure_map",
+  "wheel",
+  "snowman",
 
   -- Uncommon
   "four_leaf_clover",
@@ -38,10 +40,13 @@ BalatroPlus.load("joker")("jokers", {
   "magnifying_glass",
   "anonymous_mask",
   "toilet",
+  "jackpot",
+  "trash_can",
 
   -- Rare
   "crown",
   "space_invader",
+  "blacksmith",
 })
 
 BalatroPlus.load("deck")("decks", {

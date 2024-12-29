@@ -59,3 +59,8 @@ local g_funcs_reroll_shop = G.FUNCS.reroll_shop
 function G.FUNCS.reroll_shop(e)
   g_funcs_reroll_shop(e)
 end
+
+function Card:get_chip_h_chips()
+  if self.debuff then return 0 end
+  return self.ability.h_chips
+end

@@ -31,7 +31,7 @@ function j:calculate(card, ctx)
   if ctx.joker_main then
     return {
       message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.chips } },
-      chips_mod = card.ability.extra.chips,
+      chip_mod = card.ability.extra.chips,
       colour = G.C.CHIPS,
     }
   elseif ctx.ending_shop and not ctx.blueprint then

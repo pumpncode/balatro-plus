@@ -54,7 +54,6 @@ function j:calculate(card, ctx)
       return {
         message = "Active!",
         colour = G.C.GREEN,
-        card = card,
       }
     end
   elseif ctx.end_of_round and G.GAME.blind.boss and card.ability.extra then
@@ -66,7 +65,6 @@ function j:calculate(card, ctx)
     return {
       message = "Inactive!",
       colour = G.C.RED,
-      card = card,
     }
   end
 end

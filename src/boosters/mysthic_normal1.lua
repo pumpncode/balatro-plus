@@ -7,7 +7,7 @@ local p = {
       "be used immediately",
     },
   },
-  weight = 0.7,
+  weight = 0.5,
   cost = 6,
   config = { extra = 2, choose = 1 },
   draw_hand = true,
@@ -21,7 +21,7 @@ function p:loc_vars()
 end
 
 function p:ease_background_colour()
-  ease_background_colour { new_colour = G.C.SECONDARY_SET.sigil }
+  ease_background_colour { new_colour = darken(G.C.SECONDARY_SET.sigil, 0.2) }
 end
 
 function p:create_card()

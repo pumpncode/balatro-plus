@@ -68,7 +68,7 @@ function s:use(card)
       for _, card in ipairs(G.hand.highlighted) do
         G.E_MANAGER:add_event(Event {
           trigger = "after",
-          delay = 0.1,
+          delay = 0.2,
           func = function()
             card:set_seal(seal, nil, true)
             card:set_ability(enhancement)
@@ -81,7 +81,7 @@ function s:use(card)
         local percent = 0.85 - (i - 0.999) / (#G.hand.cards - 0.998) * 0.3
         G.E_MANAGER:add_event(Event {
           trigger = "after",
-          delay = 0.3,
+          delay = 0.5,
           func = function()
             card:flip()
             play_sound("tarot2", percent, 0.6)

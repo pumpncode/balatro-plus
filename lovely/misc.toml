@@ -61,3 +61,132 @@ payload = """
   bplus_sigil = G.C.SET.sigil,
 """
 
+# Discard Repetitions
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "for i=1, highlighted_count do"
+position = "at"
+match_indent = true
+payload = """
+local reps = {1}
+for _, joker in ipairs(G.jokers.cards) do
+  local effect = joker:calculate_joker { discard_repetition = true }
+  if effect and next(effect) and effect.repetitions then
+    if not effect.card then
+      effect.card = joker
+    end
+    for rep = 1, effect.repetitions do
+      reps[#reps + 1] = effect
+    end
+  end
+end
+
+for i=1, highlighted_count do
+  for i2 = 1, #reps do
+    local effects = {}
+    if not G.hand.highlighted[i].ability.removed_by_discard then
+"""
+
+[[patches]]
+[patches.regex]
+target = "functions/state_events.lua"
+pattern = '''[ \t]*G\.hand\.highlighted\[i\]:calculate_seal\(\{discard = true\}\)
+[ \t]*local removed = true
+'''
+position = "at"
+payload = """
+local removed = false
+local eval
+eval = eval_card(G.hand.highlighted[i], {discard = true, full_hand = G.hand.highlighted})
+
+if eval and next(eval) then
+  if not eval.card then
+    eval.card = G.hand.highlighted[i]
+  end
+  effects[#effects + 1] = eval
+end
+
+if eval and eval.remove then
+    removed = true
+end
+"""
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "eval = G.jokers.cards[j]:calculate_joker({discard = true, other_card =  G.hand.highlighted[i], full_hand = G.hand.highlighted})"
+position = "at"
+payload = """
+eval = G.jokers.cards[j]:calculate_joker({discard = true, other_card =  G.hand.highlighted[i], full_hand = G.hand.highlighted, callback = function(card, eval)
+  if eval then
+    if eval.remove then
+      removed = true
+    end
+    if next(eval) then
+      if not eval.card then
+        eval.card = card
+      end
+      effects[#effects + 1] = eval
+    end
+  end
+  if true then
+    return
+  end
+"""
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "table.insert(cards, G.hand.highlighted[i])"
+position = "before"
+match_indent = true
+payload = """
+    if reps[i2] ~= 1 and next(effects) then
+      card_eval_status_text(reps[i2].card, 'jokers', nil, nil, nil, reps[i2])
+    end
+
+    for _, effect in ipairs(effects) do
+      card_eval_status_text(effect.card, 'jokers', nil, 1, nil, effect)
+    end
+
+    if removed then
+      G.hand.highlighted[i].ability.removed_by_discard = true
+    end
+  end
+end
+
+local removed = G.hand.highlighted[i].ability.removed_by_discard
+"""
+
+# Add 'enhance' context for Joker trigger
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "local old_center = self.config.center"
+position = "before"
+match_indent = true
+payload = """
+if not initial then
+  if G.jokers and not self._bplus_copying_card and self.config.card.name and center ~= G.P_CENTERS.c_base then
+    for _, joker in ipairs(G.jokers.cards) do
+      joker:calculate_joker { enhance = true, other_card = self, from = self.config.center, to = center }
+    end
+  end
+end
+
+"""
+
+# Prevent copy_card to triggering 'enhance' context for joker trigger
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "new_card:set_ability(other.config.center)"
+position = "at"
+match_indent = true
+payload = """
+new_card._bplus_copying_card = true
+new_card:set_ability(other.config.center)
+new_card._bplus_copying_card = nil
+"""

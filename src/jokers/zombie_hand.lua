@@ -6,7 +6,7 @@ local j = {
       "by {C:attention}#1#{} level on final hand",
     },
   },
-  config = { extra = 2 },
+  config = { extra = 1 },
   rarity = 1,
   cost = 4,
   atlas = 21,
@@ -23,7 +23,6 @@ function j:calculate(card, ctx)
     return {
       message = localize("k_level_up_ex"),
       level_up = card.ability.extra,
-      card = card,
     }
   end
 end
