@@ -7,9 +7,10 @@ local j = {
       "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)",
     },
   },
-  config = { extra = { chips = 0, scale = 5 } },
+  config = { extra = { chips = 0, scale = 10 } },
   rarity = 3,
   cost = 8,
+  atlas = 25,
 
   perishable_compat = false,
   blueprint_compat = true,
