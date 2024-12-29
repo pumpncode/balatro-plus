@@ -18,6 +18,7 @@ local j = {
   },
   rarity = 2,
   cost = 7,
+  atlas = 22,
 
   perishable_compat = false,
   blueprint_compat = true,
