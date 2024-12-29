@@ -9,7 +9,7 @@ local j = {
   },
   config = {
     extra = {
-      scale = 0.2,
+      scale = 0.1,
       rank = "7",
       every = 3,
       remaining = 3,

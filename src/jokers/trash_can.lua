@@ -2,13 +2,14 @@ local j = {
   loc_txt = {
     name = "Trash Can",
     text = {
-      "Retrigger all playing",
-      "card when {C:red}discarded{}",
+      "Retrigger all card",
+      "{C:red}discard{} ability",
     },
   },
   config = { extra = 1 },
   rarity = 2,
   cost = 6,
+  atlas = 24,
 
   blueprint_compat = true,
 }
