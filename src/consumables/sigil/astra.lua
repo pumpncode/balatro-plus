@@ -2,34 +2,42 @@ local s = {
   loc_txt = {
     name = "Astra",
     text = {
-      "Set all {C:attention}poker hand{} level to",
-      "level {C:attention}1{} if there is a {C:attention}poker",
-      "{C:attention}hand{} with level above {C:attention}#1#{} ",
-      "{C:attention}+#2#{} hand size",
+      "Level up your most played",
+      "{C:attention}poker hand{} level by {C:attention}#1#{}, resets",
+      "other {C:attention}poker hands{} level",
     },
   },
-  config = { extra = { above = 5, hand_size = 1 } },
   atlas = 6,
 }
 
+local function get_level_up_amount(hand)
+  hand = hand or bplus_most_played_poker_hand()
+  local amount = 0
+  if hand then
+    for name, info in pairs(G.GAME.hands) do
+      if name ~= hand then
+        amount = amount + info.level - 1
+      end
+    end
+  end
+  return amount
+end
+
 function s:loc_vars(_, card)
-  return { vars = { card.ability.extra.above, card.ability.extra.hand_size } }
+  return { vars = { get_level_up_amount() } }
 end
 
 function s:can_use(card)
-  for _, hand in pairs(G.GAME.hands) do
-    if hand.level > card.ability.extra.above then
-      return true
-    end
-  end
-  return false
+  return get_level_up_amount() > 0
 end
 
 function s:use(card)
+  local hand = bplus_most_played_poker_hand()
+  local amount = get_level_up_amount(hand)
   update_hand_text(
     { sound = "button", volume = 0.7, pitch = 0.8, delay = 0.3 },
     {
-      handname = localize("k_all_hands"),
+      handname = "Other hands",
       chips = "...",
       mult = "...",
       level = "",
@@ -71,47 +79,26 @@ function s:use(card)
   }))
 
   update_hand_text({ sound = "button", volume = 0.7, pitch = 0.9, delay = 0 }, { level = "1" })
-  delay(1.3)
-  for k, v in pairs(G.GAME.hands) do
-    level_up_hand(card, k, true, -v.level + 1)
+  delay(1)
+  for handname, info in pairs(G.GAME.hands) do
+    if handname ~= hand then
+      level_up_hand(card, handname, true, -info.level + 1)
+    end
   end
+
+  update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.5 }, {
+    handname = localize(hand, 'poker_hands'),
+    chips = G.GAME.hands[hand].chips,
+    mult = G.GAME.hands[hand].mult,
+    level = G.GAME.hands[hand].level
+  })
+  level_up_hand(card, hand, false, amount)
+
+  delay(0.2)
   update_hand_text(
     { sound = "button", volume = 0.7, pitch = 1.1, delay = 0 },
     { mult = 0, chips = 0, handname = "", level = "" }
   )
-
-  G.hand:change_size(card.ability.extra.hand_size)
-  G.E_MANAGER:add_event(Event {
-    trigger = "after",
-    delay = 0.2,
-    func = function()
-      attention_text {
-        text = localize { key = "a_handsize", type = "variable", vars = { card.ability.extra.hand_size } },
-        scale = 1.3,
-        hold = 1.4,
-        major = card,
-        backdrop_colour = G.C.SECONDARY_SET.sigil,
-        align = "cm",
-        offset = { x = 0, y = 0 },
-        silent = true,
-      }
-
-      G.E_MANAGER:add_event(Event {
-        trigger = "after",
-        delay = 0.06 * G.SETTINGS.GAMESPEED,
-        blockable = false,
-        blocking = false,
-        func = function()
-          play_sound("tarot2", 0.76, 0.4)
-          return true
-        end
-      })
-
-      play_sound("tarot2", 1, 0.4)
-      card:juice_up(0.3, 0.5)
-      return true
-    end
-  })
 end
 
 return s

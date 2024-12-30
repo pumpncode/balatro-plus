@@ -156,3 +156,14 @@ function bplus_create_food_joker(seed_key)
     'top'
   )
 end
+
+function bplus_most_played_poker_hand()
+  local _planet, _hand, _tally = nil, nil, 0
+  for _, handname in ipairs(G.handlist) do
+    if G.GAME.hands[handname].visible and G.GAME.hands[handname].played > _tally then
+      _hand = handname
+      _tally = G.GAME.hands[handname].played
+    end
+  end
+  return _hand
+end
