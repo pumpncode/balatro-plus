@@ -11,6 +11,7 @@ local j = {
   config = { extra = { scale = 0.1, xmult = 1.1 } },
   rarity = 1,
   cost = 5,
+  atlas = 28,
 
   blueprint_compat = true,
 }

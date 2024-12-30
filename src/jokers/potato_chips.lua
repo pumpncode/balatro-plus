@@ -10,6 +10,7 @@ local j = {
   config = { extra = { chips = 150, chip_mod = 3 } },
   rarity = 1,
   cost = 4,
+  atlas = 31,
 
   blueprint_compat = true,
   eternal_compat = false,
