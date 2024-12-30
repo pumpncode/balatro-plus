@@ -11,6 +11,7 @@ local j = {
   config = { extra = 0.1, Xmult = 1 },
   rarity = 1,
   cost = 5,
+  atlas = 26,
 
   perishable_compat = false,
   blueprint_compat = true,
