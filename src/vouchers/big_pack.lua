@@ -2,12 +2,13 @@ local v = {
   loc_txt = {
     name = "Big Pack",
     text = {
-      "{C:attention}Booster pack{} has",
+      "{C:attention}Booster Pack{} has",
       "{C:attention}+#1#{} choose and",
       "{C:attention}+#2#{} card option",
     },
   },
   config = { choose = 1, extra = 1 },
+  atlas = 2,
   requires = {
     "v_bplus_refund",
   },

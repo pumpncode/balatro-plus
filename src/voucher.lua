@@ -1,10 +1,10 @@
 return function(voucher_dir, vouchers)
-  -- SMODS.Atlas {
-  --   key = "vouchers",
-  --   px = 71,
-  --   py = 95,
-  --   path = "vouchers.png",
-  -- }
+  SMODS.Atlas {
+    key = "vouchers",
+    px = 71,
+    py = 95,
+    path = "vouchers.png",
+  }
 
   for k, v in pairs(vouchers) do
     if type(v) == "string" then

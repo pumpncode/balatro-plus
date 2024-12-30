@@ -4,10 +4,11 @@ local v = {
     text = {
       "Earn {C:money}$#1#{} per {C:attention}choose{}",
       "remaining when any",
-      "{C:attention}Booster pack{} is skipped",
+      "{C:attention}Booster Pack{} is skipped",
     },
   },
   config = { money = 2 },
+  atlas = 1,
 }
 
 function v:loc_vars()
