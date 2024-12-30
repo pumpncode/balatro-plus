@@ -14,7 +14,6 @@ local c = {
       },
     },
   },
-  shop_rate = 0.05,
   default = "c_bplus_sigil_blank",
   atlas = "consumables/sigils.png",
   cards = {

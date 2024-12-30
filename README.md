@@ -9,6 +9,7 @@ A Balatro mod that add new things to balatro
 - 1 New Consumable Type
 - 7 New Consumables
 - 4 New Booster Packs
+- 2 New Vouchers
 
 # How To Install
 - Install [Steamodded](https://github.com/Steamopollys/Steamodded)

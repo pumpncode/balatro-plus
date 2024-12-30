@@ -83,3 +83,8 @@ BalatroPlus.load("booster")("boosters", {
   "mysthic_jumbo",
   "mysthic_mega",
 })
+
+BalatroPlus.load("voucher")("vouchers", {
+  "refund",
+  "big_pack",
+})
