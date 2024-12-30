@@ -27,6 +27,7 @@ function j:calculate(card, ctx)
     local upgrade = false
     for _, joker in ipairs(G.jokers.cards) do
       if joker.config.center.bplus_food_joker then
+        joker.getting_sliced = true
         upgrade = true
         G.E_MANAGER:add_event(Event({
           func = function()

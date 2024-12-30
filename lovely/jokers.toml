@@ -3,7 +3,7 @@ version = "1.0.0"
 dump_lua = true
 priority = 0
 
-# Trigger Joker dollars effect at the end of round
+# Trigger Joker hand dollars effect at the end of round
 [[patches]]
 [patches.pattern]
 target = "functions/state_events.lua"
@@ -36,7 +36,7 @@ end
 if false then
 """
 
-# Space Invader Joker
+# Space Invader Joker ability
 [[patches]]
 [patches.pattern]
 target = "card.lua"
@@ -50,7 +50,7 @@ if self.seal == 'Blue' and (
 ) then
 """
 
-# Anonymous Mask Joker
+# Anonymous Mask Joker ability
 [[patches]]
 [patches.pattern]
 target = "card.lua"
@@ -60,5 +60,37 @@ match_indent = true
 payload = """
 if next(find_joker("j_bplus_anonymous_mask")) and self:is_face() then
   should_debuff = false
+end
+"""
+
+# Stone Carving Joker ability
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "function Card:is_suit(suit, bypass_debuff, flush_calc)"
+position = "after"
+match_indent = true
+payload = """
+if flush_calc then
+  if self.ability.name == G.P_CENTERS.m_stone.name and not self.debuff and next(find_joker("j_bplus_stone_carving")) then
+    return G.GAME.current_round.bplus_stone_carving_card.suit == suit
+  end
+else
+  if self.debuff and not bypass_debuff then return end
+  if self.ability.name == G.P_CENTERS.m_stone.name and next(find_joker("j_bplus_stone_carving")) then
+    return G.GAME.current_round.bplus_stone_carving_card.suit == suit
+  end
+end
+"""
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "if self.ability.effect == 'Stone Card' and not self.vampired then"
+position = "after"
+match_indent = true
+payload = """
+if self.ability.name == G.P_CENTERS.m_stone.name and not self.debuff and next(find_joker("j_bplus_stone_carving")) then
+  return G.GAME.current_round.bplus_stone_carving_card.id
 end
 """

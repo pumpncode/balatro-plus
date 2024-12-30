@@ -18,23 +18,7 @@ function t:apply(tag, ctx)
   if ctx.type == "immediate" then
     tag:yep("+", G.C.ORANGE, function()
       if G.jokers and #G.jokers.cards < G.jokers.config.card_limit then
-        local keys = {}
-        for key, center in pairs(G.P_CENTERS) do
-          if center.bplus_food_joker then
-            keys[#keys + 1] = key
-          end
-        end
-
-        local card = create_card(
-          'Joker',
-          G.jokers,
-          nil,
-          nil,
-          nil,
-          nil,
-          pseudorandom_element(keys, pseudoseed("tag_bplus_dish_joker")),
-          'top'
-        )
+        local card = bplus_create_food_joker("tag_bplus_dish_joker")
         card:add_to_deck()
         G.jokers:emplace(card)
       end

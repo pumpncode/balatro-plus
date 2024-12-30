@@ -2,7 +2,7 @@
 A Balatro mod that add new things to balatro
 
 # This Mod Adds
-- 25 New Jokers
+- 30 New Jokers
 - 3 New Decks
 - 5 New Boss Blinds
 - 6 New Tags

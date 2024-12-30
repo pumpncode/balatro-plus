@@ -2,6 +2,7 @@ BalatroPlus = {
   path = SMODS.current_mod.path:gsub("/$", ""),
   load_chace = {},
   G = {},
+  game_objects = {}
 }
 
 function BalatroPlus.load(path)
@@ -31,6 +32,10 @@ BalatroPlus.load("joker")("jokers", {
   "treasure_map",
   "wheel",
   "snowman",
+  "fragile",
+  "chef",
+  "stone_skipping",
+  "potato_chips",
 
   -- Uncommon
   "four_leaf_clover",
@@ -42,6 +47,7 @@ BalatroPlus.load("joker")("jokers", {
   "toilet",
   "jackpot",
   "trash_can",
+  "stone_carving",
 
   -- Rare
   "crown",
@@ -88,3 +94,9 @@ BalatroPlus.load("voucher")("vouchers", {
   "refund",
   "big_pack",
 })
+
+function SMODS.current_mod.reset_game_globals()
+  for key, value in pairs(BalatroPlus.game_objects) do
+    G.GAME.current_round["bplus_" .. key] = value(G.GAME.current_round["bplus_" .. key])
+  end
+end

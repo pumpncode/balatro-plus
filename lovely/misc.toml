@@ -148,7 +148,9 @@ payload = """
     end
 
     for _, effect in ipairs(effects) do
-      card_eval_status_text(effect.card, 'jokers', nil, 1, nil, effect)
+      if not effect.silent then
+        card_eval_status_text(effect.card, 'jokers', nil, 1, nil, effect)
+      end
     end
 
     if removed then

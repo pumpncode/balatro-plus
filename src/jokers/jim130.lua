@@ -3,7 +3,7 @@ local j = {
     name = "Joker JIM130",
     text = {
       "Gain {X:mult,C:white} X#1# {} each",
-      "played {C:attention}Steel Card",
+      "triggered {C:attention}Steel Card",
       "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
     },
   },

@@ -60,7 +60,11 @@ function G.FUNCS.reroll_shop(e)
   g_funcs_reroll_shop(e)
 end
 
-function Card:get_chip_h_chips()
-  if self.debuff then return 0 end
-  return self.ability.h_chips
+local game_init_game_object = Game.init_game_object
+function Game:init_game_object()
+  local game = game_init_game_object(self)
+  for key, value in pairs(BalatroPlus.game_objects) do
+    game.current_round["bplus_" .. key] = value(nil, true)
+  end
+  return game
 end

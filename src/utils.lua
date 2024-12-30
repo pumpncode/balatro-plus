@@ -128,3 +128,31 @@ function bplus_random_enhancement(seed_key)
   end
   return pseudorandom_element(enhancements, pseudoseed(seed_key))
 end
+
+function bplus_create_food_joker(seed_key)
+  local _pool, _pool_key = get_current_pool("Joker", nil, nil, seed_key)
+  local keys = {}
+  for _, key in ipairs(_pool) do
+    if key ~= "UNAVAILABLE" then
+      local center = G.P_CENTERS[key]
+      if center.bplus_food_joker then
+        keys[#keys + 1] = center.key
+      end
+    end
+  end
+
+  if not next(keys) then
+    keys = { "j_popcorn" }
+  end
+
+  return create_card(
+    'Joker',
+    G.jokers,
+    nil,
+    nil,
+    nil,
+    nil,
+    pseudorandom_element(keys, pseudoseed(_pool_key)),
+    'top'
+  )
+end
