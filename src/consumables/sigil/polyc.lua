@@ -11,7 +11,7 @@ local s = {
 }
 
 function s:loc_vars(infoq)
-  infoq[#infoq+1] = G.P_CENTERS.e_polychrome
+  infoq[#infoq + 1] = G.P_CENTERS.e_polychrome
 end
 
 function s:can_use(card)
@@ -32,23 +32,29 @@ function s:can_use(card)
 end
 
 function s:use(card, area, copier)
+  local cards = {}
+  for i, joker in ipairs(G.jokers.cards) do
+    if joker ~= G.jokers.highlighted[1] and not joker.ability.eternal then
+      cards[#cards + 1] = i
+    end
+  end
+  local destroyed = pseudorandom_element(cards, pseudoseed("c_bplus_sigil_polyc_destroy"))
+
   G.E_MANAGER:add_event(Event {
     trigger = "after",
-    delay = 0.4,
+    delay = 0.2,
     func = function()
-      local cards = {}
-      for i, joker in ipairs(G.jokers.cards) do
-        if joker ~= G.jokers.highlighted[1] and not joker.ability.eternal then
-          cards[#cards + 1] = i
-        end
-      end
-      local destroyed = pseudorandom_element(cards, pseudoseed("c_bplus_sigil_polyc_destroy"))
-
       G.jokers.highlighted[1]:set_edition({ polychrome = true }, true)
       play_sound('polychrome1', 1.2, 0.7)
       card:juice_up(0.3, 0.5)
+      return true
+    end
+  })
+  G.E_MANAGER:add_event(Event {
+    trigger = "after",
+    delay = 0.2,
+    func = function()
       G.jokers.cards[destroyed]:start_dissolve()
-
       return true
     end
   })

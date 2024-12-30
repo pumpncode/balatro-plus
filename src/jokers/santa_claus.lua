@@ -21,7 +21,8 @@ local j = {
   blueprint_compat = true,
 }
 
-function j:loc_vars(_, card)
+function j:loc_vars(infoq, card)
+  infoq[#infoq + 1] = G.P_CENTERS.e_negative
   return {
     vars = {
       card.ability.extra.every,

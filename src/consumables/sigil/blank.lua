@@ -27,34 +27,13 @@ function s:use(card)
   if pseudorandom("c_bplus_sigil_blank_create") > G.GAME.probabilities.normal / card.ability.extra then
     return
   end
-  G.E_MANAGER:add_event(Event {
-    func = function()
-      local sigils = {}
-      for key, center in pairs(G.P_CENTERS) do
-        if key:match("c_bplus_sigil_.+") and key ~= "c_bplus_sigil_blank" then
-          sigils[#sigils + 1] = key
-        end
-      end
-      local sigil_key = pseudorandom_element(sigils, pseudoseed("c_bplus_sigil_blank_sigil"))
-      local center = G.P_CENTERS[sigil_key]
-      play_sound("timpani")
-      local area = G.consumeables
-      local sig = Card(
-        area.T.x + area.T.w / 2,
-        area.T.y,
-        G.CARD_W,
-        G.CARD_H,
-        nil,
-        center
-      )
-      sig:start_materialize()
-      sig:add_to_deck()
-      area:emplace(sig)
-      card:juice_up(0.3, 0.5)
 
-      return true
-    end
-  })
+  play_sound("timpani")
+  local area = G.consumeables
+  local sig = create_card("sigil", G.pack_cards, nil, nil, nil, nil, nil, "c_bplus_sigil_blank_card")
+  sig:add_to_deck()
+  area:emplace(sig)
+  card:juice_up(0.3, 0.5)
 end
 
 return s

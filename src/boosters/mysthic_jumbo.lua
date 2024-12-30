@@ -7,7 +7,7 @@ local p = {
       "be used immediately",
     },
   },
-  weight = 0.4,
+  weight = 0.3,
   cost = 8,
   config = { extra = 4, choose = 1 },
   draw_hand = true,
