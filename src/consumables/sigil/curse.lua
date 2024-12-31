@@ -2,8 +2,8 @@ local s = {
   loc_txt = {
     name = "Curse",
     text = {
-      "{C:green}#1# in #2#{} chance to",
-      "add {C:dark_edition}edition{} to random",
+      "{C:green}#1# in #2#{} chance to add",
+      "any {C:dark_edition}edition{} to random",
       "Joker if {C:red}failed{} add",
       "{C:eternal}Eternal{} and {C:rental}Rental",
     },

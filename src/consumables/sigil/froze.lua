@@ -2,12 +2,13 @@ local s = {
   loc_txt = {
     name = "Froze",
     text = {
-      "Debuff selected joker for",
+      "{C:red}Debuff{} selected joker for",
       "{C:attention}#1#{} rounds, become {C:dark_edition}negative{}",
-      "after debuff end",
+      "after {C:red}debuff{} end",
     },
   },
   config = { extra = 5 },
+  atlas = 10,
 }
 
 function s:loc_vars(infoq, card)

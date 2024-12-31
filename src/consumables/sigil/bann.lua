@@ -7,6 +7,7 @@ local s = {
       "and {C:attention}suit",
     },
   },
+  atlas = 9,
 }
 
 function s:can_use()

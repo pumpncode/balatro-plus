@@ -9,6 +9,7 @@ local s = {
     },
   },
   config = { extra = 2 },
+  atlas = 8,
 }
 
 function s:loc_vars(_, card)

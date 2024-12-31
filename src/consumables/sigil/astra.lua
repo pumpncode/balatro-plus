@@ -2,9 +2,11 @@ local s = {
   loc_txt = {
     name = "Astra",
     text = {
-      "Level up your most played",
-      "{C:attention}poker hand{} level by {C:attention}#1#{}, resets",
+      "Level up your most played {C:attention}poker",
+      "{C:attention}hand{} level by total of all other",
+      "{C:attention}poker hands{} level above {C:attention}1{}, resets",
       "other {C:attention}poker hands{} level",
+      "{C:inactive}(Currently level up by {C:attention}#1#{C:inactive})",
     },
   },
   atlas = 6,
