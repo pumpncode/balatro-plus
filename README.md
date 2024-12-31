@@ -1,20 +1,13 @@
 # Balatro+
-A Balatro mod that add new things to balatro
+A balanced Balatro mod that add many new things to Balatro
 
 # This Mod Adds
-- 30 New Jokers
-- 3 New Decks
-- 5 New Boss Blinds
-- 6 New Tags
-- 1 New Consumable Type
-- 7 New Consumables
-- 4 New Booster Packs
-- 2 New Vouchers
+![Collections](https://raw.githubusercontent.com/SomeCoder99/balatro-plus/main/assets/collections.png)
 
 # How To Install
 - Install [Steamodded](https://github.com/Steamopollys/Steamodded)
-- [Download this repository](https://github.com/SomeCoder99/balatro-plus/archive/refs/heads/main.zip)
-- Extract downloaded archive
+- [Download this repository](https://github.com/SomeCoder99/balatro-plus/releases/download/v1.0.0/balatro-plus-1.0.0.zip)
+- Extract downloaded zip
 - Move/Copy extracted folder to Mod Directory
     - Windows Mod Directory: `%AppData%/Balatro/Mods`
     - Mac Mod Directory: `~/Library/Application Support/Balatro/Mods`
