@@ -3,22 +3,23 @@ local e = {
     name = "Premium Card",
     text = {
       "{X:mult,C:white} X#1# {} Mult",
-      "lose {C:money}$#2#",
+      "#3# {C:money}$#2#",
     },
   },
   config = { Xmult = 2 },
   atlas = 1,
 }
 
-BalatroPlus.game_objects.premium_card_cost = 3
+BalatroPlus.game_objects.premium_card_dollars = -3
 
 function e:loc_vars(_, card)
-  return { vars = { card.ability.x_mult, G.GAME.bplus_premium_card_cost } }
+  local dollars = G.GAME.bplus_premium_card_dollars
+  return { vars = { card.ability.x_mult, dollars < 0 and -dollars or dollars, dollars < 0 and "Loss" or "Earn" } }
 end
 
 function e:calculate(card, ctx, effect)
   if ctx.cardarea == G.play and not ctx.repetition then
-    effect.p_dollars = -G.GAME.bplus_premium_card_cost
+    effect.p_dollars = (effect.p_dollars or 0) + G.GAME.bplus_premium_card_dollars
   end
 end
 

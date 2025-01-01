@@ -103,6 +103,7 @@ BalatroPlus.load("voucher")("vouchers", {
 
 BalatroPlus.load("enhancement")("enhancements", {
   "premium",
+  "framed",
 })
 
 function SMODS.current_mod.reset_game_globals()
