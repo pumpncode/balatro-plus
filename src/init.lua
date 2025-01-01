@@ -6,6 +6,16 @@ BalatroPlus = {
   game_objects = {},
 }
 
+SMODS.Atlas {
+  key = "balatro",
+  path = "balatro_plus.png",
+  px = G.ASSET_ATLAS.balatro.px,
+  py = G.ASSET_ATLAS.balatro.py,
+  prefix_config = {
+ 		key = { mod = false },
+ 	},
+}
+
 function BalatroPlus.load(path)
   local module = BalatroPlus.load_chace[path]
   if not module then
