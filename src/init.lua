@@ -114,6 +114,7 @@ BalatroPlus.load("voucher")("vouchers", {
 BalatroPlus.load("enhancement")("enhancements", {
   "premium",
   "framed",
+  "balanced",
 })
 
 function SMODS.current_mod.reset_game_globals()
