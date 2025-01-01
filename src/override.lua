@@ -63,9 +63,19 @@ end
 local game_init_game_object = Game.init_game_object
 function Game:init_game_object()
   local game = game_init_game_object(self)
-  for key, value in pairs(BalatroPlus.game_objects) do
+  
+  for key, value in pairs(BalatroPlus.round_vars) do
     game.current_round["bplus_" .. key] = value(nil, true)
   end
+
+  for key, value in pairs(BalatroPlus.game_objects) do
+    if type(value) == "function" then
+      game["bplus_" .. key] = value()
+    else
+      game["bplus_" .. key] = copy_table(value)
+    end
+  end
+
   return game
 end
 

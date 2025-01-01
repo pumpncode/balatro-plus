@@ -14,8 +14,12 @@ local j = {
   blueprint_compat = false,
 }
 
-function BalatroPlus.game_objects.stone_carving_card(v, init)
-  v = v or {}
+function BalatroPlus.round_vars.stone_carving_card(v, init)
+  v = v or { rank = "Ace", suit = "Spades", id = 14 }
+  if init then
+    return v
+  end
+
   v.rank = "Ace"
   v.suit = "Spades"
   v.id = 14
@@ -32,7 +36,8 @@ function BalatroPlus.game_objects.stone_carving_card(v, init)
     end
 
     if next(valid_cards) then
-      local card = pseudorandom_element(valid_cards, pseudoseed("j_bplus_stone_carving_card" .. G.GAME.round_resets.ante))
+      local card = pseudorandom_element(valid_cards,
+        pseudoseed("j_bplus_stone_carving_card" .. G.GAME.round_resets.ante))
       v.rank = card.base.value
       v.suit = card.base.suit
       v.id = card.base.id

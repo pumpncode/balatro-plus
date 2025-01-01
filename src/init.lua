@@ -2,7 +2,8 @@ BalatroPlus = {
   path = SMODS.current_mod.path:gsub("/$", ""),
   load_chace = {},
   G = {},
-  game_objects = {}
+  round_vars = {},
+  game_objects = {},
 }
 
 function BalatroPlus.load(path)
@@ -100,8 +101,12 @@ BalatroPlus.load("voucher")("vouchers", {
   "big_pack",
 })
 
+BalatroPlus.load("enhancement")("enhancements", {
+  "premium",
+})
+
 function SMODS.current_mod.reset_game_globals()
-  for key, value in pairs(BalatroPlus.game_objects) do
+  for key, value in pairs(BalatroPlus.round_vars) do
     G.GAME.current_round["bplus_" .. key] = value(G.GAME.current_round["bplus_" .. key])
   end
 end
