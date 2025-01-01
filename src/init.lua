@@ -67,6 +67,11 @@ BalatroPlus.load("blind")("blinds", {
   "loop",
   "low",
   "thunder",
+  "brake",
+  "lazy",
+  "scales",
+  "thirteen",
+  "handcuffs",
 })
 
 BalatroPlus.load("tag")("tags", {

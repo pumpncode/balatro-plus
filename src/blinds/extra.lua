@@ -12,6 +12,10 @@ local b = {
 }
 
 function b:press_play()
+  if G.GAME.blind.disabled then
+    return
+  end
+
   G.E_MANAGER:add_event(Event {
     delay = 1,
     func = function()

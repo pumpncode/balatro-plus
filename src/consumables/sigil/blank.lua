@@ -13,7 +13,7 @@ local s = {
 }
 
 function s:loc_vars(_, card)
-  return { vars = { G.GAME.probabilities.normal, card.ability.extra } }
+  return { vars = { probability("normal"), card.ability.extra } }
 end
 
 function s:can_use()
@@ -24,7 +24,7 @@ function s:use(card)
   if #G.consumeables.cards >= G.consumeables.config.card_limit then
     return
   end
-  if pseudorandom("c_bplus_sigil_blank_create") > G.GAME.probabilities.normal / card.ability.extra then
+  if pseudorandom("c_bplus_sigil_blank_create") > probability("normal") / card.ability.extra then
     return
   end
 

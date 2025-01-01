@@ -68,3 +68,10 @@ function Game:init_game_object()
   end
   return game
 end
+
+function probability(key)
+  if G.GAME and G.GAME.blind and G.GAME.blind.name == "bl_bplus_thirteen" and not G.GAME.blind.disabled then
+    return 0
+  end
+  return G.GAME.probabilities[key]
+end

@@ -84,6 +84,16 @@ end
 
 for i=1, highlighted_count do
   for i2 = 1, #reps do
+    if reps[i2] ~= 1 and G.GAME.blind.name == "bl_bplus_lazy" and not G.GAME.blind.disabled then
+      local already = {}
+      for i = 2, #reps do
+        if not already[reps[i]] then
+          already[reps[i]] = true
+          bplus_bl_lazy_trigger(reps[i].card)
+        end
+      end
+      break
+    end
     local effects = {}
     if not G.hand.highlighted[i].ability.removed_by_discard then
 """
@@ -92,7 +102,7 @@ for i=1, highlighted_count do
 [patches.regex]
 target = "functions/state_events.lua"
 pattern = '''[ \t]*G\.hand\.highlighted\[i\]:calculate_seal\(\{discard = true\}\)
-[ \t]*local removed = true
+[ \t]*local removed = false
 '''
 position = "at"
 payload = """
@@ -100,11 +110,12 @@ local removed = false
 local eval
 eval = eval_card(G.hand.highlighted[i], {discard = true, full_hand = G.hand.highlighted})
 
-if eval and next(eval) then
-  if not eval.card then
-    eval.card = G.hand.highlighted[i]
-  end
-  effects[#effects + 1] = eval
+if eval.seals then
+  effects[#effects + 1] = eval.seals
+end
+
+if eval.jokers then
+  effects[#effects + 1] = eval.jokers
 end
 
 if eval and eval.remove then
@@ -117,6 +128,7 @@ end
 target = "functions/state_events.lua"
 pattern = "eval = G.jokers.cards[j]:calculate_joker({discard = true, other_card =  G.hand.highlighted[i], full_hand = G.hand.highlighted})"
 position = "at"
+match_indent = true
 payload = """
 eval = G.jokers.cards[j]:calculate_joker({discard = true, other_card =  G.hand.highlighted[i], full_hand = G.hand.highlighted, callback = function(card, eval)
   if eval then
@@ -134,7 +146,6 @@ eval = G.jokers.cards[j]:calculate_joker({discard = true, other_card =  G.hand.h
     return
   end
 """
-match_indent = true
 
 [[patches]]
 [patches.pattern]
@@ -144,12 +155,13 @@ position = "before"
 match_indent = true
 payload = """
     if reps[i2] ~= 1 and next(effects) then
-      card_eval_status_text(reps[i2].card, 'jokers', nil, nil, nil, reps[i2])
+      card_eval_status_text(reps[i2].card, 'extra', nil, nil, nil, reps[i2])
     end
 
     for _, effect in ipairs(effects) do
+      if effect.func then effect.func() end
       if not effect.silent then
-        card_eval_status_text(effect.card, 'jokers', nil, 1, nil, effect)
+        card_eval_status_text(effect.card, 'extra', nil, 1, nil, effect)
       end
     end
 
@@ -192,3 +204,80 @@ new_card._bplus_copying_card = true
 new_card:set_ability(other.config.center)
 new_card._bplus_copying_card = nil
 """
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "if amt > 0 or amt < 0 then"
+position = "before"
+match_indent = true
+payload = """
+if extra and extra.message then
+  text = extra.message
+end
+"""
+
+# Add return value for Purple Seal
+[[patches]]
+[patches.regex]
+target = "card.lua"
+pattern = '''[ \t]*if self\.seal == 'Purple' and #G\.consumeables\.cards \+ G\.GAME\.consumeable_buffer < G.consumeables\.config\.card_limit then
+[ \t]*G\.GAME\.consumeable_buffer = G\.GAME\.consumeable_buffer \+ 1
+'''
+position = "after"
+payload = """
+      return {
+        func = function()
+"""
+
+[[patches]]
+[patches.regex]
+target = "card.lua"
+pattern = '''[ \t]*card_eval_status_text\(self, 'extra', nil, nil, nil, \{message = localize\('k_plus_tarot'\), colour = G\.C\.PURPLE\}\)
+[ \t]*end
+[ \t]*end
+[ \t]*end
+'''
+position = "at"
+payload = """
+        end,
+        message = localize('k_plus_tarot'),
+        colour = G.C.PURPLE,
+        card = self,
+      }
+    end
+  end
+end
+"""
+
+# Modify probabilities logic
+[[patches]]
+[patches.regex]
+target = "card.lua"
+pattern = '''G.GAME.probabilities\.(?<key>[a-zA-Z0-9_]+)'''
+position = "at"
+payload = '''probability("$key")'''
+[[patches]]
+[patches.regex]
+target = "blind.lua"
+pattern = '''G.GAME.probabilities\.(?<key>[a-zA-Z0-9_]+)'''
+position = "at"
+payload = '''probability("$key")'''
+[[patches]]
+[patches.regex]
+target = "functions/state_events.lua"
+pattern = '''G.GAME.probabilities\.(?<key>[a-zA-Z0-9_]+)'''
+position = "at"
+payload = '''probability("$key")'''
+[[patches]]
+[patches.regex]
+target = "functions/button_callbacks.lua"
+pattern = '''G.GAME.probabilities\.(?<key>[a-zA-Z0-9_]+)'''
+position = "at"
+payload = '''probability("$key")'''
+[[patches]]
+[patches.regex]
+target = "functions/common_events.lua"
+pattern = '''G.GAME.probabilities\.(?<key>[a-zA-Z0-9_]+)'''
+position = "at"
+payload = '''probability("$key")'''

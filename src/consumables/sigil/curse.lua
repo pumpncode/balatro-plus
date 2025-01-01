@@ -15,7 +15,7 @@ local s = {
 function s:loc_vars(infoq, card)
   infoq[#infoq + 1] = { key = "eternal", set = "Other" }
   infoq[#infoq + 1] = { key = "rental", set = "Other", vars = { G.GAME.rental_rate or 1 } }
-  return { vars = { G.GAME.probabilities.normal, card.ability.extra } }
+  return { vars = { probability("normal"), card.ability.extra } }
 end
 
 function s:can_use(card)
@@ -28,7 +28,7 @@ function s:can_use(card)
 end
 
 function s:use(card)
-  local _edition = pseudorandom("c_bplus_sigil_curse_chance") <= G.GAME.probabilities.normal / card.ability.extra
+  local _edition = pseudorandom("c_bplus_sigil_curse_chance") <= probability("normal") / card.ability.extra
   local compat_jokers = {}
   for _, joker in ipairs(G.jokers.cards) do
     if not joker.edition and not joker.ability.eternal then

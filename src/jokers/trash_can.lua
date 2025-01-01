@@ -19,6 +19,7 @@ function j:calculate(card, ctx)
     return {
       message = localize("k_again_ex"),
       repetitions = card.ability.extra,
+      card = card,
     }
   end
 end
