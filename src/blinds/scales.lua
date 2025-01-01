@@ -8,6 +8,7 @@ local b = {
   },
   boss = { min = 2 },
   boss_colour = HEX("51461a"),
+  atlas = 8,
 }
 
 function b:press_play()

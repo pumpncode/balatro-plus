@@ -8,6 +8,7 @@ local b = {
   },
   boss = { min = 4 },
   boss_colour = HEX("1662f0"),
+  atlas = 7,
 }
 
 function bplus_bl_lazy_trigger(card)

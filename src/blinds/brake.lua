@@ -8,6 +8,7 @@ local b = {
   },
   boss = { min = 2 },
   boss_colour = HEX("b3143e"),
+  atlas = 6,
 }
 
 function b:get_loc_debuff_text()
