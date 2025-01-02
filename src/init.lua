@@ -78,6 +78,7 @@ BalatroPlus.load("blind")("blinds", {
   "loop",
   "low",
   "thunder",
+
   "brake",
   "lazy",
   "scales",
@@ -92,6 +93,13 @@ BalatroPlus.load("tag")("tags", {
   "collector",
   "booster",
   "bounty",
+
+  "enhanced",
+  "mysthic",
+  "burning",
+  "symbolic",
+  "recycle",
+  "backpack",
 })
 
 BalatroPlus.load("consumable")("consumables", {

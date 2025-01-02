@@ -83,7 +83,7 @@ function bplus_is_blackjack(cards)
   return total == 21
 end
 
-function bplus_open_pack(key)
+function bplus_open_pack(key, from_tag)
   stop_use()
   local card = Card(
     G.play.T.x + G.play.T.w / 2 - G.CARD_W * 1.27 / 2,
@@ -95,6 +95,7 @@ function bplus_open_pack(key)
     { bypass_discovery_center = true, bypass_discovery_ui = true }
   )
   card.cost = 0
+  card.from_tag = from_tag
   G.FUNCS.use_card({ config = { ref_table = card } })
   card:start_materialize()
 end
@@ -166,4 +167,33 @@ function bplus_most_played_poker_hand()
     end
   end
   return _hand
+end
+
+function bplus_tag_loc_vars(self, infoq)
+  local loc_vars = {}
+  if self.name == 'Investment Tag' then
+    loc_vars = { self.config.dollars }
+  elseif self.name == 'Handy Tag' then
+    loc_vars = { self.config.dollars_per_hand, self.config.dollars_per_hand * (G.GAME.hands_played or 0) }
+  elseif self.name == 'Garbage Tag' then
+    loc_vars = { self.config.dollars_per_discard, self.config.dollars_per_discard * (G.GAME.unused_discards or 0) }
+  elseif self.name == 'Juggle Tag' then
+    loc_vars = { self.config.h_size }
+  elseif self.name == 'Top-up Tag' then
+    loc_vars = { self.config.spawn_jokers }
+  elseif self.name == 'Skip Tag' then
+    loc_vars = { self.config.skip_bonus, self.config.skip_bonus * ((G.GAME.skips or 0) + 1) }
+  elseif self.name == 'Orbital Tag' then
+    loc_vars = {
+      (self.ability.orbital_hand == '[' .. localize('k_poker_hand') .. ']') and self.ability.orbital_hand or
+      localize(self.ability.orbital_hand, 'poker_hands'), self.config.levels }
+  elseif self.name == 'Economy Tag' then
+    loc_vars = { self.config.max }
+  elseif type(self.loc_vars) == "function" then
+    local ret = self:loc_vars(infoq)
+    if ret and ret.vars then
+      loc_vars = ret.vars
+    end
+  end
+  return loc_vars
 end

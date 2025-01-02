@@ -2,12 +2,9 @@ local j = {
   loc_txt = {
     name = "Space Invader",
     text = {
-      "{C:planet}Planet{} card added to",
-      "{C:attention}Consumable{} become {C:dark_edition}Negative{}",
-    },
-    unlock = {
-      "Have 3 or more {C:planet}Planet{} cards",
-      "in your {C:attention}Consumable{} slot",
+      "{C:planet}Planet{} card added",
+      "to {C:attention}Consumable slot{}",
+      "become {C:dark_edition}negative",
     },
   },
   rarity = 3,
@@ -17,6 +14,10 @@ local j = {
 
   blueprint_compat = false,
 }
+
+function j:loc_vars(infoq)
+  infoq[#infoq + 1] = { key = "e_negative_consumable", set = "Edition", config = { extra = 1 } }
+end
 
 function j:calculate(_, ctx)
   if ctx.card_added and ctx.cardarea == G.consumeables and ctx.other_card.config.center.set == "Planet" then
