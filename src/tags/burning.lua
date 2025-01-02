@@ -7,6 +7,7 @@ local t = {
     },
   },
   config = { discard = 5 },
+  atlas = 9,
 }
 
 function t:loc_vars()

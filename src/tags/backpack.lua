@@ -6,6 +6,7 @@ local t = {
       "cards in your {C:attention}Consumable slot",
     },
   },
+  atlas = 12,
 }
 
 function t:loc_vars(infoq)

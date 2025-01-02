@@ -6,6 +6,7 @@ local t = {
       "{s:0.8,C:green}Recycle Tag {s:0.8}excluded",
     },
   },
+  atlas = 11,
 }
 
 function t:loc_vars(infoq)

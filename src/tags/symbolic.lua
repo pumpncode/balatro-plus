@@ -9,6 +9,7 @@ local t = {
     },
   },
   config = { dollars = 1, max = 30 },
+  atlas = 10,
 }
 
 local function calculate_dollars(self, tag)

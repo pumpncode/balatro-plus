@@ -5,9 +5,10 @@ local t = {
       "Enhance all cards",
       "held in hand to",
       "{C:attention}#1#s",
-      "next round begin",
+      "when round begin",
     },
   },
+  atlas = 7,
 }
 
 function t:loc_vars(infoq, tag)

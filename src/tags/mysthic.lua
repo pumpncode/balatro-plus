@@ -6,6 +6,7 @@ local t = {
       "{C:bplus_sigil}Mega Mysthic Pack",
     },
   },
+  atlas = 8,
 }
 
 function t:apply(tag, ctx)
