@@ -12,9 +12,9 @@ local e = {
 
 BalatroPlus.game_objects.premium_card_dollars = -3
 
-function e:loc_vars(_, card)
+function e:loc_vars()
   local dollars = G.GAME.bplus_premium_card_dollars
-  return { vars = { card.ability.x_mult, dollars < 0 and -dollars or dollars, dollars < 0 and "Loss" or "Earn" } }
+  return { vars = { self.config.Xmult, dollars < 0 and -dollars or dollars, dollars < 0 and "Loss" or "Earn" } }
 end
 
 function e:calculate(card, ctx, effect)

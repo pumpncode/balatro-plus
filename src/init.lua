@@ -98,6 +98,12 @@ BalatroPlus.load("consumable")("consumables", {
   "sigil",
 })
 
+BalatroPlus.load("tarot")("consumables/tarot", {
+  "rich",
+  "craftsman",
+  "balance",
+})
+
 BalatroPlus.load("booster")("boosters", {
   -- Mysthic Pack for Sigil cards
   "mysthic_normal1",

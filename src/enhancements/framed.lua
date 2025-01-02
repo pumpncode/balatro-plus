@@ -10,8 +10,8 @@ local e = {
   atlas = 2,
 }
 
-function e:loc_vars(_, card)
-  return { vars = { card.ability.extra } }
+function e:loc_vars()
+  return { vars = { self.config.extra } }
 end
 
 function e:calculate(card, ctx, _)
