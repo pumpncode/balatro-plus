@@ -22,7 +22,7 @@ function j:loc_vars(_, card)
 end
 
 function j:calculate(card, ctx)
-  if not ctx.blueprint and ctx.after then
+  if not ctx.blueprint and ctx.after and card.ability.x_mult ~= 1 then
     card.ability.x_mult = 1
     return {
       message = localize("k_reset"),

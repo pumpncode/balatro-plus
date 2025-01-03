@@ -96,3 +96,20 @@ if G.GAME.selected_back.name == "b_bplus_illusion" then
 end
 
 """
+
+# Mysthical Deck remove 1 slot from shop booster pack slot
+[[patches]]
+[patches.regex]
+target = "game.lua"
+pattern = '''[ \t]*for i = 1, 2 do
+[ \t]*G\.GAME\.current_round\.used_packs = G\.GAME\.current_round\.used_packs or \{\}
+'''
+position = "at"
+payload = """
+local _slot = 2
+if G.GAME.selected_back.name == "b_bplus_mysthical" then
+  _slot = _slot - 1
+end
+for i = 1, _slot do
+  G.GAME.current_round.used_packs = G.GAME.current_round.used_packs or {}
+"""

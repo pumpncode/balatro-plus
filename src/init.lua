@@ -75,6 +75,7 @@ BalatroPlus.load("deck")("decks", {
   "purple",
   "illusion",
   "jokered",
+  "mysthical",
 })
 
 BalatroPlus.load("blind")("blinds", {
