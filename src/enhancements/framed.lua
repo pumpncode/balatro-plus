@@ -2,7 +2,7 @@ local e = {
   loc_txt = {
     name = "Framed Card",
     text = {
-      "Gain {C:chips}+#1#{} Chips",
+      "Gains {C:chips}+#1#{} Chips",
       "each {C:attention}triggered",
     },
   },

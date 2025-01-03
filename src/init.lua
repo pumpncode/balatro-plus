@@ -47,6 +47,8 @@ BalatroPlus.load("joker")("jokers", {
   "chef",
   "stone_skipping",
   "potato_chips",
+  "seller",
+  "chance_card",
 
   -- Uncommon
   "four_leaf_clover",
@@ -59,6 +61,9 @@ BalatroPlus.load("joker")("jokers", {
   "jackpot",
   "trash_can",
   "stone_carving",
+  "membership_card",
+  "art_exhibition",
+  "wizard",
 
   -- Rare
   "crown",

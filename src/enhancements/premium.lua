@@ -10,16 +10,34 @@ local e = {
   atlas = 1,
 }
 
-BalatroPlus.game_objects.premium_card_dollars = -3
+BalatroPlus.premium_card_base_dollars = -3
+function bplus_calculate_premium_card_dollars()
+  local dollars = BalatroPlus.premium_card_base_dollars
+
+  if G.jokers then
+    for _, joker in ipairs(G.jokers.cards) do
+      local ret = joker:calculate_joker { bplus_premium_card_dollars = true }
+      if ret and ret.value then
+        dollars = dollars + ret.value
+      end
+    end
+  end
+
+  return dollars
+end
+
+function bplus_premium_card_dollars()
+  return G.bplus_premium_card_dollars or bplus_calculate_premium_card_dollars()
+end
 
 function e:loc_vars()
-  local dollars = G.GAME.bplus_premium_card_dollars
+  local dollars = bplus_premium_card_dollars()
   return { vars = { self.config.Xmult, dollars < 0 and -dollars or dollars, dollars < 0 and "Loss" or "Earn" } }
 end
 
 function e:calculate(card, ctx, effect)
   if ctx.cardarea == G.play and not ctx.repetition then
-    effect.p_dollars = (effect.p_dollars or 0) + G.GAME.bplus_premium_card_dollars
+    effect.p_dollars = (effect.p_dollars or 0) + bplus_premium_card_dollars()
   end
 end
 

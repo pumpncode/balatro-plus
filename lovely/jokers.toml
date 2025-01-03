@@ -94,3 +94,19 @@ if self.ability.name == G.P_CENTERS.m_stone.name and not self.debuff and next(fi
   return G.GAME.current_round.bplus_stone_carving_card.id
 end
 """
+
+# Add Joker trigger context
+[[patches]]
+[patches.regex]
+target = "functions/state_events.lua"
+pattern = '''(?<indent>[ \t])*for i = 1, #G\.jokers\.cards do
+[ \t]*G\.jokers\.cards\[i\]:calculate_joker\(\{setting_blind = true, blind = G\.GAME\.round_resets\.blind\}\)
+[ \t]*end
+'''
+line_prepend = "$indent"
+position = "after"
+payload = """
+for _, card in ipairs(G.jokers.cards) do
+  card:calculate_joker { post_setting_blind = true, blind = G.GAME.round_resets.blind }
+end
+"""
