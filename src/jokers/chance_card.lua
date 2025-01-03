@@ -9,6 +9,7 @@ local j = {
   config = { extra = 4 },
   rarity = 1,
   cost = 4,
+  atlas = 36,
 
   blueprint_compat = true,
 }

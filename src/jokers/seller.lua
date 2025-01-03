@@ -9,6 +9,7 @@ local j = {
   },
   rarity = 1,
   cost = 4,
+  atlas = 35,
 
   blueprint_compat = false,
 }
