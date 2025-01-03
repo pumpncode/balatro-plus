@@ -9,6 +9,7 @@ local d = {
       "{C:attention}Pack{} has {C:attention}1{} less slot",
     },
   },
+  atlas = 4,
 }
 
 function d:apply()
