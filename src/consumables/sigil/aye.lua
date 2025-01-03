@@ -17,7 +17,7 @@ function s:loc_vars(_, card)
 end
 
 function s:can_use(card)
-  return #G.hand.highlighted > 0 and #G.hand.highlighted <= card.ability.extra
+  return G.hand and #G.hand.highlighted > 0 and #G.hand.highlighted <= card.ability.extra
 end
 
 function s:use(card)

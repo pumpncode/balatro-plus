@@ -16,7 +16,7 @@ function s:loc_vars(_, card)
 end
 
 function s:can_use(card)
-  return G.GAME.round_resets.hands - card.ability.extra > 0 and #G.hand.highlighted == 1 and G.hand.config.card_limit > 1
+  return G.hand and G.GAME.round_resets.hands - card.ability.extra > 0 and #G.hand.highlighted == 1 and G.hand.config.card_limit > 1
 end
 
 function s:use(card)

@@ -11,7 +11,7 @@ local s = {
 }
 
 function s:can_use()
-  return #G.hand.highlighted == 1
+  return G.hand and #G.hand.highlighted == 1
 end
 
 function s:use(card)

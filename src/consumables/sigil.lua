@@ -16,6 +16,7 @@ local c = {
   },
   default = "c_bplus_sigil_blank",
   atlas = "consumables/sigils.png",
+  collection_rows = { 3, 4 },
   cards = {
     "blank",
     "polyc",
@@ -24,12 +25,14 @@ local c = {
     "curse",
     "astra",
     "beast",
+
     "aye",
     "bann",
     "froze",
-
     "sacre",
     "rewind",
+    "klone",
+    "shine",
   },
 }
 
