@@ -1,20 +1,41 @@
 BalatroPlus = {
+  mod = SMODS.current_mod,
   path = SMODS.current_mod.path:gsub("/$", ""),
   load_chace = {},
   G = {},
   round_vars = {},
   game_objects = {},
+  config = SMODS.current_mod.config,
+  config_ui = {
+    { label = "Replace Splash Logo", type = "toggle", mod_config = "replace_splash_logo" }
+  },
 }
 
 SMODS.Atlas {
-  key = "balatro",
+  key = "balatro_plus",
   path = "balatro_plus.png",
   px = G.ASSET_ATLAS.balatro.px,
   py = G.ASSET_ATLAS.balatro.py,
-  prefix_config = {
- 		key = { mod = false },
- 	},
 }
+
+SMODS.Atlas {
+  key = "modicon",
+  path = "modicon.png",
+  px = 39,
+  py = 39,
+}
+
+function bplus_update_splash_logo()
+  local key = "balatro"
+  if BalatroPlus.config.replace_splash_logo then
+    key = "bplus_balatro_plus"
+  end
+
+  if G.SPLASH_LOGO then
+    G.SPLASH_LOGO.atlas = G.ASSET_ATLAS[key]
+  else
+  end
+end
 
 function BalatroPlus.load(path)
   local module = BalatroPlus.load_chace[path]
@@ -25,8 +46,13 @@ function BalatroPlus.load(path)
   return module
 end
 
-BalatroPlus.load("override")
-BalatroPlus.load("utils")
+function BalatroPlus.loads(...)
+  for _, path in ipairs({ ... }) do
+    BalatroPlus.load(path)
+  end
+end
+
+BalatroPlus.loads("uidef", "funcs", "override", "utils")
 
 BalatroPlus.load("joker")("jokers", {
   -- Common

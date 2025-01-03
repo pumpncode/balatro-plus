@@ -3,6 +3,31 @@ version = "1.0.0"
 dump_lua = true
 priority = 0
 
+# Change SPLASH_LOGO
+[[patches]]
+[patches.regex]
+target = "game.lua"
+pattern = '''[ \t]*G\.SPLASH_LOGO = Sprite\(0, 0, 
+[ \t]*13\*SC_scale, 
+[ \t]*13\*SC_scale\*\(G.ASSET_ATLAS\["balatro"\]\.py/G.ASSET_ATLAS\["balatro"\]\.px\),
+[ \t]*G\.ASSET_ATLAS\["balatro"\], \{x=0,y=0\}\)'''
+position = "at"
+payload = '''
+local key = "balatro"
+if BalatroPlus.config.replace_splash_logo then
+  key = "bplus_balatro_plus"
+end
+
+G.SPLASH_LOGO = Sprite(
+  0,
+  0, 
+  13 * SC_scale, 
+  13 * SC_scale * (G.ASSET_ATLAS[key].py / G.ASSET_ATLAS[key].px),
+  G.ASSET_ATLAS[key],
+  { x = 0, y = 0 }
+)
+'''
+
 # Add option param for create_card and get_current_pool function
 [[patches]]
 [patches.pattern]
