@@ -25,7 +25,7 @@ function p:ease_background_colour()
 end
 
 function p:create_card()
-  return create_card("sigil", G.pack_cards, nil, nil, true, true, nil, "p_mysthic_normal1_card")
+  return create_card("sigil", G.pack_cards, nil, nil, true, true, nil, "p_mysthic_mega_card")
 end
 
 return p

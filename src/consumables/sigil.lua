@@ -27,6 +27,9 @@ local c = {
     "aye",
     "bann",
     "froze",
+
+    "sacre",
+    "rewind",
   },
 }
 

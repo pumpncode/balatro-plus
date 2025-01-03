@@ -25,6 +25,7 @@ function s:use(card)
   local enhancement = bplus_random_enhancement("c_bplus_sigil_beast_enhancement")
   local seal = bplus_random_seal("c_bplus_sigil_beast_seal")
   local destroyables = {}
+  local destroyed_cards = {}
   for _, card in ipairs(G.hand.cards) do
     if not card.highlighted then
       destroyables[#destroyables + 1] = card
@@ -33,10 +34,15 @@ function s:use(card)
 
   for i = 1, #G.hand.highlighted do
     local card_to_destroy = pseudorandom_element(destroyables, pseudoseed("c_bplus_sigil_beast_destroy"))
+    destroyed_cards[#destroyed_cards + 1] = card_to_destroy
     G.E_MANAGER:add_event(Event {
       trigger = "after",
       func = function()
-        card_to_destroy:start_dissolve(nil, nil, 1.3)
+        if card_to_destroy.ability.name == G.P_CENTERS.m_glass.name then
+          card_to_destroy:shatter()
+        else
+          card_to_destroy:start_dissolve(nil, nil, 1.3)
+        end
         play_sound('slice1', 0.96 + math.random() * 0.05)
         return true
       end
@@ -89,7 +95,9 @@ function s:use(card)
     })
   end
 
-  return true
+  for i = 1, #G.jokers.cards do
+    G.jokers.cards[i]:calculate_joker({ remove_playing_cards = true, removed = destroyed_cards })
+  end
 end
 
 return s

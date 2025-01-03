@@ -25,13 +25,22 @@ function s:use(card)
       end
     end
   end
-  for _, card in ipairs(destroys) do
-    if card.ability.name == G.P_CENTERS.m_glass.name then
-      card:shatter()
-    else
-      card:start_dissolve()
+
+  G.E_MANAGER:add_event(Event {
+    trigger = "after",
+    delay = 0.1,
+    func = function()
+      for _, card in ipairs(destroys) do
+        if card.ability.name == G.P_CENTERS.m_glass.name then
+          card:shatter()
+        else
+          card:start_dissolve()
+        end
+      end
+      return true
     end
-  end
+  })
+
   G.E_MANAGER:add_event(Event {
     trigger = "after",
     delay = 0.3,
@@ -40,6 +49,10 @@ function s:use(card)
       return true
     end
   })
+
+  for i = 1, #G.jokers.cards do
+    G.jokers.cards[i]:calculate_joker({ remove_playing_cards = true, removed = destroyed_cards })
+  end
 end
 
 return s
