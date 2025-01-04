@@ -10,6 +10,7 @@ local j = {
   config = { extra = 1, Xmult = 1 },
   rarity = 3,
   cost = 9,
+  atlas = 40,
 
   blueprint_compat = true,
   perishable_compat = false,
