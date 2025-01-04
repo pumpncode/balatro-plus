@@ -197,3 +197,32 @@ function bplus_tag_loc_vars(self, infoq)
   end
   return loc_vars
 end
+
+function bplus_destroy_card(card)
+  if card.ability.name == G.P_CENTERS.m_glass.name then
+    card:shatter()
+  else
+    card:start_dissolve()
+  end
+end
+
+function bplus_is_getting_destroyed(c)
+  return c.removed or c.destroyed or c.shattered or c.getting_sliced
+end
+
+function bplus_has_empty_joker_space()
+  local empty_space = G.jokers.config.card_limit - #G.jokers.cards
+  for _, c in ipairs(G.jokers.cards) do
+    if bplus_is_getting_destroyed(c) or c.ability.name == G.P_CENTERS.j_stencil.name then
+      empty_space = empty_space + 1
+    end
+  end
+  print("EMPTY SPACE:", empty_space)
+  return empty_space > 0
+end
+
+function bplus_joker_destroyed_trigger(jokers)
+  for _, card in ipairs(G.jokers.cards) do
+    card:calculate_joker { joker_destroyed = true, destroyed_cards = jokers }
+  end
+end

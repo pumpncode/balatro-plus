@@ -48,7 +48,7 @@ function t:set_ability(tag)
   tag.ability.bplus_symbolic_tag_suit = "Spades"
   local valid_cards = {}
   for _, card in ipairs(G.playing_cards) do
-    if card.ability.name ~= G.P_CENTERS.m_stone.name then
+    if not SMODS.has_no_suit(card) then
       valid_cards[#valid_cards + 1] = card
     end
   end

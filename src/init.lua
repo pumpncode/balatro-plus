@@ -75,6 +75,9 @@ BalatroPlus.load("joker")("jokers", {
   "potato_chips",
   "seller",
   "chance_card",
+  "meteor",
+  "jumbo",
+  "blured",
 
   -- Uncommon
   "four_leaf_clover",
@@ -90,11 +93,13 @@ BalatroPlus.load("joker")("jokers", {
   "membership_card",
   "art_exhibition",
   "wizard",
+  "paper_shredder",
 
   -- Rare
   "crown",
   "space_invader",
   "blacksmith",
+  "murderer",
 })
 
 BalatroPlus.load("deck")("decks", {

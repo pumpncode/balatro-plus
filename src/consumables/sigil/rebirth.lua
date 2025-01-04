@@ -28,13 +28,24 @@ end
 
 function s:use(card)
   local rarities = {}
+  local destroyed_cards = {}
   play_sound('slice1', 0.96 + math.random() * 0.08)
   for _, joker in ipairs(G.jokers.cards) do
     if not joker.ability.eternal and not (joker.edition and joker.edition.negative) then
       rarities[#rarities + 1] = joker.config.center.rarity
-      joker:start_dissolve()
+      destroyed_cards[#destroyed_cards + 1] = joker
     end
   end
+
+  bplus_joker_destroyed_trigger(destroyed_cards)
+  G.E_MANAGER:add_event(Event {
+    func = function ()
+      for _, joker in ipairs(destroyed_cards) do
+        joker:start_dissolve()
+      end
+      return true
+    end
+  })
 
   G.E_MANAGER:add_event(Event {
     trigger = "after",
