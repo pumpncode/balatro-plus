@@ -2,14 +2,15 @@ local j = {
   loc_txt = {
     name = "Santa Claus",
     text = {
-      "After each {C:attention}#1#{} rounds played",
-      "give a {C:dark_edition}negative{} {C:red}Rare{} Joker",
+      "Each {C:attention}#1#{} rounds played give",
+      "a {C:dark_edition}negative{} {C:red}Rare{} Joker",
+      "at the end of round",
       "{C:inactive}(#2#)",
     },
   },
   config = {
     extra = {
-      remaining = 12,
+      remaining = 11,
       every = 12,
     },
   },
@@ -21,6 +22,11 @@ local j = {
   blueprint_compat = true,
 }
 
+function j:set_ability(card)
+  local round = G.GAME.round
+  card.ability.extra.remaining = 12 - ((round == 0) and 0 or ((round % 12 == 0) and 12 or round % 12))
+end
+
 function j:loc_vars(infoq, card)
   infoq[#infoq + 1] = G.P_CENTERS.e_negative
   return {
@@ -28,7 +34,7 @@ function j:loc_vars(infoq, card)
       card.ability.extra.every,
       localize({
         type = "variable",
-        key = card.ability.extra.remaining == 0 and "loyalty_active" or "loyalty_inactive",
+        key = card.ability.extra.remaining - 1 == 0 and "loyalty_active" or "loyalty_inactive",
         vars = { card.ability.extra.remaining },
       }),
     },
@@ -38,7 +44,13 @@ end
 function j:calculate(card, ctx)
   if ctx.end_of_round and not ctx.individual and not ctx.repetition then
     if not ctx.blueprint then
-      card.ability.extra.remaining = card.ability.extra.remaining - 1
+      local round = G.GAME.round
+      card.ability.extra.remaining = 12 - ((round == 0) and 0 or ((round % 12 == 0) and 12 or round % 12))
+      if card.ability.extra.remaining == 1 then
+        juice_card_until(card, function(c)
+          return c.ability.extra.remaining == 1
+        end)
+      end
     end
 
     if card.ability.extra.remaining <= 0 then

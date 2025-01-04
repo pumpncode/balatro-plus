@@ -11,10 +11,10 @@ local j = {
   cost = 4,
   config = {
     extra = {
-      min = 10,
-      max = 25,
-      remaining = 3,
-      every = 4,
+      min = 6,
+      max = 12,
+      remaining = 4,
+      every = 5,
     },
   },
   atlas = 6,
