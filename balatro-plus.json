@@ -8,6 +8,6 @@
 	"main_file": "src/init.lua",
 	"priority": 0,
 	"badge_colour": "E55561",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"dependencies": []
 }
