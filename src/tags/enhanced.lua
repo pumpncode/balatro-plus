@@ -12,7 +12,7 @@ local t = {
 }
 
 function t:loc_vars(infoq, tag)
-  local mod = tag.ability.bplus_enhanced_tag_mod
+  local mod = tag and tag.ability.bplus_enhanced_tag_mod
   if mod then
     infoq[#infoq + 1] = G.P_CENTERS[mod]
   end
