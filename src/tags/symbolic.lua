@@ -24,17 +24,17 @@ local function calculate_dollars(self, tag)
 end
 
 function t:loc_vars(_, tag)
-  local suit = tag.ability.bplus_symbolic_tag_suit
+  local suit = tag and tag.ability.bplus_symbolic_tag_suit
   local dollars = 0
 
   if G.playing_cards then
-    dollars = calculate_dollars(self, tag)
+    dollars = tag and calculate_dollars(self, tag) or 0
   end
 
   return {
     vars = {
       self.config.dollars,
-      suit and localize(suit, "suits_plural") or "[suit]",
+      suit and localize(suit, "suits_plural") or "[" .. localize("k_suit") .. "]",
       dollars,
       self.config.max,
       colours = {

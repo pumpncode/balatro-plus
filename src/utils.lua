@@ -185,12 +185,13 @@ function bplus_tag_loc_vars(self, infoq)
     loc_vars = { self.config.skip_bonus, self.config.skip_bonus * ((G.GAME.skips or 0) + 1) }
   elseif self.name == 'Orbital Tag' then
     loc_vars = {
-      (self.ability.orbital_hand == '[' .. localize('k_poker_hand') .. ']') and self.ability.orbital_hand or
-      localize(self.ability.orbital_hand, 'poker_hands'), self.config.levels }
+      '[' .. localize('k_poker_hand') .. ']',
+      self.config.levels,
+    }
   elseif self.name == 'Economy Tag' then
     loc_vars = { self.config.max }
   elseif type(self.loc_vars) == "function" then
-    local ret = self:loc_vars(infoq)
+    local ret = self:loc_vars(infoq, nil)
     if ret and ret.vars then
       loc_vars = ret.vars
     end

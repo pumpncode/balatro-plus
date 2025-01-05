@@ -5,6 +5,7 @@ local s = {
       "Destroys {C:attention}#1#{} random cards",
       "in your hand, create",
       "a random {C:red}Rare{} Joker",
+      "{C:inactive}(Must have room)",
     },
   },
   config = { extra = 6 },
@@ -16,7 +17,7 @@ function s:loc_vars(_, card)
 end
 
 function s:can_use(card)
-  return G.hand and #G.hand.cards >= card.ability.extra
+  return G.hand and #G.hand.cards >= card.ability.extra and #G.jokers.cards < G.jokers.config.card_limit
 end
 
 function s:use(card)
