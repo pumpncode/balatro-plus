@@ -33,9 +33,6 @@ function j:calculate(card, ctx)
   elseif ctx.setting_blind and not (ctx.blueprint_card or card).getting_sliced
       and card.ability.extra.remaining == 0
       and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
-    if not ctx.blueprint then
-      card.ability.extra.created = true
-    end
 
     G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
     G.E_MANAGER:add_event(Event({
@@ -52,7 +49,7 @@ function j:calculate(card, ctx)
       message = "+1 Sigil",
       colour = G.C.SECONDARY_SET.sigil,
     })
-  elseif ctx.post_setting_blind and not ctx.blueprint and card.ability.extra.created then
+  elseif ctx.post_setting_blind and not ctx.blueprint and card.ability.extra.remaining == 0 then
     card.ability.extra.created = nil
     card.ability.extra.remaining = card.ability.extra.every
   end

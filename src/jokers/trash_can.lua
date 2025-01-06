@@ -15,7 +15,7 @@ local j = {
 }
 
 function j:calculate(card, ctx)
-  if ctx.discard_repetition then
+  if ctx.discard then
     return {
       message = localize("k_again_ex"),
       repetitions = card.ability.extra,

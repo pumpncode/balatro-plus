@@ -116,14 +116,11 @@ end
 
 # Add Joker trigger context
 [[patches]]
-[patches.regex]
+[patches.pattern]
 target = "functions/state_events.lua"
-pattern = '''(?<indent>[ \t])*for i = 1, #G\.jokers\.cards do
-[ \t]*G\.jokers\.cards\[i\]:calculate_joker\(\{setting_blind = true, blind = G\.GAME\.round_resets\.blind\}\)
-[ \t]*end
-'''
-line_prepend = "$indent"
+pattern = "SMODS.calculate_context({setting_blind = true, blind = G.GAME.round_resets.blind})"
 position = "after"
+match_indent = true
 payload = """
 for _, card in ipairs(G.jokers.cards) do
   card:calculate_joker { post_setting_blind = true, blind = G.GAME.round_resets.blind }
