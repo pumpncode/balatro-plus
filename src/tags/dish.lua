@@ -1,6 +1,6 @@
 local t = {
   loc_txt = {
-   name = "Dish Tag",
+    name = "Dish Tag",
     text = {
       "Create random",
       "{C:attention}Food Joker",
@@ -8,6 +8,7 @@ local t = {
     },
   },
   atlas = 5,
+  config = { type = "immediate" },
 }
 
 function t:loc_vars(infoq)

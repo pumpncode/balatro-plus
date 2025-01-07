@@ -6,7 +6,7 @@ local t = {
       "next round",
     },
   },
-  config = { hand = 5 },
+  config = { hand = 5, type = "setting_blind" },
   atlas = 2,
 }
 
@@ -16,7 +16,7 @@ end
 
 function t:apply(tag, ctx)
   if ctx.type == "setting_blind" then
-    tag:yep("+", G.C.BLUE, function ()
+    tag:yep("+", G.C.BLUE, function()
       ease_hands_played(self.config.hand, true)
       return true
     end)

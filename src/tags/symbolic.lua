@@ -8,7 +8,7 @@ local t = {
       "{C:inactive}(Max of {C:money}$#4#{C:inactive})",
     },
   },
-  config = { dollars = 1, max = 30 },
+  config = { dollars = 1, max = 30, type = "immediate" },
   atlas = 10,
 }
 

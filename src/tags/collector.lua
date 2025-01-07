@@ -9,7 +9,7 @@ local t = {
       "{C:inactive}(Currently {C:money}$#4#{C:inactive})",
     },
   },
-  config = { above = 50, max = 45, each = 3 },
+  config = { above = 50, max = 45, each = 3, type = "immediate" },
   atlas = 3,
 }
 
@@ -30,7 +30,7 @@ function t:loc_vars()
       self.config.above,
       self.config.max,
       calc_money(self),
-    }
+    },
   }
 end
 

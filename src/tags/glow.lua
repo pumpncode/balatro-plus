@@ -8,6 +8,7 @@ local t = {
   },
   min_ante = 3,
   atlas = 1,
+  config = { type = "immediate" },
 }
 
 local function set_edition(tag, joker)

@@ -6,7 +6,7 @@ local t = {
       "reward when defeated",
     },
   },
-  config = { reward = 4 },
+  config = { reward = 4, type = "eval" },
   atlas = 6,
 }
 
@@ -16,7 +16,9 @@ end
 
 function t:apply(tag, ctx)
   if ctx.type == "eval" then
-    tag:yep("+", G.C.MONEY, function() return true end)
+    tag:yep("+", G.C.MONEY, function()
+      return true
+    end)
     tag.triggered = true
     return {
       dollars = G.GAME.blind.dollars * self.config.reward,

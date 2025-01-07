@@ -6,7 +6,7 @@ local t = {
       "to the next shop",
     },
   },
-  config = { booster = 2 },
+  config = { booster = 2, type = "shop_final_pass" },
   atlas = 4,
 }
 

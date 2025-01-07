@@ -9,6 +9,7 @@ local t = {
     },
   },
   atlas = 7,
+  conifg = { type = "first_hand_drawn" },
 }
 
 function t:loc_vars(infoq, tag)
@@ -16,7 +17,11 @@ function t:loc_vars(infoq, tag)
   if mod then
     infoq[#infoq + 1] = G.P_CENTERS[mod]
   end
-  return { vars = { mod and localize { type = "name_text", set = "Enhanced", key = mod } or "[enhancement]" } }
+  return {
+    vars = {
+      mod and localize { type = "name_text", set = "Enhanced", key = mod } or "[enhancement]",
+    },
+  }
 end
 
 function t:set_ability(tag)
@@ -36,7 +41,7 @@ function t:apply(tag, ctx)
             play_sound("card1", percent)
             card:juice_up(0.3, 0.3)
             return true
-          end
+          end,
         })
       end
 
@@ -47,7 +52,7 @@ function t:apply(tag, ctx)
           func = function()
             card:set_ability(mod)
             return true
-          end
+          end,
         })
       end
 
@@ -61,7 +66,7 @@ function t:apply(tag, ctx)
             play_sound("tarot2", percent, 0.6)
             card:juice_up(0.3, 0.3)
             return true
-          end
+          end,
         })
       end
       return true

@@ -7,6 +7,7 @@ local t = {
     },
   },
   atlas = 12,
+  config = { type = "immediate" },
 }
 
 function t:loc_vars(infoq)
@@ -27,7 +28,7 @@ function t:apply(tag, ctx)
             copy:add_to_deck()
             G.consumeables:emplace(copy)
             return true
-          end
+          end,
         })
       end
       return true

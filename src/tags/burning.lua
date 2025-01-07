@@ -6,7 +6,7 @@ local t = {
       "next round",
     },
   },
-  config = { discard = 5 },
+  config = { discard = 5, type = "setting_blind" },
   atlas = 9,
 }
 
@@ -16,7 +16,7 @@ end
 
 function t:apply(tag, ctx)
   if ctx.type == "setting_blind" then
-    tag:yep("+", G.C.RED, function ()
+    tag:yep("+", G.C.RED, function()
       ease_discard(self.config.discard, true)
       return true
     end)
