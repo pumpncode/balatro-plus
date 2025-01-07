@@ -49,7 +49,7 @@ local cardarea_remove_card = CardArea.remove_card
 function CardArea:remove_card(card, discarded_only)
   if G.jokers then
     for _, j in ipairs(G.jokers.cards) do
-      j:calculate_joker({ card_removed = true, other_card = card, cardarea = self })
+      j:calculate_joker { card_removed = true, other_card = card, cardarea = self }
     end
   end
   return cardarea_remove_card(self, card, discarded_only)
@@ -63,7 +63,7 @@ end
 local game_init_game_object = Game.init_game_object
 function Game:init_game_object()
   local game = game_init_game_object(self)
-  
+
   for key, value in pairs(BalatroPlus.round_vars) do
     game.current_round["bplus_" .. key] = value(nil, true)
   end
@@ -80,7 +80,12 @@ function Game:init_game_object()
 end
 
 function probability(key)
-  if G.GAME and G.GAME.blind and G.GAME.blind.name == "bl_bplus_thirteen" and not G.GAME.blind.disabled then
+  if
+    G.GAME
+    and G.GAME.blind
+    and G.GAME.blind.name == "bl_bplus_thirteen"
+    and not G.GAME.blind.disabled
+  then
     return 0
   end
   return G.GAME.probabilities[key]

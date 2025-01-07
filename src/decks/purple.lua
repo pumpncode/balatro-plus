@@ -15,7 +15,8 @@ function d:loc_vars()
 end
 
 function d:apply()
-  G.GAME.starting_params.reroll_cost = G.GAME.starting_params.reroll_cost + self.config.reroll_extra_cost
+  G.GAME.starting_params.reroll_cost = G.GAME.starting_params.reroll_cost
+    + self.config.reroll_extra_cost
 end
 
 return d

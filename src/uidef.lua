@@ -14,5 +14,9 @@ function BalatroPlus.mod.config_tab()
       }
     end
   end
-  return { n = G.UIT.ROOT, config = { padding = 0.05, align = "cm", colour = G.C.CLEAR }, nodes = nodes }
+  return {
+    n = G.UIT.ROOT,
+    config = { padding = 0.05, align = "cm", colour = G.C.CLEAR },
+    nodes = nodes,
+  }
 end

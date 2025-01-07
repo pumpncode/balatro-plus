@@ -20,8 +20,13 @@ function j:loc_vars(_, card)
 end
 
 function j:calculate(card, ctx)
-  if ctx.end_of_round and not ctx.individual and not ctx.repetition
-      and G.GAME.current_round.hands_left > 0 and card.ability.extra < self.config.max_saved_hand then
+  if
+    ctx.end_of_round
+    and not ctx.individual
+    and not ctx.repetition
+    and G.GAME.current_round.hands_left > 0
+    and card.ability.extra < self.config.max_saved_hand
+  then
     local saved = G.GAME.current_round.hands_left
     if card.ability.extra + saved >= self.config.max_saved_hand then
       saved = self.config.max_saved_hand - card.ability.extra
@@ -29,7 +34,7 @@ function j:calculate(card, ctx)
 
     card.ability.extra = card.ability.extra + saved
     ease_hands_played(-saved, true)
-    card_eval_status_text(card, 'extra', nil, nil, nil, {
+    card_eval_status_text(card, "extra", nil, nil, nil, {
       message = saved .. " Saved!",
       colour = G.C.BLUE,
     })
@@ -40,16 +45,16 @@ function j:calculate(card, ctx)
     G.E_MANAGER:add_event(Event {
       func = function()
         ease_hands_played(hands)
-        card_eval_status_text(card, 'extra', nil, nil, nil, {
+        card_eval_status_text(card, "extra", nil, nil, nil, {
           message = localize {
-            type = 'variable',
-            key = 'a_hands',
+            type = "variable",
+            key = "a_hands",
             vars = { hands },
           },
           colour = G.C.BLUE,
         })
         return true
-      end
+      end,
     })
   end
 end

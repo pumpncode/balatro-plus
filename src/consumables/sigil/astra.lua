@@ -36,17 +36,14 @@ end
 function s:use(card)
   local hand = bplus_most_played_poker_hand()
   local amount = get_level_up_amount(hand)
-  update_hand_text(
-    { sound = "button", volume = 0.7, pitch = 0.8, delay = 0.3 },
-    {
-      handname = "Other hands",
-      chips = "...",
-      mult = "...",
-      level = "",
-    }
-  )
+  update_hand_text({ sound = "button", volume = 0.7, pitch = 0.8, delay = 0.3 }, {
+    handname = "Other hands",
+    chips = "...",
+    mult = "...",
+    level = "",
+  })
 
-  G.E_MANAGER:add_event(Event({
+  G.E_MANAGER:add_event(Event {
     trigger = "after",
     delay = 0.2,
     func = function()
@@ -54,22 +51,22 @@ function s:use(card)
       card:juice_up(0.8, 0.5)
       G.TAROT_INTERRUPT_PULSE = true
       return true
-    end
-  }))
+    end,
+  })
 
   update_hand_text({ delay = 0 }, { mult = "-", StatusText = true })
-  G.E_MANAGER:add_event(Event({
+  G.E_MANAGER:add_event(Event {
     trigger = "after",
     delay = 0.9,
     func = function()
       play_sound("tarot1")
       card:juice_up(0.8, 0.5)
       return true
-    end
-  }))
+    end,
+  })
 
   update_hand_text({ delay = 0 }, { chips = "-", StatusText = true })
-  G.E_MANAGER:add_event(Event({
+  G.E_MANAGER:add_event(Event {
     trigger = "after",
     delay = 0.9,
     func = function()
@@ -77,8 +74,8 @@ function s:use(card)
       card:juice_up(0.8, 0.5)
       G.TAROT_INTERRUPT_PULSE = nil
       return true
-    end
-  }))
+    end,
+  })
 
   update_hand_text({ sound = "button", volume = 0.7, pitch = 0.9, delay = 0 }, { level = "1" })
   delay(1)
@@ -88,11 +85,11 @@ function s:use(card)
     end
   end
 
-  update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.5 }, {
-    handname = localize(hand, 'poker_hands'),
+  update_hand_text({ sound = "button", volume = 0.7, pitch = 0.8, delay = 0.5 }, {
+    handname = localize(hand, "poker_hands"),
     chips = G.GAME.hands[hand].chips,
     mult = G.GAME.hands[hand].mult,
-    level = G.GAME.hands[hand].level
+    level = G.GAME.hands[hand].level,
   })
   level_up_hand(card, hand, false, amount)
 

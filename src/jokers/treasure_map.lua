@@ -28,11 +28,11 @@ function j:loc_vars(_, card)
       card.ability.extra.min,
       card.ability.extra.max,
       card.config.center.config.extra.every,
-      localize({
+      localize {
         type = "variable",
         key = card.ability.extra.remaining == 0 and "loyalty_active" or "loyalty_inactive",
         vars = { card.ability.extra.remaining },
-      }),
+      },
     },
   }
 end
@@ -40,15 +40,16 @@ end
 function j:calculate(card, ctx)
   if ctx.joker_main then
     if card.ability.extra.remaining == 0 then
-      local money = pseudorandom("bplus_treasure_map", card.ability.extra.min, card.ability.extra.max)
+      local money =
+        pseudorandom("bplus_treasure_map", card.ability.extra.min, card.ability.extra.max)
       ease_dollars(money)
       G.GAME.dollar_buffer = (G.GAME.dollar_buffer or 0) + money
-      G.E_MANAGER:add_event(Event({
+      G.E_MANAGER:add_event(Event {
         func = function()
           G.GAME.dollar_buffer = 0
           return true
         end,
-      }))
+      })
 
       return {
         message = localize("$") .. money,

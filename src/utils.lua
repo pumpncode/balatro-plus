@@ -11,7 +11,8 @@ function bplus_food_jokers_tooltip()
   local function add_line(line)
     local parts = {}
     for _, part in ipairs(line) do
-      parts[#parts + 1] = { n = G.UIT.T, config = { text = part[1], colour = part[2] or G.C.GREY, scale = 0.33 } }
+      parts[#parts + 1] =
+        { n = G.UIT.T, config = { text = part[1], colour = part[2] or G.C.GREY, scale = 0.33 } }
     end
     text[#text + 1] = {
       n = G.UIT.R,
@@ -23,7 +24,7 @@ function bplus_food_jokers_tooltip()
   local cur_line = {}
   local cur_length = 0
   for i, center in ipairs(centers) do
-    local name = localize({ type = "name_text", set = "Joker", key = center.key })
+    local name = localize { type = "name_text", set = "Joker", key = center.key }
     cur_line[#cur_line + 1] = { name, G.C.ORANGE }
     cur_length = cur_length + #name + 2
 
@@ -96,7 +97,7 @@ function bplus_open_pack(key, from_tag)
   )
   card.cost = 0
   card.from_tag = from_tag
-  G.FUNCS.use_card({ config = { ref_table = card } })
+  G.FUNCS.use_card { config = { ref_table = card } }
   card:start_materialize()
 end
 
@@ -123,7 +124,7 @@ end
 function bplus_random_enhancement(seed_key)
   local enhancements = {}
   for key, center in pairs(G.P_CENTERS) do
-    if key:match "m_.+" then
+    if key:match("m_.+") then
       enhancements[#enhancements + 1] = center
     end
   end
@@ -147,14 +148,14 @@ function bplus_create_food_joker(seed_key)
   end
 
   return create_card(
-    'Joker',
+    "Joker",
     G.jokers,
     nil,
     nil,
     nil,
     nil,
     pseudorandom_element(keys, pseudoseed(_pool_key)),
-    'top'
+    "top"
   )
 end
 
@@ -171,24 +172,28 @@ end
 
 function bplus_tag_loc_vars(self, infoq)
   local loc_vars = {}
-  if self.name == 'Investment Tag' then
+  if self.name == "Investment Tag" then
     loc_vars = { self.config.dollars }
-  elseif self.name == 'Handy Tag' then
-    loc_vars = { self.config.dollars_per_hand, self.config.dollars_per_hand * (G.GAME.hands_played or 0) }
-  elseif self.name == 'Garbage Tag' then
-    loc_vars = { self.config.dollars_per_discard, self.config.dollars_per_discard * (G.GAME.unused_discards or 0) }
-  elseif self.name == 'Juggle Tag' then
-    loc_vars = { self.config.h_size }
-  elseif self.name == 'Top-up Tag' then
-    loc_vars = { self.config.spawn_jokers }
-  elseif self.name == 'Skip Tag' then
-    loc_vars = { self.config.skip_bonus, self.config.skip_bonus * ((G.GAME.skips or 0) + 1) }
-  elseif self.name == 'Orbital Tag' then
+  elseif self.name == "Handy Tag" then
+    loc_vars =
+      { self.config.dollars_per_hand, self.config.dollars_per_hand * (G.GAME.hands_played or 0) }
+  elseif self.name == "Garbage Tag" then
     loc_vars = {
-      '[' .. localize('k_poker_hand') .. ']',
+      self.config.dollars_per_discard,
+      self.config.dollars_per_discard * (G.GAME.unused_discards or 0),
+    }
+  elseif self.name == "Juggle Tag" then
+    loc_vars = { self.config.h_size }
+  elseif self.name == "Top-up Tag" then
+    loc_vars = { self.config.spawn_jokers }
+  elseif self.name == "Skip Tag" then
+    loc_vars = { self.config.skip_bonus, self.config.skip_bonus * ((G.GAME.skips or 0) + 1) }
+  elseif self.name == "Orbital Tag" then
+    loc_vars = {
+      "[" .. localize("k_poker_hand") .. "]",
       self.config.levels,
     }
-  elseif self.name == 'Economy Tag' then
+  elseif self.name == "Economy Tag" then
     loc_vars = { self.config.max }
   elseif type(self.loc_vars) == "function" then
     local ret = self:loc_vars(infoq, nil)

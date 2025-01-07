@@ -17,22 +17,26 @@ function d:apply()
     func = function()
       change_shop_size(-1)
       return true
-    end
+    end,
   })
 end
 
 function d:trigger_effect(args)
-  if args.context == "setting_blind" and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+  if
+    args.context == "setting_blind"
+    and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit
+  then
     G.E_MANAGER:add_event(Event {
       trigger = "after",
       func = function()
-        local card = create_card("sigil", G.consumeables, nil, nil, nil, nil, nil, "b_bplus_mysthical_sigil")
+        local card =
+          create_card("sigil", G.consumeables, nil, nil, nil, nil, nil, "b_bplus_mysthical_sigil")
         card:add_to_deck()
         G.consumeables:emplace(card)
         play_sound("tarot1")
         G.GAME.consumeable_buffer = 0
         return true
-      end
+      end,
     })
   end
 end

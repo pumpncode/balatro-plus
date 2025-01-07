@@ -36,7 +36,12 @@ function j:load(card)
 end
 
 function j:calculate(card, ctx)
-  if ctx.setting_blind and not ctx.blueprint and not card.getting_sliced and not bplus_has_empty_joker_space() then
+  if
+    ctx.setting_blind
+    and not ctx.blueprint
+    and not card.getting_sliced
+    and not bplus_has_empty_joker_space()
+  then
     local destroyed
     for i = #G.jokers.cards, 1, -1 do
       local c = G.jokers.cards[i]
@@ -55,9 +60,9 @@ function j:calculate(card, ctx)
           G.GAME.joker_buffer = 0
           card:juice_up(0.7, 0.7)
           destroyed:start_dissolve({ darken(G.C.RED, 0.3) }, nil, 1.7)
-          play_sound('slice1', 0.96 + math.random() * 0.1)
+          play_sound("slice1", 0.96 + math.random() * 0.1)
           return true
-        end
+        end,
       })
     end
   end

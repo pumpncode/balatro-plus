@@ -25,7 +25,7 @@ function j:calculate(card, ctx)
   if not ctx.end_of_round and ctx.individual and ctx.cardarea == G.hand then
     if ctx.other_card.debuff then
       return {
-        message = localize('k_debuffed'),
+        message = localize("k_debuffed"),
         colour = G.C.RED,
         card = card,
       }

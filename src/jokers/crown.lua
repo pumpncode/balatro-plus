@@ -26,7 +26,7 @@ function j:calculate(card, ctx)
     if name == "Royal Flush" then
       card.ability.x_mult = card.ability.x_mult + self.config.extra
       return {
-        message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.x_mult } },
+        message = localize { type = "variable", key = "a_xmult", vars = { card.ability.x_mult } },
         colour = G.C.ORANGE,
         card = card,
       }

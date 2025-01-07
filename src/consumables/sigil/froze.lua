@@ -18,8 +18,10 @@ end
 
 function s:can_use()
   local joker = G.jokers.highlighted[1]
-  return joker and not joker.edition and not joker.ability.perishable
-      and not joker.ability.bplus_debuffed_by_sigil_froze
+  return joker
+    and not joker.edition
+    and not joker.ability.perishable
+    and not joker.ability.bplus_debuffed_by_sigil_froze
 end
 
 function s:use(card)
@@ -35,7 +37,7 @@ function s:use(card)
       card:juice_up(0.3, 0.5)
       play_sound("tarot1")
       return true
-    end
+    end,
   })
 end
 

@@ -7,7 +7,7 @@ BalatroPlus = {
   game_objects = {},
   config = SMODS.current_mod.config,
   config_ui = {
-    { label = "Replace Splash Logo", type = "toggle", mod_config = "replace_splash_logo" }
+    { label = "Replace Splash Logo", type = "toggle", mod_config = "replace_splash_logo" },
   },
 }
 
@@ -47,7 +47,7 @@ function BalatroPlus.load(path)
 end
 
 function BalatroPlus.loads(...)
-  for _, path in ipairs({ ... }) do
+  for _, path in ipairs { ... } do
     BalatroPlus.load(path)
   end
 end

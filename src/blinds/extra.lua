@@ -20,13 +20,13 @@ function b:press_play()
     delay = 1,
     func = function()
       create_playing_card({
-        front = pseudorandom_element(G.P_CARDS, pseudoseed('bl_bplus_extra_card')),
-        center = G.P_CENTERS.c_base
+        front = pseudorandom_element(G.P_CARDS, pseudoseed("bl_bplus_extra_card")),
+        center = G.P_CENTERS.c_base,
       }, G.hand)
-      play_sound('card1', 1)
+      play_sound("card1", 1)
       G.hand:sort()
       return true
-    end
+    end,
   })
   return true
 end

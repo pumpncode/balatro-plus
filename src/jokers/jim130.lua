@@ -21,8 +21,12 @@ function j:loc_vars(_, card)
 end
 
 function j:calculate(card, ctx)
-  if not ctx.blueprint and ctx.individual and ctx.cardarea == G.play
-      and ctx.other_card.ability.name == G.P_CENTERS.m_steel.name then
+  if
+    not ctx.blueprint
+    and ctx.individual
+    and ctx.cardarea == G.play
+    and ctx.other_card.ability.name == G.P_CENTERS.m_steel.name
+  then
     card.ability.x_mult = card.ability.x_mult + card.ability.extra
     card_eval_status_text(card, "jokers", nil, nil, nil, {
       message = localize("k_upgrade_ex"),

@@ -61,7 +61,7 @@ function s:use(card)
         play_sound("card1", percent)
         card:juice_up(0.3, 0.3)
         return true
-      end
+      end,
     })
   end
 
@@ -70,18 +70,19 @@ function s:use(card)
       trigger = "after",
       delay = 0.2,
       func = function()
-        local key = string.sub(suit, 1, 1) .. '_'
-        key = key .. (
-          (rank < 10 and tostring(rank))
-          or (rank == 10 and "T")
-          or (rank == 11 and "J")
-          or (rank == 12 and "Q")
-          or (rank == 13 and "K")
-          or (rank == 14 and "A")
-        )
+        local key = string.sub(suit, 1, 1) .. "_"
+        key = key
+          .. (
+            (rank < 10 and tostring(rank))
+            or (rank == 10 and "T")
+            or (rank == 11 and "J")
+            or (rank == 12 and "Q")
+            or (rank == 13 and "K")
+            or (rank == 14 and "A")
+          )
         card:set_base(G.P_CARDS[key])
         return true
-      end
+      end,
     })
   end
 
@@ -95,7 +96,7 @@ function s:use(card)
         play_sound("tarot2", percent, 0.6)
         card:juice_up(0.3, 0.3)
         return true
-      end
+      end,
     })
   end
 end

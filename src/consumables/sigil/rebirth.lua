@@ -13,7 +13,7 @@ local s = {
 }
 
 function s:loc_vars(infoq)
-  infoq[#infoq+1] = G.P_CENTERS.e_negative
+  infoq[#infoq + 1] = G.P_CENTERS.e_negative
 end
 
 function s:can_use(card)
@@ -29,7 +29,7 @@ end
 function s:use(card)
   local rarities = {}
   local destroyed_cards = {}
-  play_sound('slice1', 0.96 + math.random() * 0.08)
+  play_sound("slice1", 0.96 + math.random() * 0.08)
   for _, joker in ipairs(G.jokers.cards) do
     if not joker.ability.eternal and not (joker.edition and joker.edition.negative) then
       rarities[#rarities + 1] = joker.config.center.rarity
@@ -39,12 +39,12 @@ function s:use(card)
 
   bplus_joker_destroyed_trigger(destroyed_cards)
   G.E_MANAGER:add_event(Event {
-    func = function ()
+    func = function()
       for _, joker in ipairs(destroyed_cards) do
         joker:start_dissolve()
       end
       return true
-    end
+    end,
   })
 
   G.E_MANAGER:add_event(Event {
@@ -53,16 +53,17 @@ function s:use(card)
     func = function()
       play_sound("timpani")
       for _, rarity in ipairs(rarities) do
-        local joker = create_card("Joker", G.jokers, nil, nil, nil, nil, nil, "c_bplus_sigil_rebirth_joker", {
-          forced_rarity = rarity,
-        })
+        local joker =
+          create_card("Joker", G.jokers, nil, nil, nil, nil, nil, "c_bplus_sigil_rebirth_joker", {
+            forced_rarity = rarity,
+          })
         joker:add_to_deck()
         G.jokers:emplace(joker)
         joker:start_materialize()
       end
       card:juice_up(0.3, 0.5)
       return true
-    end
+    end,
   })
 end
 

@@ -37,7 +37,7 @@ function j:calculate(card, ctx)
     end
 
     G.GAME.joker_buffer = G.GAME.joker_buffer + jokers_to_create
-    G.E_MANAGER:add_event(Event({
+    G.E_MANAGER:add_event(Event {
       func = function()
         for i = 1, jokers_to_create do
           local joker = bplus_create_food_joker("j_bplus_chef_joker")
@@ -47,11 +47,11 @@ function j:calculate(card, ctx)
           G.GAME.joker_buffer = 0
         end
         return true
-      end
-    }))
+      end,
+    })
 
-    card_eval_status_text(ctx.blueprint_card or card, 'extra', nil, nil, nil, {
-      message = localize('k_plus_joker'),
+    card_eval_status_text(ctx.blueprint_card or card, "extra", nil, nil, nil, {
+      message = localize("k_plus_joker"),
       colour = G.C.BLUE,
     })
   end

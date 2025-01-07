@@ -15,11 +15,15 @@ local j = {
 }
 
 function j:loc_vars(_, card)
-  return { vars = { probability("normal"), card.ability.extra } } 
+  return { vars = { probability("normal"), card.ability.extra } }
 end
 
 function j:calculate(card, ctx)
-  if ctx.repetition and ctx.cardarea == G.play and pseudorandom("j_bplus_chance_chance") <= probability("normal") / card.ability.extra then
+  if
+    ctx.repetition
+    and ctx.cardarea == G.play
+    and pseudorandom("j_bplus_chance_chance") <= probability("normal") / card.ability.extra
+  then
     return {
       message = localize("k_again_ex"),
       repetitions = 1,

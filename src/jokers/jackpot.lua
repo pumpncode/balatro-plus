@@ -31,18 +31,23 @@ function j:loc_vars(_, card)
       card.ability.extra.rank,
       card.ability.mult,
       card.ability.extra.remaining,
-    }
+    },
   }
 end
 
 function j:calculate(card, ctx)
   if ctx.joker_main and card.ability.mult > 0 then
     return {
-      message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.mult } },
+      message = localize { type = "variable", key = "a_mult", vars = { card.ability.mult } },
       mult_mod = card.ability.mult,
       colour = G.C.MULT,
     }
-  elseif not ctx.blueprint and ctx.individual and ctx.cardarea == G.play and ctx.other_card.base.value == card.ability.extra.rank then
+  elseif
+    not ctx.blueprint
+    and ctx.individual
+    and ctx.cardarea == G.play
+    and ctx.other_card.base.value == card.ability.extra.rank
+  then
     card.ability.extra.remaining = card.ability.extra.remaining - 1
     if card.ability.extra.remaining <= 0 then
       card.ability.extra.remaining = card.ability.extra.every

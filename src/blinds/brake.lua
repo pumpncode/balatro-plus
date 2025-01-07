@@ -12,7 +12,8 @@ local b = {
 }
 
 function b:get_loc_debuff_text()
-  return G.GAME.blind.loc_debuff_text .. (G.GAME.current_round.bplus_the_brake_last_act and "[Must discard first]" or "")
+  return G.GAME.blind.loc_debuff_text
+    .. (G.GAME.current_round.bplus_the_brake_last_act and "[Must discard first]" or "")
 end
 
 function b:debuff_hand()

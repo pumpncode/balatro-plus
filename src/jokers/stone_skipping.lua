@@ -21,7 +21,11 @@ function j:loc_vars(infoq, card)
 end
 
 function j:calculate(card, ctx)
-  if ctx.individual and ctx.cardarea == G.play and ctx.other_card.ability.name == G.P_CENTERS.m_stone.name then
+  if
+    ctx.individual
+    and ctx.cardarea == G.play
+    and ctx.other_card.ability.name == G.P_CENTERS.m_stone.name
+  then
     local xmult = card.ability.extra.xmult
     if not ctx.blueprint then
       card.ability.extra.xmult = xmult + card.ability.extra.scale

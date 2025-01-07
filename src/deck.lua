@@ -1,11 +1,10 @@
 return function(deck_dir, decks)
-
-  SMODS.Atlas({
+  SMODS.Atlas {
     key = "decks",
     px = 71,
     py = 95,
     path = "decks.png",
-  })
+  }
 
   for k, d in pairs(decks) do
     if type(d) == "string" then

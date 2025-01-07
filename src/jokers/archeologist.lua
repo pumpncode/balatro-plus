@@ -23,7 +23,7 @@ end
 function j:calculate(card, ctx)
   if ctx.joker_main and card.ability.mult > 0 then
     return {
-      message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.mult } },
+      message = localize { type = "variable", key = "a_mult", vars = { card.ability.mult } },
       mult_mod = card.ability.mult,
       colour = G.C.MULT,
     }

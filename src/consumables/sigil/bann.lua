@@ -38,7 +38,7 @@ function s:use(card)
         end
       end
       return true
-    end
+    end,
   })
 
   G.E_MANAGER:add_event(Event {
@@ -47,11 +47,11 @@ function s:use(card)
     func = function()
       card:juice_up(0.3, 0.5)
       return true
-    end
+    end,
   })
 
   for i = 1, #G.jokers.cards do
-    G.jokers.cards[i]:calculate_joker({ remove_playing_cards = true, removed = destroyed_cards })
+    G.jokers.cards[i]:calculate_joker { remove_playing_cards = true, removed = destroyed_cards }
   end
 end
 

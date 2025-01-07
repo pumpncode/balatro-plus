@@ -26,13 +26,13 @@ function b:press_play()
           func = function()
             card:juice_up()
             return true
-          end
+          end,
         })
         ease_dollars(-1)
         delay(0.23)
       end
       return true
-    end
+    end,
   })
 end
 

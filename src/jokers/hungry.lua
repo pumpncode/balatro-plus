@@ -29,7 +29,7 @@ function j:calculate(card, ctx)
       if joker.config.center.bplus_food_joker then
         joker.getting_sliced = true
         upgrade = true
-        G.E_MANAGER:add_event(Event({
+        G.E_MANAGER:add_event(Event {
           func = function()
             play_sound("tarot1")
             joker.T.r = -0.2
@@ -38,7 +38,7 @@ function j:calculate(card, ctx)
             joker.children.center.pinch.x = true
             card:juice_up(0.4, 0.5)
 
-            G.E_MANAGER:add_event(Event({
+            G.E_MANAGER:add_event(Event {
               trigger = "after",
               delay = 0.3,
               blockable = false,
@@ -48,10 +48,10 @@ function j:calculate(card, ctx)
                 joker = nil
                 return true
               end,
-            }))
+            })
             return true
           end,
-        }))
+        })
 
         card_eval_status_text(joker, "jokers", nil, nil, nil, {
           message = localize("k_eaten_ex"),
@@ -63,7 +63,7 @@ function j:calculate(card, ctx)
 
     if upgrade then
       card_eval_status_text(card, "extra", nil, nil, nil, {
-        message = localize({ type = "variable", key = "a_xmult", vars = { card.ability.x_mult } }),
+        message = localize { type = "variable", key = "a_xmult", vars = { card.ability.x_mult } },
       })
     end
   end

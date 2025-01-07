@@ -40,16 +40,16 @@ end
 function j:calculate(card, ctx)
   if ctx.setting_blind and not card.getting_sliced then
     local hand = get_poker_hand()
-    card_eval_status_text(card, 'extra', nil, nil, nil, {
+    card_eval_status_text(card, "extra", nil, nil, nil, {
       message = localize("k_level_up_ex"),
       colour = G.C.GREEN,
     })
 
-    update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3 }, {
-      handname = localize(hand, 'poker_hands'),
+    update_hand_text({ sound = "button", volume = 0.7, pitch = 0.8, delay = 0.3 }, {
+      handname = localize(hand, "poker_hands"),
       chips = G.GAME.hands[hand].chips,
       mult = G.GAME.hands[hand].mult,
-      level = G.GAME.hands[hand].level
+      level = G.GAME.hands[hand].level,
     })
 
     level_up_hand(card, hand)

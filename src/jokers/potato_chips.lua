@@ -24,7 +24,7 @@ end
 function j:calculate(card, ctx)
   if ctx.joker_main and card.ability.extra.chips > 0 then
     return {
-      message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.chips } },
+      message = localize { type = "variable", key = "a_chips", vars = { card.ability.extra.chips } },
       chip_mod = card.ability.extra.chips,
       colour = G.C.CHIPS,
     }
@@ -32,34 +32,38 @@ function j:calculate(card, ctx)
     if card.ability.extra.chips - card.ability.extra.chip_mod <= 0 then
       G.E_MANAGER:add_event(Event {
         func = function()
-          play_sound('tarot1')
+          play_sound("tarot1")
           card.T.r = -0.2
           card:juice_up(0.3, 0.4)
           card.states.drag.is = true
           card.children.center.pinch.x = true
-          G.E_MANAGER:add_event(Event({
-            trigger = 'after',
+          G.E_MANAGER:add_event(Event {
+            trigger = "after",
             delay = 0.3,
             blockable = false,
             func = function()
               G.jokers:remove_card(card)
               card:remove()
               card = nil
-              return true;
-            end
-          }))
+              return true
+            end,
+          })
           return true
-        end
+        end,
       })
       return {
-        message = localize('k_melted_ex'),
-        colour = G.C.CHIPS
+        message = localize("k_melted_ex"),
+        colour = G.C.CHIPS,
       }
     else
       card.ability.extra.chips = card.ability.extra.chips - card.ability.extra.chip_mod
       return {
         extra = {
-          message = localize { type = 'variable', key = 'a_chips_minus', vars = { card.ability.extra.chip_mod } },
+          message = localize {
+            type = "variable",
+            key = "a_chips_minus",
+            vars = { card.ability.extra.chip_mod },
+          },
           colour = G.C.CHIPS,
           focus = card,
         },

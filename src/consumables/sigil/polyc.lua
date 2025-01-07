@@ -16,7 +16,7 @@ end
 
 function s:can_use(card)
   local cond = G.jokers and G.jokers.config.card_limit > 1
-  cond = cond and (#G.jokers.highlighted == 1) and (not G.jokers.highlighted[1].edition)
+  cond = cond and (#G.jokers.highlighted == 1) and not G.jokers.highlighted[1].edition
 
   if cond then
     local compat = 0
@@ -40,16 +40,16 @@ function s:use(card, area, copier)
   end
   local destroyed = pseudorandom_element(cards, pseudoseed("c_bplus_sigil_polyc_destroy"))
 
-  bplus_joker_destroyed_trigger({destroyed})
+  bplus_joker_destroyed_trigger { destroyed }
   G.E_MANAGER:add_event(Event {
     trigger = "after",
     delay = 0.2,
     func = function()
       G.jokers.highlighted[1]:set_edition({ polychrome = true }, true)
-      play_sound('polychrome1', 1.2, 0.7)
+      play_sound("polychrome1", 1.2, 0.7)
       card:juice_up(0.3, 0.5)
       return true
-    end
+    end,
   })
   G.E_MANAGER:add_event(Event {
     trigger = "after",
@@ -57,7 +57,7 @@ function s:use(card, area, copier)
     func = function()
       G.jokers.cards[destroyed]:start_dissolve()
       return true
-    end
+    end,
   })
 end
 

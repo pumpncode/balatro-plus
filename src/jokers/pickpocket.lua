@@ -15,10 +15,14 @@ local j = {
 }
 
 function j:calculate(card, ctx)
-  if ctx.open_booster and G.GAME.pack_choices < ctx.card.ability.extra then
-    G.GAME.pack_choices = G.GAME.pack_choices + 1
+  if ctx.open_booster then
+    G.GAME.pack_choices = G.GAME.pack_choices + card.ability.extra
     card_eval_status_text(ctx.blueprint or card, "jokers", nil, nil, nil, {
-      message = "+1 Choose",
+      message = localize {
+        type = "variable",
+        key = "k_bplus_plus_choose_ex",
+        vars = { card.ability.extra },
+      },
       colour = G.C.ORANGE,
     })
   end

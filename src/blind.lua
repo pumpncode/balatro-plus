@@ -12,14 +12,14 @@ function Blind:hand_played()
 end
 
 return function(blind_dir, blinds)
-  SMODS.Atlas({
+  SMODS.Atlas {
     key = "blinds",
     px = 34,
     py = 34,
     path = "blinds.png",
     atlas_table = "ANIMATION_ATLAS",
     frames = 21,
-  })
+  }
 
   for k, b in pairs(blinds) do
     if type(b) == "string" then

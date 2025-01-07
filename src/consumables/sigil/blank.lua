@@ -30,7 +30,8 @@ function s:use(card)
 
   play_sound("timpani")
   local area = G.consumeables
-  local sig = create_card("sigil", G.pack_cards, nil, nil, nil, nil, nil, "c_bplus_sigil_blank_card")
+  local sig =
+    create_card("sigil", G.pack_cards, nil, nil, nil, nil, nil, "c_bplus_sigil_blank_card")
   sig:add_to_deck()
   area:emplace(sig)
   card:juice_up(0.3, 0.5)

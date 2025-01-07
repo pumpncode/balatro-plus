@@ -26,27 +26,30 @@ function j:calculate(card, ctx)
     local remaining = card.ability.extra.remaining
     card.ability.extra.remaining = math.max(card.ability.extra.remaining - #ctx.removed, 0)
     if remaining ~= 0 then
-      juice_card_until(card, function (c)
+      juice_card_until(card, function(c)
         return c.ability.extra.remaining == 0
       end)
     end
-  elseif ctx.setting_blind and not (ctx.blueprint_card or card).getting_sliced
-      and card.ability.extra.remaining == 0
-      and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
-
+  elseif
+    ctx.setting_blind
+    and not (ctx.blueprint_card or card).getting_sliced
+    and card.ability.extra.remaining == 0
+    and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit
+  then
     G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
-    G.E_MANAGER:add_event(Event({
+    G.E_MANAGER:add_event(Event {
       func = function()
-        local sigil = create_card("sigil", G.consumeables, nil, nil, nil, nil, nil, "j_bplus_wizard_sigil")
+        local sigil =
+          create_card("sigil", G.consumeables, nil, nil, nil, nil, nil, "j_bplus_wizard_sigil")
         sigil:add_to_deck()
         G.consumeables:emplace(sigil)
         G.GAME.consumeable_buffer = 0
         return true
-      end
-    }))
+      end,
+    })
 
-    card_eval_status_text(ctx.blueprint_card or card, 'extra', nil, nil, nil, {
-      message = "+1 Sigil",
+    card_eval_status_text(ctx.blueprint_card or card, "extra", nil, nil, nil, {
+      message = localize { type = "variable", key = "k_bplus_plus_sigil_ex", vars = { 1 } },
       colour = G.C.SECONDARY_SET.sigil,
     })
   elseif ctx.post_setting_blind and not ctx.blueprint and card.ability.extra.remaining == 0 then

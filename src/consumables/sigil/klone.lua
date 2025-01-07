@@ -20,7 +20,7 @@ function s:can_use(card)
 end
 
 function s:use(card)
-  G.E_MANAGER:add_event(Event({
+  G.E_MANAGER:add_event(Event {
     func = function()
       local _first_dissolve = nil
       local new_cards = {}
@@ -37,8 +37,8 @@ function s:use(card)
       end
       playing_card_joker_effects(new_cards)
       return true
-    end
-  }))
+    end,
+  })
 end
 
 return s

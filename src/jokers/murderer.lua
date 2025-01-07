@@ -27,11 +27,11 @@ function j:calculate(card, ctx)
       func = function()
         local xmult = card.ability.x_mult + (cards * card.ability.extra)
         card.ability.x_mult = xmult
-        card_eval_status_text(card, 'extra', nil, nil, nil, {
+        card_eval_status_text(card, "extra", nil, nil, nil, {
           message = localize { type = "variable", key = "a_xmult", vars = { xmult } },
         })
         return true
-      end
+      end,
     })
   end
 end

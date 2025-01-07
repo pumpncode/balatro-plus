@@ -21,19 +21,21 @@ function b:hand_played()
     delay = 0.5,
     func = function()
       if G.GAME.chips < self.chips then
-        G.E_MANAGER:add_event(Event({
-          trigger = 'ease',
+        G.E_MANAGER:add_event(Event {
+          trigger = "ease",
           blocking = false,
           ref_table = G.GAME,
-          ref_value = 'chips',
+          ref_value = "chips",
           ease_to = 0,
           delay = 0.5,
-          func = (function(t) return math.floor(t) end)
-        }))
+          func = function(t)
+            return math.floor(t)
+          end,
+        })
         play_area_status_text("Set score to 0!")
       end
       return true
-    end
+    end,
   })
 end
 

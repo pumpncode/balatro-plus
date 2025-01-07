@@ -32,7 +32,13 @@ end
 
 function e:loc_vars()
   local dollars = bplus_premium_card_dollars()
-  return { vars = { self.config.Xmult, dollars < 0 and -dollars or dollars, dollars < 0 and "Loss" or "Earn" } }
+  return {
+    vars = {
+      self.config.Xmult,
+      dollars < 0 and -dollars or dollars,
+      dollars < 0 and "Loss" or "Earn",
+    },
+  }
 end
 
 function e:calculate(card, ctx, effect)

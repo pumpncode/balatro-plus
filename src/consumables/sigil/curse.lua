@@ -28,7 +28,8 @@ function s:can_use(card)
 end
 
 function s:use(card)
-  local _edition = pseudorandom("c_bplus_sigil_curse_chance") <= probability("normal") / card.ability.extra
+  local _edition = pseudorandom("c_bplus_sigil_curse_chance")
+    <= probability("normal") / card.ability.extra
   local compat_jokers = {}
   for _, joker in ipairs(G.jokers.cards) do
     if not joker.edition and not joker.ability.eternal then
@@ -38,7 +39,7 @@ function s:use(card)
 
   local joker = pseudorandom_element(compat_jokers, pseudoseed("c_bplus_sigil_curse_joker"))
   if _edition then
-    local edition = poll_edition('c_bplus_sigil_curse_edition', nil, false, true)
+    local edition = poll_edition("c_bplus_sigil_curse_edition", nil, false, true)
     joker:set_edition(edition, true)
   else
     joker:set_eternal(true)

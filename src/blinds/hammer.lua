@@ -17,8 +17,8 @@ function b:drawn_to_hand()
   end
 
   local card = pseudorandom_element(G.hand.cards, pseudoseed("bl_bplus_hammer_choosen"))
-  G.E_MANAGER:add_event(Event({
-    trigger = 'after',
+  G.E_MANAGER:add_event(Event {
+    trigger = "after",
     delay = 0.5,
     func = function()
       if card.ability.name == G.P_CENTERS.m_glass.name then
@@ -27,10 +27,10 @@ function b:drawn_to_hand()
         card:start_dissolve()
       end
       G.GAME.blind:wiggle()
-      draw_card(G.deck, G.hand, nil, 'up', true)
+      draw_card(G.deck, G.hand, nil, "up", true)
       return true
-    end
-  }))
+    end,
+  })
 end
 
 return b

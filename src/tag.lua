@@ -1,10 +1,10 @@
 return function(tag_dir, tags)
-  SMODS.Atlas({
+  SMODS.Atlas {
     key = "tags",
     px = 34,
     py = 34,
     path = "tags.png",
-  })
+  }
 
   for k, t in pairs(tags) do
     if type(t) == "string" then

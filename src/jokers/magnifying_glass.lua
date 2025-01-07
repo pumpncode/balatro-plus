@@ -19,7 +19,10 @@ function j:calculate(card, ctx)
     local id = ctx.other_card:get_id()
     if id == 2 or id == 3 then
       return {
-        chips = (ctx.other_card:get_chip_bonus() + (ctx.other_card.edition and ctx.other_card.edition.chips or 0)) * 3,
+        chips = (
+          ctx.other_card:get_chip_bonus()
+          + (ctx.other_card.edition and ctx.other_card.edition.chips or 0)
+        ) * 3,
         card = card,
       }
     end

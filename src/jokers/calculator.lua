@@ -35,11 +35,11 @@ function j:calculate(_, ctx)
     end
 
     return {
-      message = localize({
+      message = localize {
         type = "variable",
         key = "a_mult",
         vars = { total },
-      }),
+      },
       mult_mod = total,
     }
   end

@@ -24,15 +24,27 @@ function j:loc_vars(_, card)
       nodes = {
         {
           n = G.UIT.C,
-          config = { align = "m", colour = card.ability.extra and G.C.GREEN or G.C.RED, r = 0.05, padding = 0.06 },
+          config = {
+            align = "m",
+            colour = card.ability.extra and G.C.GREEN or G.C.RED,
+            r = 0.05,
+            padding = 0.06,
+          },
           nodes = {
             { n = G.UIT.B, config = { w = 0.1, h = 0.1 } },
-            { n = G.UIT.T, config = { text = card.ability.extra and "active" or "inactive", colour = G.C.UI.TEXT_LIGHT, scale = 0.32 * 0.8 } },
+            {
+              n = G.UIT.T,
+              config = {
+                text = card.ability.extra and "active" or "inactive",
+                colour = G.C.UI.TEXT_LIGHT,
+                scale = 0.32 * 0.8,
+              },
+            },
             { n = G.UIT.B, config = { w = 0.1, h = 0.1 } },
-          }
-        }
-      }
-    }
+          },
+        },
+      },
+    },
   }
   return { main_end = main_end }
 end
@@ -52,7 +64,7 @@ function j:calculate(card, ctx)
 
       card.ability.extra = true
       return {
-        message = "Active!",
+        message = localize("k_active_ex"),
         colour = G.C.GREEN,
       }
     end
@@ -63,7 +75,7 @@ function j:calculate(card, ctx)
 
     card.ability.extra = false
     return {
-      message = "Inactive!",
+      message = localize("k_bplus_inactive_ex"),
       colour = G.C.RED,
     }
   end

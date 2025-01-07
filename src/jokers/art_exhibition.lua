@@ -31,7 +31,8 @@ function j:calculate(card, ctx)
       end
     end
     if framed_cards > 0 then
-      card.ability.extra.chips = card.ability.extra.chips + (framed_cards * card.ability.extra.chip_mod)
+      card.ability.extra.chips = card.ability.extra.chips
+        + (framed_cards * card.ability.extra.chip_mod)
       return {
         message = localize("k_upgrade_ex"),
         colour = G.C.CHIPS,
@@ -39,7 +40,7 @@ function j:calculate(card, ctx)
     end
   elseif ctx.joker_main and card.ability.extra.chips > 0 then
     return {
-      message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.chips } },
+      message = localize { type = "variable", key = "a_chips", vars = { card.ability.extra.chips } },
       chip_mod = card.ability.extra.chips,
       colour = G.C.CHIPS,
     }

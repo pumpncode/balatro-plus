@@ -17,17 +17,21 @@ function s:loc_vars(_, card)
 end
 
 function s:can_use(card)
-  return G.hand and #G.hand.cards >= card.ability.extra and #G.jokers.cards < G.jokers.config.card_limit
+  return G.hand
+    and #G.hand.cards >= card.ability.extra
+    and #G.jokers.cards < G.jokers.config.card_limit
 end
 
 function s:use(card)
   local temp_hand = {}
   local destroyed_cards = {}
-  for _, v in ipairs(G.hand.cards) do temp_hand[#temp_hand + 1] = v end
+  for _, v in ipairs(G.hand.cards) do
+    temp_hand[#temp_hand + 1] = v
+  end
   table.sort(temp_hand, function(a, b)
     return not a.playing_card or not b.playing_card or a.playing_card < b.playing_card
   end)
-  pseudoshuffle(temp_hand, pseudoseed('c_bplus_sigil_sacre_destroys'))
+  pseudoshuffle(temp_hand, pseudoseed("c_bplus_sigil_sacre_destroys"))
 
   for i = 1, card.ability.extra do
     destroyed_cards[#destroyed_cards + 1] = temp_hand[i]
@@ -40,7 +44,7 @@ function s:use(card)
       play_sound("tarot1")
       card:juice_up(0.3, 0.5)
       return true
-    end
+    end,
   })
 
   G.E_MANAGER:add_event(Event {
@@ -57,7 +61,7 @@ function s:use(card)
       end
 
       return true
-    end
+    end,
   })
 
   G.E_MANAGER:add_event(Event {
@@ -71,11 +75,11 @@ function s:use(card)
       G.jokers:emplace(joker)
       joker:start_materialize()
       return true
-    end
+    end,
   })
 
   for i = 1, #G.jokers.cards do
-    G.jokers.cards[i]:calculate_joker({ remove_playing_cards = true, removed = destroyed_cards })
+    G.jokers.cards[i]:calculate_joker { remove_playing_cards = true, removed = destroyed_cards }
   end
 end
 

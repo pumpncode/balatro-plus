@@ -23,7 +23,7 @@ function b:modify_hand(cards, poker_hands, text, mult, hand_chips)
           func = function()
             card:juice_up()
             return true
-          end
+          end,
         })
       end
     end

@@ -5,7 +5,7 @@ local j = {
       "All {V:1}#1#{} is",
       "also a {V:2}#2#",
       "{s:0.8}changes every round",
-    }
+    },
   },
   rarity = 1,
   cost = 4,
@@ -30,7 +30,10 @@ function BalatroPlus.round_vars.blured_suit(v, init)
     end
   end
   if next(valid_cards) then
-    v.from = pseudorandom_element(valid_cards, pseudoseed("j_bplus_blured_from_suit" .. G.GAME.round_resets.ante)).base.suit
+    v.from = pseudorandom_element(
+      valid_cards,
+      pseudoseed("j_bplus_blured_from_suit" .. G.GAME.round_resets.ante)
+    ).base.suit
   end
 
   local suits = { "Spades", "Clubs", "Diamonds", "Hearts" }
@@ -42,7 +45,8 @@ function BalatroPlus.round_vars.blured_suit(v, init)
       end
     end
   end
-  v.to = pseudorandom_element(suits, pseudoseed("j_bplus_blured_to_suit" .. G.GAME.round_resets.ante))
+  v.to =
+    pseudorandom_element(suits, pseudoseed("j_bplus_blured_to_suit" .. G.GAME.round_resets.ante))
 
   return v
 end

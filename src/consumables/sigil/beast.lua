@@ -17,8 +17,10 @@ function s:loc_vars(_, card)
 end
 
 function s:can_use(card)
-  return G.hand and #G.hand.highlighted > 0 and #G.hand.highlighted <= card.ability.extra
-      and #G.hand.cards - #G.hand.highlighted >= #G.hand.highlighted
+  return G.hand
+    and #G.hand.highlighted > 0
+    and #G.hand.highlighted <= card.ability.extra
+    and #G.hand.cards - #G.hand.highlighted >= #G.hand.highlighted
 end
 
 function s:use(card)
@@ -33,7 +35,8 @@ function s:use(card)
   end
 
   for i = 1, #G.hand.highlighted do
-    local card_to_destroy = pseudorandom_element(destroyables, pseudoseed("c_bplus_sigil_beast_destroy"))
+    local card_to_destroy =
+      pseudorandom_element(destroyables, pseudoseed("c_bplus_sigil_beast_destroy"))
     destroyed_cards[#destroyed_cards + 1] = card_to_destroy
     G.E_MANAGER:add_event(Event {
       trigger = "after",
@@ -43,9 +46,9 @@ function s:use(card)
         else
           card_to_destroy:start_dissolve(nil, nil, 1.3)
         end
-        play_sound('slice1', 0.96 + math.random() * 0.05)
+        play_sound("slice1", 0.96 + math.random() * 0.05)
         return true
-      end
+      end,
     })
     local i = 1
     for index, card in ipairs(destroyables) do
@@ -65,7 +68,7 @@ function s:use(card)
         play_sound("card1", percent)
         card:juice_up(0.3, 0.3)
         return true
-      end
+      end,
     })
   end
 
@@ -77,7 +80,7 @@ function s:use(card)
         card:set_seal(seal, nil, true)
         card:set_ability(enhancement)
         return true
-      end
+      end,
     })
   end
 
@@ -91,12 +94,12 @@ function s:use(card)
         play_sound("tarot2", percent, 0.6)
         card:juice_up(0.3, 0.3)
         return true
-      end
+      end,
     })
   end
 
   for i = 1, #G.jokers.cards do
-    G.jokers.cards[i]:calculate_joker({ remove_playing_cards = true, removed = destroyed_cards })
+    G.jokers.cards[i]:calculate_joker { remove_playing_cards = true, removed = destroyed_cards }
   end
 end
 

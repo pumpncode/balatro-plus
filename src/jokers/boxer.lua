@@ -27,7 +27,8 @@ end
 function j:calculate(card, ctx)
   if ctx.joker_main then
     local above = self.config.hands_above
-    local hands = ((G.GAME and (G.GAME.current_round and G.GAME.current_round.hands_left) or 0) + 1) - above
+    local hands = ((G.GAME and (G.GAME.current_round and G.GAME.current_round.hands_left) or 0) + 1)
+      - above
     if hands < 0 then
       hands = 0
     end
@@ -35,7 +36,7 @@ function j:calculate(card, ctx)
     local xmult = 1 + (hands * self.config.mult_each_hand)
     if xmult > 1 then
       return {
-        message = localize { type = 'variable', key = 'a_xmult', vars = { xmult } },
+        message = localize { type = "variable", key = "a_xmult", vars = { xmult } },
         Xmult_mod = xmult,
       }
     end

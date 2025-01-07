@@ -16,7 +16,10 @@ function s:loc_vars(_, card)
 end
 
 function s:can_use(card)
-  return G.hand and G.GAME.round_resets.hands - card.ability.extra > 0 and #G.hand.highlighted == 1 and G.hand.config.card_limit > 1
+  return G.hand
+    and G.GAME.round_resets.hands - card.ability.extra > 0
+    and #G.hand.highlighted == 1
+    and G.hand.config.card_limit > 1
 end
 
 function s:use(card)
@@ -33,7 +36,7 @@ function s:use(card)
           play_sound("card1", percent)
           card:juice_up(0.3, 0.3)
           return true
-        end
+        end,
       })
     end
   end
@@ -46,7 +49,7 @@ function s:use(card)
         func = function()
           copy_card(card_to_copy, card)
           return true
-        end
+        end,
       })
     end
   end
@@ -58,7 +61,7 @@ function s:use(card)
       G.GAME.round_resets.hands = G.GAME.round_resets.hands - card.ability.extra
       ease_hands_played(-card.ability.extra, true)
       return true
-    end
+    end,
   })
 
   for i, card in ipairs(G.hand.cards) do
@@ -72,7 +75,7 @@ function s:use(card)
           play_sound("tarot2", percent, 0.6)
           card:juice_up(0.3, 0.3)
           return true
-        end
+        end,
       })
     end
   end
