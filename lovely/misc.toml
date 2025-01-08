@@ -115,3 +115,40 @@ target = "functions/common_events.lua"
 pattern = '''G.GAME.probabilities\.(?<key>[a-zA-Z0-9_]+)'''
 position = "at"
 payload = '''probability("$key")'''
+
+# Add extra argument for pool function
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "function get_current_pool(_type, _rarity, _legendary, _append)"
+position = "at"
+match_indent = true
+payload = "function get_current_pool(_type, _rarity, _legendary, _append, opt)"
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "for k, v in ipairs(_starting_pool) do"
+position = "before"
+match_indent = true
+payload = """
+if opt and opt.forced_rarity then
+  _starting_pool, _pool_key = G.P_JOKER_RARITY_POOLS[opt.forced_rarity], 'Joker' .. opt.forced_rarity .. _append
+end
+"""
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "function create_card(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append)"
+position = "at"
+match_indent = true
+payload = "function create_card(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append, opt)"
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "local _pool, _pool_key = get_current_pool(_type, _rarity, legendary, key_append)"
+position = "at"
+match_indent = true
+payload = "local _pool, _pool_key = get_current_pool(_type, _rarity, legendary, key_append, opt)"
