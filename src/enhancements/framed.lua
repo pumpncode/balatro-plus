@@ -6,7 +6,7 @@ local e = {
       "each {C:attention}triggered",
     },
   },
-  config = { extra = 1 },
+  config = { extra = 2 },
   atlas = 2,
 }
 

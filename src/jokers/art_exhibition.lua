@@ -4,11 +4,11 @@ local j = {
     text = {
       "Gains {C:chips}+#1#{} Chips for",
       "each {C:attention}Framed Cards",
-      "in your {C:attention}full hand",
+      "in your {C:attention}played hand",
       "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)",
     },
   },
-  config = { extra = { chip_mod = 5, chips = 0 } },
+  config = { extra = { chip_mod = 10, chips = 0 } },
   rarity = 2,
   cost = 6,
   atlas = 33,

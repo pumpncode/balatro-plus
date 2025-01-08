@@ -28,51 +28,6 @@ G.SPLASH_LOGO = Sprite(
 )
 '''
 
-# Add option param for create_card and get_current_pool function
-[[patches]]
-[patches.pattern]
-target = "functions/common_events.lua"
-pattern = "function create_card(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append)"
-position = "at"
-match_indent = true
-payload = """
-function create_card(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append, opt)
-  opt = opt or {}
-"""
-
-[[patches]]
-[patches.pattern]
-target = "functions/common_events.lua"
-pattern = "local _pool, _pool_key = get_current_pool(_type, _rarity, legendary, key_append)"
-position = "at"
-match_indent = true
-payload = """
-local _pool, _pool_key = get_current_pool(_type, _rarity, legendary, key_append, { forced_rarity = opt.forced_rarity })
-"""
-
-[[patches]]
-[patches.pattern]
-target = "functions/common_events.lua"
-pattern = "function get_current_pool(_type, _rarity, _legendary, _append)"
-position = "at"
-match_indent = true
-payload = """
-function get_current_pool(_type, _rarity, _legendary, _append, opt)
-  opt = opt or {}
-"""
-
-[[patches]]
-[patches.pattern]
-target = "functions/common_events.lua"
-pattern = "rarity = (_legendary and 4) or (rarity > 0.95 and 3) or (rarity > 0.7 and 2) or 1"
-position = "after"
-match_indent = true
-payload = """
-if opt.forced_rarity then
-  rarity = opt.forced_rarity
-end
-"""
-
 # Add some colors to loc_colour function
 [[patches]]
 [patches.pattern]
@@ -126,39 +81,6 @@ match_indent = true
 payload = """
 if extra and extra.message then
   text = extra.message
-end
-"""
-
-# Add return value for Purple Seal
-[[patches]]
-[patches.regex]
-target = "card.lua"
-pattern = '''[ \t]*if self\.seal == 'Purple' and #G\.consumeables\.cards \+ G\.GAME\.consumeable_buffer < G.consumeables\.config\.card_limit then
-[ \t]*G\.GAME\.consumeable_buffer = G\.GAME\.consumeable_buffer \+ 1
-'''
-position = "after"
-payload = """
-      return {
-        func = function()
-"""
-
-[[patches]]
-[patches.regex]
-target = "card.lua"
-pattern = '''[ \t]*card_eval_status_text\(self, 'extra', nil, nil, nil, \{message = localize\('k_plus_tarot'\), colour = G\.C\.PURPLE\}\)
-[ \t]*end
-[ \t]*end
-[ \t]*end
-'''
-position = "at"
-payload = """
-        end,
-        message = localize('k_plus_tarot'),
-        colour = G.C.PURPLE,
-        card = self,
-      }
-    end
-  end
 end
 """
 

@@ -193,3 +193,71 @@ G.E_MANAGER:add_event(Event {
   end
 })
 """
+
+# Add retrigger context when discarding cards
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "for i=1, highlighted_count do"
+position = "at"
+match_indent = true
+payload = """
+for i = 1, highlighted_count do
+  local reps = {1}
+  for j = 1, #G.jokers.cards do
+    local eval = G.jokers.cards[j]:calculate_joker { discard_repetition = true, other_card = G.hand.highlighted[i], full_hand = G.hand.highlighted }
+    if eval and eval.repetitions then
+      if not eval.card then
+        eval.card = G.jokers.cards[j]
+      end
+      reps[#reps + 1] = eval
+    end
+  end
+
+  local removed = false
+  for j = 1, #reps do
+    if reps[j] ~= 1 then
+      if G.GAME.blind.name == "bl_bplus_lazy" and not G.GAME.blind.disabled then
+        local already = {}
+        for i = 2, #reps do
+          if not already[reps[i]] then
+            already[reps[i]] = true
+            bplus_bl_lazy_trigger((reps[i].jokers or reps[i].seals).card)
+          end
+        end
+        break
+      end
+
+      card_eval_status_text(reps[j].card, 'jokers', nil, nil, nil, reps[j])
+    end
+
+    G.hand.highlighted[i]:calculate_seal { discard = true }
+
+    local effects = {}
+    SMODS.calculate_context({discard = true, other_card =  G.hand.highlighted[i], full_hand = G.hand.highlighted}, nil, effects)
+    SMODS.trigger_effects(effects)
+    for _, eval in pairs(effects) do
+        if type(eval) == 'table' then
+            for key, eval2 in pairs(eval) do
+                if key == 'remove' or (type(eval2) == 'table' and eval2.remove) then removed = true end
+            end
+        end
+    end
+  end
+
+  cards[#cards + 1] = G.hand.highlighted[i]
+  if removed then
+    destroyed_cards[#destroyed_cards + 1] = G.hand.highlighted[i]
+    if G.hand.highlighted[i].ability.name ==  G.P_CENTERS.m_glass.name then
+      G.hand.highlighted[i]:shatter()
+    else
+      G.hand.highlighted[i]:start_dissolve()
+    end
+  else
+    G.hand.highlighted[i].ability.discarded = true
+    draw_card(G.hand, G.discard, i*100/highlighted_count, 'down', false, G.hand.highlighted[i])
+  end
+end
+
+if false then
+"""

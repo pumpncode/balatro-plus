@@ -5,12 +5,14 @@ priority = 0
 
 # Add Tag trigger context
 [[patches]]
-[patches.pattern]
+[patches.regex]
 target = "functions/state_events.lua"
-pattern = "SMODS.calculate_context({setting_blind = true, blind = G.GAME.round_resets.blind})"
+pattern = '''[ \t]*G\.jokers\.cards\[i\]:calculate_joker\(\{setting_blind = true, blind = G\.GAME\.round_resets\.blind\}\)
+(?<indent>[ \t])*end'''
 position = "after"
-match_indent = true
+line_prepend = '$indent'
 payload = """
+
 for _, t in ipairs(G.GAME.tags) do
   t:apply_to_run { type = "setting_blind", blind = G.GAME.round_resets.blind }
 end
@@ -19,11 +21,12 @@ end
 [[patches]]
 [patches.regex]
 target = "game.lua"
-pattern = '''(?<indent>[ \t])*G\.jokers\.cards\[i\]:calculate_joker\(\{first_hand_drawn = true\}\)
-[ \t]*end'''
+pattern = '''[ \t]*G\.jokers\.cards\[i\]:calculate_joker\(\{first_hand_drawn = true\}\)
+(?<indent>[ \t])*end'''
 position = "after"
-line_prepend = "$indent"
+line_prepend = '$indent'
 payload = """
+
 for _, tag in ipairs(G.GAME.tags) do
   tag:apply_to_run { type = "first_hand_drawn" }
 end
