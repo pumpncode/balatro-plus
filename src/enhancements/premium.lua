@@ -41,7 +41,7 @@ function e:loc_vars()
   }
 end
 
-function e:calculate(card, ctx, effect)
+function e:modify_effect(card, ctx, effect)
   if ctx.cardarea == G.play and not ctx.repetition then
     effect.p_dollars = (effect.p_dollars or 0) + bplus_premium_card_dollars()
   end

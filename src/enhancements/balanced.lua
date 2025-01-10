@@ -9,14 +9,13 @@ local e = {
   atlas = 3,
 }
 
-function e:calculate(card, ctx, effect)
+function e:modify_effect(card, ctx, effect)
   if ctx.cardarea == G.play and not ctx.repetition then
     local balanced = ((effect.chips or 0) + (effect.mult or 0)) / 2
-    if balanced <= 0 then
-      balanced = nil
+    if balanced > 0 then
+      effect.chips = balanced
+      effect.mult = balanced
     end
-    effect.chips = balanced
-    effect.mult = balanced
   end
 end
 

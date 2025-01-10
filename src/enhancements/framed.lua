@@ -14,7 +14,7 @@ function e:loc_vars()
   return { vars = { self.config.extra } }
 end
 
-function e:calculate(card, ctx, _)
+function e:modify_effect(card, ctx, _)
   if ctx.cardarea == G.play and not ctx.repetition then
     card.ability.perma_bonus = card.ability.perma_bonus + card.ability.extra
   end

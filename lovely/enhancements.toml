@@ -22,3 +22,17 @@ match_indent = true
 payload = """
 G.bplus_premium_card_dollars = nil
 """
+
+# Add method for modify playing card effect
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "local jokers = card:calculate_joker(context)"
+position = "before"
+match_indent = true
+payload = """
+if card.ability.set == "Enhanced" and type(card.config.center.modify_effect) == "function" then
+  card.config.center:modify_effect(card, context, ret.playing_card)
+end
+
+"""
