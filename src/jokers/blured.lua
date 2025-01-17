@@ -45,6 +45,14 @@ function BalatroPlus.round_vars.blured_suit(v, init)
       end
     end
   end
+
+  for i, suit in ipairs(suits) do
+    if suit == v.from then
+      table.remove(suits, i)
+      break
+    end
+  end
+
   v.to =
     pseudorandom_element(suits, pseudoseed("j_bplus_blured_to_suit" .. G.GAME.round_resets.ante))
 
