@@ -9,7 +9,7 @@ local e = {
       "the {C:attention}end of round",
     },
   },
-  config = { Xmult = 1.2 },
+  config = { Xmult = 1.5 },
   atlas = 4,
 }
 
