@@ -8,7 +8,7 @@ local t = {
     },
   },
   config = {
-    mod_conv = "m_bplus_burning",
+    mod_conv = "m_bplus_burned",
     max_highlighted = 1,
   },
   atlas = 4,

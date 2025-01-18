@@ -1,10 +1,10 @@
 local e = {
   loc_txt = {
-    name = "Burning Card",
+    name = "Burned Card",
     text = {
       "{X:mult,C:white} X#1# {} Mult",
       "Enhance adjacent card to",
-      "{C:attention}Burning Card{} and {C:red}destroy{} this",
+      "{C:attention}Burned Card{} and {C:red}burn{} this",
       "card if {C:attention}held in hand{} at",
       "the {C:attention}end of round",
     },
@@ -40,68 +40,30 @@ function e:calculate(card, ctx)
       end
     end
 
+    card.destroyed = true
+    card.burned = true
     if left or right then
-      G.E_MANAGER:add_event(Event {
-        trigger = "after",
-        delay = 0.1,
-        func = function()
-          if left then
-            left:flip()
-            play_sound("card1")
-            left:juice_up(0.3, 0.3)
-          end
-          if right then
-            right:flip()
-            play_sound("card1")
-            right:juice_up(0.3, 0.3)
-          end
-          return true
-        end,
+      card_eval_status_text(card, "extra", nil, nil, nil, {
+        message = localize("k_bplus_burn_ex"),
+        colour = G.C.RED,
       })
 
       G.E_MANAGER:add_event(Event {
         trigger = "after",
-        delay = 0.2,
         func = function()
           if left then
+            left:juice_up(0.5, 0.5)
             left:set_ability(self)
           end
           if right then
+            right:juice_up(0.5, 0.5)
             right:set_ability(self)
           end
-          return true
-        end,
-      })
-
-      G.E_MANAGER:add_event(Event {
-        trigger = "after",
-        delay = 0.3,
-        func = function()
-          if left then
-            left:flip()
-            play_sound("tarot2")
-            left:juice_up(0.3, 0.3)
-          end
-          if right then
-            right:flip()
-            play_sound("tarot2")
-            right:juice_up(0.3, 0.3)
-          end
+          card:start_dissolve({ G.C.RED, G.C.ORANGE }, nil, 1.6)
           return true
         end,
       })
     end
-
-    card.destroyed = true
-    G.E_MANAGER:add_event(Event {
-      trigger = "after",
-      delay = 0.2,
-      func = function ()
-        card:start_dissolve({G.C.RED, G.C.ORANGE}, nil, 1.6)
-        return true
-      end,
-    })
-
     delay(0.6)
   end
 end

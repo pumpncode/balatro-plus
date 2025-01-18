@@ -94,6 +94,7 @@ BalatroPlus.load("joker")("jokers", {
   "art_exhibition",
   "wizard",
   "paper_shredder",
+  "scorched",
 
   -- Rare
   "crown",
@@ -167,7 +168,7 @@ BalatroPlus.load("enhancement")("enhancements", {
   "premium",
   "framed",
   "balanced",
-  "burning",
+  "burned",
 })
 
 function SMODS.current_mod.reset_game_globals()
