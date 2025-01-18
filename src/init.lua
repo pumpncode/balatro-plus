@@ -147,6 +147,7 @@ BalatroPlus.load("tarot")("consumables/tarot", {
   "rich",
   "craftsman",
   "balance",
+  "hell",
 })
 
 BalatroPlus.load("booster")("boosters", {

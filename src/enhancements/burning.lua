@@ -3,7 +3,7 @@ local e = {
     name = "Burning Card",
     text = {
       "{X:mult,C:white} X#1# {} Mult",
-      "enhance adjacent card to",
+      "Enhance adjacent card to",
       "{C:attention}Burning Card{} and {C:red}destroy{} this",
       "card if {C:attention}held in hand{} at",
       "the {C:attention}end of round",
@@ -95,14 +95,14 @@ function e:calculate(card, ctx)
     card.destroyed = true
     G.E_MANAGER:add_event(Event {
       trigger = "after",
-      delay = 0.1,
+      delay = 0.2,
       func = function ()
         card:start_dissolve({G.C.RED, G.C.ORANGE}, nil, 1.6)
         return true
       end,
     })
 
-    delay(0.2)
+    delay(0.6)
   end
 end
 
