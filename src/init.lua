@@ -166,6 +166,7 @@ BalatroPlus.load("enhancement")("enhancements", {
   "premium",
   "framed",
   "balanced",
+  "burning",
 })
 
 function SMODS.current_mod.reset_game_globals()

@@ -41,9 +41,9 @@ function e:loc_vars()
   }
 end
 
-function e:modify_effect(card, ctx, effect)
-  if ctx.cardarea == G.play and not ctx.repetition then
-    effect.p_dollars = (effect.p_dollars or 0) + bplus_premium_card_dollars()
+function e:calculate(card, ctx)
+  if ctx.cardarea == G.play and ctx.main_scoring and not ctx.repetition then
+    return { p_dollars = bplus_premium_card_dollars() }
   end
 end
 
