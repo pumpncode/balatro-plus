@@ -78,6 +78,7 @@ BalatroPlus.load("joker")("jokers", {
   "meteor",
   "jumbo",
   "blured",
+  "puzzle",
 
   -- Uncommon
   "four_leaf_clover",

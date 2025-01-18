@@ -8,6 +8,9 @@ local j = {
     },
   },
   config = { extra = 0.25, Xmult = 1 },
+
+  blueprint_compat = true,
+  perishable_compat = false,
 }
 
 function j:loc_vars(infoq, card)
@@ -16,7 +19,7 @@ function j:loc_vars(infoq, card)
 end
 
 function j:calculate(card, ctx)
-  if ctx.remove_playing_cards then
+  if ctx.remove_playing_cards and not ctx.blueprint then
     local burned = 0
     for _, c in ipairs(ctx.removed) do
       if SMODS.has_enhancement(c, "m_bplus_burned") and c.burned then
