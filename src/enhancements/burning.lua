@@ -10,6 +10,7 @@ local e = {
     },
   },
   config = { Xmult = 1.2 },
+  atlas = 4,
 }
 
 function e:loc_vars()
