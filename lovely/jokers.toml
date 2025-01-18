@@ -265,3 +265,30 @@ end
 
 if false then
 """
+
+# Joker Not Found make Common Jokers no longer appear
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "local card = create_card(v.type, area, nil, nil, nil, nil, nil, 'sho')"
+position = "at"
+match_indent = true
+payload = """
+local card = create_card(v.type, area, nil, nil, nil, nil, nil, 'sho', { for_shop = true })
+"""
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "_starting_pool, _pool_key = G.P_JOKER_RARITY_POOLS[rarity], 'Joker'..rarity..((not _legendary and _append) or '')"
+position = "before"
+match_indent = true
+payload = """
+if opt and opt.for_shop and rarity == 1 and next(find_joker("j_bplus_not_found")) then
+  rarity = bplus_poll_rarity("Joker", 'rarity'..G.GAME.round_resets.ante..(_append or ''), {
+    filter = function(r)
+      return r.key ~= "Common"
+    end
+  })
+end
+"""

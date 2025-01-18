@@ -95,6 +95,7 @@ BalatroPlus.load("joker")("jokers", {
   "wizard",
   "paper_shredder",
   "scorched",
+  "not_found",
 
   -- Rare
   "crown",
