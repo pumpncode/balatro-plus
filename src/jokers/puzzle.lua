@@ -5,7 +5,7 @@ local j = {
       "Gain {C:chips}+#1#{} Chips if",
       "{C:attention}scoring{} hand contains",
       "{C:attention}#2#{} of {V:1}#3#",
-      "{s:0.8}changes after gain chips",
+      "{s:0.8}Card changes after gain chips",
       "{C:inactive}(Currently {C:chips}+#4#{C:inactive} Chips)",
     },
   },

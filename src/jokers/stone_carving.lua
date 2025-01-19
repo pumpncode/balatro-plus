@@ -15,11 +15,7 @@ local j = {
 }
 
 function BalatroPlus.round_vars.stone_carving_card(v, init)
-  v = v or { rank = "Ace", suit = "Spades", id = 14 }
-  if init then
-    return v
-  end
-
+  v = v or {}
   v.rank = "Ace"
   v.suit = "Spades"
   v.id = 14

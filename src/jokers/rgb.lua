@@ -3,8 +3,8 @@ local j = {
     name = "RGB Joker",
     text = {
       "{C:mult}+#1#{} Mult if scoring",
-      "hand contains {C:attention}exactly{} 3",
-      "different {C:attention}suits",
+      "hand contains {C:attention}exactly",
+      "{C:attention}3{} different {C:attention}suits",
     },
   },
   config = { extra = 24 },

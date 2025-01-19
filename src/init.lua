@@ -80,6 +80,7 @@ BalatroPlus.load("joker")("jokers", {
   "blured",
   "puzzle",
   "rgb",
+  "newspaper",
 
   -- Uncommon
   "four_leaf_clover",
