@@ -6,6 +6,8 @@ local j = {
       "{C:attention}appear{} in the {C:attention}shop",
     },
   },
+  atlas = 42,
+  rarity = 2,
 
   blueprint_compat = false,
 }

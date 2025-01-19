@@ -8,6 +8,8 @@ local j = {
     },
   },
   config = { extra = 0.25, Xmult = 1 },
+  rarity = 2,
+  atlas = 41,
 
   blueprint_compat = true,
   perishable_compat = false,

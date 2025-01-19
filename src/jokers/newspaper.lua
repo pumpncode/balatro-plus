@@ -8,6 +8,8 @@ local j = {
     },
   },
   config = { extra = 8 },
+  rarity = 1,
+  atlas = 45,
 
   blueprint_compat = true,
 }

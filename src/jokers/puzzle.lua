@@ -10,6 +10,9 @@ local j = {
     },
   },
   config = { extra = { chips = 0, chip_mod = 10, rank = "Ace", suit = "Spades", id = 14 } },
+  rarity = 1,
+  atlas = 43,
+
   blueprint_compat = true,
 }
 
