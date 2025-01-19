@@ -3,22 +3,6 @@ version = "1.0.0"
 dump_lua = true
 priority = 0
 
-# Trigger Joker hand dollars effect at the end of round
-[[patches]]
-[patches.pattern]
-target = "functions/state_events.lua"
-pattern = "if effects[ii].h_dollars then"
-position = "before"
-match_indent = true
-payload = """
-if effects[ii].dollars then
-  if effects[ii].card then juice_card(effects[ii].card) end
-  ease_dollars(effects[ii].dollars)
-  card_eval_status_text(G.hand.cards[i], 'dollars', effects[ii].dollars, percent)
-end
-
-"""
-
 # Modify joker level_up effect
 [[patches]]
 [patches.pattern]
@@ -109,7 +93,7 @@ end
 [[patches]]
 [patches.pattern]
 target = "card.lua"
-pattern = "if self.ability.effect == 'Stone Card' and not self.vampired then"
+pattern = "function Card:get_id()"
 position = "after"
 match_indent = true
 payload = """
@@ -120,12 +104,14 @@ end
 
 # Add Joker trigger context
 [[patches]]
-[patches.pattern]
+[patches.regex]
 target = "functions/state_events.lua"
-pattern = "SMODS.calculate_context({setting_blind = true, blind = G.GAME.round_resets.blind})"
+pattern = '''[ \t]*G\.jokers\.cards\[i\]:calculate_joker\(\{setting_blind = true, blind = G\.GAME\.round_resets\.blind\}\)
+(?<indent>[ \t])*end'''
 position = "after"
-match_indent = true
+line_prepend = '$indent'
 payload = """
+
 for _, card in ipairs(G.jokers.cards) do
   card:calculate_joker { post_setting_blind = true, blind = G.GAME.round_resets.blind }
 end

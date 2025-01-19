@@ -71,14 +71,14 @@ end
 [[patches]]
 [patches.pattern]
 target = "card.lua"
-pattern = "elseif self.base.suit == 'Spades' then self.base.suit_nominal = 0.04;  self.base.suit_nominal_original = suit_base_nominal_original or 0.004 end"
+pattern = "self.base.suit_nominal_original = suit_base_nominal_original or suit.suit_nominal or 0"
 position = "after"
 match_indent = true
 payload = """
-
 if G.GAME.selected_back and G.GAME.selected_back.name == "b_bplus_illusion" and self.base.nominal then
   self.base.nominal = self.base.nominal * G.GAME.selected_back.effect.config.card_nominal_mult
 end
+
 """
 
 [[patches]]

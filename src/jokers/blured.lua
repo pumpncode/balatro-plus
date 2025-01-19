@@ -36,7 +36,11 @@ function BalatroPlus.round_vars.blured_suit(v, init)
     ).base.suit
   end
 
-  local suits = { "Spades", "Clubs", "Diamonds", "Hearts" }
+  local suits = {}
+  for suit, _ in pairs(G.C.SUITS) do
+    suits[#suits + 1] = suit
+  end
+
   if last_suit then
     for i, suit in ipairs(suits) do
       if suit == last_suit then
@@ -53,8 +57,8 @@ function BalatroPlus.round_vars.blured_suit(v, init)
     end
   end
 
-  v.to =
-    pseudorandom_element(suits, pseudoseed("j_bplus_blured_to_suit" .. G.GAME.round_resets.ante))
+  local seed = pseudoseed("j_bplus_blured_to_suit" .. G.GAME.round_resets.ante)
+  v.to = pseudorandom_element(suits, seed)
 
   return v
 end
