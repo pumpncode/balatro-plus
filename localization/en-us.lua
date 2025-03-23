@@ -1,3 +1,12 @@
+local mysthic_pack = {
+  name = "Mysthic Pack",
+  text = {
+    "Choose {C:attention}#1#{} of up to",
+    "{C:attention}#2#{} {C:bplus_sigil}Sigil{} cards to",
+    "be used immediately",
+  },
+}
+
 return {
   descriptions = {
     Joker = {
@@ -9,15 +18,165 @@ return {
         },
       },
     },
+
+    Booster = {
+      p_bplus_mysthic_normal1 = mysthic_pack,
+      p_bplus_mysthic_normal2 = mysthic_pack,
+      p_bplus_mysthic_jumbo = mysthic_pack,
+      p_bplus_mysthic_mega = mysthic_pack,
+    },
+
+    sigil = {
+      c_bplus_sigil_blank = {
+        name = "Blank",
+        text = {
+          "{C:green}#1# in #2#{} chance to",
+          "create other {C:attention}Sigil{} card",
+          "{s:0.8}chance is increasing",
+          "{s:0.8}at the end of round",
+        },
+      },
+      c_bplus_sigil_polyc = {
+        name = "Polyc",
+        text = {
+          "Destroy {C:attention}1{} random Joker",
+          "to add {C:dark_edition}Polychrome{} to",
+          "selected Joker",
+        },
+      },
+      c_bplus_sigil_rebirth = {
+        name = "Rebirth",
+        text = {
+          "Destroy all non {C:dark_edition}negative{}",
+          "Jokers to {C:attention}create{} Jokers",
+          "with the same amount of",
+          "{C:attention}destroyed{} Jokers with",
+          "same {C:attention}Rarity",
+        },
+      },
+      c_bplus_sigil_astra = {
+        name = "Astra",
+        text = {
+          "Level up your most played {C:attention}poker",
+          "{C:attention}hand{} level by total of all other",
+          "{C:attention}poker hands{} level above {C:attention}1{}, resets",
+          "other {C:attention}poker hands{} level",
+          "{C:inactive}(Currently level up by {C:attention}#1#{C:inactive})",
+        },
+      },
+      c_bplus_sigil_aye = {
+        name = "Aye",
+        text = {
+          "Change up to {C:attention}#1#{} selected",
+          "cards {C:attention}rank{} and {C:attention}suits{} to",
+          "{C:attention}rank{} and {C:attention}suits{} of random",
+          "card in your {C:attention}deck",
+        },
+      },
+      c_bplus_sigil_bann = {
+        name = "Bann",
+        text = {
+          "Destroy all cards with",
+          "selected card {C:attention}rank",
+          "and {C:attention}suit",
+        },
+      },
+      c_bplus_sigil_beast = {
+        name = "Beast",
+        text = {
+          "Enhance up to {C:attention}#1#{} selected cards",
+          "with random {C:attention}Enhancement{} and {C:attention}Seal{}",
+          "destroy other {C:attention}unselected{} cards with",
+          "same amount of {C:attention}selected{} cards",
+        },
+      },
+      c_bplus_sigil_curse = {
+        name = "Curse",
+        text = {
+          "{C:green}#1# in #2#{} chance to add",
+          "any {C:dark_edition}edition{} to random",
+          "Joker if {C:red}failed{} add",
+          "{C:eternal}Eternal{} and {C:rental}Rental",
+        },
+      },
+      c_bplus_sigil_dupe = {
+        name = "Dupe",
+        text = {
+          "Covert all {C:attention}unselected",
+          "cards to {C:attention}selected{} card",
+          "{C:blue}-#1#{} Hand",
+        },
+      },
+      c_bplus_sigil_froze = {
+        name = "Froze",
+        text = {
+          "{C:red}Debuff{} selected joker for",
+          "{C:attention}#1#{} rounds, become {C:dark_edition}negative{}",
+          "after {C:red}debuff{} end",
+        },
+      },
+      c_bplus_sigil_klone = {
+        name = "Klone",
+        text = {
+          "Create copy of up",
+          "to {C:attention}#1#{} selected",
+          "cards",
+        },
+      },
+      c_bplus_sigil_rewind = {
+        name = "Rewind",
+        text = {
+          "Destroys all {C:attention}Consumables",
+          "to fill it with copies of",
+          "last used {C:tarot}Tarot{} or",
+          "{C:planet}Planet{} card",
+        },
+      },
+      c_bplus_sigil_sacre = {
+        name = "Sacre",
+        text = {
+          "Destroys {C:attention}#1#{} random cards",
+          "in your hand, create",
+          "a random {C:red}Rare{} Joker",
+          "{C:inactive}(Must have room)",
+        },
+      },
+      c_bplus_sigil_shine = {
+        name = "Shine",
+        text = {
+          "Add {C:dark_edition}#1#{} to",
+          "selected card",
+          "{s:0.8}changes every round",
+          "{s:0.8}cannot be {C:dark_edition,s:0.8}negative",
+        },
+      },
+    },
+
+    Other = {
+      undiscovered_bplus_sigil = {
+        name = "Not Dicovered",
+        text = {
+          "Purchase or use",
+          "this card in an",
+          "unseeded run to",
+          "learn what it does",
+        },
+      },
+    },
   },
   misc = {
+
     dictionary = {
+      b_bplus_sigil_cards = "Sigil Cards",
+
       k_bplus_mysthic_pack = "Mysthic Pack",
       k_bplus_ho_ho_ho_ex = "Ho Ho Ho!",
       k_bplus_no_retrigger = "No Retrigger",
       k_bplus_inactive_ex = "Inactive!",
       k_bplus_burn_ex = "Burn!",
+      k_bplus_sigil = "Sigil",
     },
+
     v_dictionary = {
       k_bplus_plus_choose_ex = "+#1# Choose!",
       k_bplus_plus_sigil_ex = "+#1# Sigil!",

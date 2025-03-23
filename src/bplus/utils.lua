@@ -1,6 +1,6 @@
 local M = {}
 
-function M.load_resource(dir, opt, fn)
+function M.load_object(dir, opt, fn)
   if fn == nil and opt then
     fn = opt
     opt = {}
@@ -32,7 +32,7 @@ function M.load_resource(dir, opt, fn)
       obj.pos = { x = x - 1, y = math.ceil(n / row) - 1 }
     end
 
-    if not obj.soul_pos and obj.soul then
+    if not obj.soul_pos and soul_number then
       local n = soul_number
       local x = n % row
       if x == 0 then
@@ -58,6 +58,28 @@ function M.load_resource(dir, opt, fn)
     obj.discovered = false
     fn(obj)
   end
+end
+
+function M.load_consumable(dir, opt)
+  opt = opt or {}
+
+  local ct = {
+    collection_rows = opt.rows or {5, 5},
+    default = opt.default,
+    cards = {},
+    key = dir:match("/([^/]+)$") or dir,
+    primary_colour = opt.primary,
+    secondary_colour = opt.secondary,
+  }
+
+  opt.set = ct.key
+  BPlus.u.load_object(dir, opt, function(o)
+    local _key = "c_bplus_" .. ct.key .. "_" .. o.key
+    print(_key)
+    ct.cards[_key] = true
+    SMODS.Consumable(o)
+  end)
+  SMODS.ConsumableType(ct)
 end
 
 function M.status_text(card, text, colour)
