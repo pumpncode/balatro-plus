@@ -1,4 +1,15 @@
 return {
+  descriptions = {
+    Joker = {
+      j_bplus_pickpocket = {
+        name = "Pickpocket",
+        text = {
+          "Choose one more card when",
+          "opening any {C:attention}Booster pack{}",
+        },
+      },
+    },
+  },
   misc = {
     dictionary = {
       k_bplus_mysthic_pack = "Mysthic Pack",
