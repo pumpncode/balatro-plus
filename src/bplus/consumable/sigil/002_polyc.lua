@@ -29,7 +29,7 @@ return {
     end
     local destroyed = pseudorandom_element(cards, pseudoseed("c_bplus_sigil_polyc_destroy"))
 
-    bplus_joker_destroyed_trigger { destroyed }
+    BPlus.u.joker_destroyed_trigger { destroyed }
     G.E_MANAGER:add_event(Event {
       trigger = "after",
       delay = 0.2,

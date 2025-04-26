@@ -13,8 +13,8 @@ return {
   end,
 
   use = function(self, card)
-    local enhancement = bplus_random_enhancement("c_bplus_sigil_beast_enhancement")
-    local seal = bplus_random_seal("c_bplus_sigil_beast_seal")
+    local enhancement = BPlus.u.random_enhancement("c_bplus_sigil_beast_enhancement")
+    local seal = BPlus.u.random_seal("c_bplus_sigil_beast_seal")
     local destroyables = {}
     local destroyed_cards = {}
     for _, card in ipairs(G.hand.cards) do

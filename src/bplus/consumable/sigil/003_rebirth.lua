@@ -24,7 +24,7 @@ return {
       end
     end
 
-    bplus_joker_destroyed_trigger(destroyed_cards)
+    BPlus.u.joker_destroyed_trigger(destroyed_cards)
     G.E_MANAGER:add_event(Event {
       func = function()
         for _, joker in ipairs(destroyed_cards) do

@@ -1,5 +1,5 @@
 local function get_level_up_amount(hand)
-  hand = hand or bplus_most_played_poker_hand()
+  hand = hand or BPlus.u.most_played_poker_hand()
   local amount = 0
   if hand then
     for name, info in pairs(G.GAME.hands) do
@@ -21,7 +21,7 @@ return {
   end,
 
   use = function(self, card)
-    local hand = bplus_most_played_poker_hand()
+    local hand = BPlus.u.most_played_poker_hand()
     local amount = get_level_up_amount(hand)
     update_hand_text({ sound = "button", volume = 0.7, pitch = 0.8, delay = 0.3 }, {
       handname = "Other hands",

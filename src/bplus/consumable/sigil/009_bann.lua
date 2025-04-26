@@ -30,17 +30,8 @@ return {
       end,
     })
 
-    G.E_MANAGER:add_event(Event {
-      trigger = "after",
-      delay = 0.3,
-      func = function()
-        card:juice_up(0.3, 0.5)
-        return true
-      end,
-    })
-
     for i = 1, #G.jokers.cards do
-      G.jokers.cards[i]:calculate_joker { remove_playing_cards = true, removed = destroyed_cards }
+      G.jokers.cards[i]:calculate_joker { remove_playing_cards = true, removed = destroys }
     end
   end,
 }

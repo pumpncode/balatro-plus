@@ -19,13 +19,6 @@ return {
       },
     },
 
-    Booster = {
-      p_bplus_mysthic_normal1 = mysthic_pack,
-      p_bplus_mysthic_normal2 = mysthic_pack,
-      p_bplus_mysthic_jumbo = mysthic_pack,
-      p_bplus_mysthic_mega = mysthic_pack,
-    },
-
     sigil = {
       c_bplus_sigil_blank = {
         name = "Blank",
@@ -34,6 +27,7 @@ return {
           "create other {C:attention}Sigil{} card",
           "{s:0.8}chance is increasing",
           "{s:0.8}at the end of round",
+          "{C:inactive}(Must have room)",
         },
       },
       c_bplus_sigil_polyc = {
@@ -153,7 +147,12 @@ return {
     },
 
     Other = {
-      undiscovered_bplus_sigil = {
+      p_bplus_mysthic_normal1 = mysthic_pack,
+      p_bplus_mysthic_normal2 = mysthic_pack,
+      p_bplus_mysthic_jumbo = mysthic_pack,
+      p_bplus_mysthic_mega = mysthic_pack,
+
+      undiscovered_sigil = {
         name = "Not Dicovered",
         text = {
           "Purchase or use",
@@ -165,16 +164,15 @@ return {
     },
   },
   misc = {
-
     dictionary = {
-      b_bplus_sigil_cards = "Sigil Cards",
+      b_sigil_cards = "Sigil Cards",
+      k_sigil = "Sigil",
 
       k_bplus_mysthic_pack = "Mysthic Pack",
       k_bplus_ho_ho_ho_ex = "Ho Ho Ho!",
       k_bplus_no_retrigger = "No Retrigger",
       k_bplus_inactive_ex = "Inactive!",
       k_bplus_burn_ex = "Burn!",
-      k_bplus_sigil = "Sigil",
     },
 
     v_dictionary = {

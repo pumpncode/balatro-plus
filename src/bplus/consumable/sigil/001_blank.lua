@@ -1,12 +1,12 @@
 return {
   config = { extra = 6 },
 
-  loc_vars = function(self, _, card)
+  loc_vars = function(self, infoq, card)
     return { vars = { G.GAME.probabilities.normal, card.ability.extra } }
   end,
 
-  can_use = function(self)
-    return true
+  can_use = function(self, card)
+    return #G.consumeables.cards - ((card.edition and card.edition.negative) and 0 or 1) < G.consumeables.config.card_limit
   end,
 
   use = function(self, card)
@@ -18,10 +18,22 @@ return {
     end
 
     play_sound("timpani")
-    local area = G.consumeables
-    local sig = create_card("sigil", G.pack_cards, nil, nil, nil, nil, nil, "c_bplus_sigil_blank_card")
-    sig:add_to_deck()
-    area:emplace(sig)
     card:juice_up(0.3, 0.5)
+
+    G.E_MANAGER:add_event(Event {
+      delay = 0.5,
+      func = function ()
+        local sig = create_card("sigil", G.consumeables, nil, nil, nil, nil, nil, "c_bplus_sigil_blank_card")
+        sig:add_to_deck()
+        G.consumeables:emplace(sig)
+        return true
+      end
+    })
   end,
+
+  calculate = function (self, card, ctx)
+    if ctx.end_of_round and ctx.cardarea == G.consumeables then
+      card.ability.extra = math.max(card.ability.extra - 1, 1)
+    end
+  end
 }

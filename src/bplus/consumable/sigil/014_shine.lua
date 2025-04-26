@@ -1,15 +1,15 @@
--- function BalatroPlus.round_vars.shine_sigil_edition(v, init)
---   if init then
---     return "polychrome"
---   end
---
---   return pseudorandom_element(
---     bplus_get_editions(function(edition)
---       return edition ~= "negative" and edition ~= v
---     end),
---     pseudoseed("c_bplus_sigil_shine_edition" .. G.GAME.round_resets.ante)
---   )
--- end
+function BPlus.round_vars.shine_sigil_edition(v, init)
+  if init then
+    return "polychrome"
+  end
+
+  return pseudorandom_element(
+    BPlus.u.get_editions(function(edition)
+      return edition ~= "negative" and edition ~= v
+    end),
+    pseudoseed("c_bplus_sigil_shine_edition" .. G.GAME.round_resets.ante)
+  )
+end
 
 return {
   loc_vars = function(self, infoq)

@@ -1,12 +1,11 @@
 local M = {}
 
-function M.load_object(dir, opt, fn)
-  if fn == nil and opt then
-    fn = opt
+function M.load_object(dir, fn, opt)
+  if opt == nil then
     opt = {}
   end
 
-  local row = opt.asset_row or 10
+  local row = opt.asset_row or 5
   local atlas = dir:match("/([^/]+)$") or dir
   SMODS.Atlas {
     key = atlas,
@@ -64,7 +63,7 @@ function M.load_consumable(dir, opt)
   opt = opt or {}
 
   local ct = {
-    collection_rows = opt.rows or {5, 5},
+    collection_rows = opt.rows or { 5, 5 },
     default = opt.default,
     cards = {},
     key = dir:match("/([^/]+)$") or dir,
@@ -73,12 +72,12 @@ function M.load_consumable(dir, opt)
   }
 
   opt.set = ct.key
-  BPlus.u.load_object(dir, opt, function(o)
-    local _key = "c_bplus_" .. ct.key .. "_" .. o.key
-    print(_key)
+  BPlus.u.load_object(dir, function(o)
+    o.key = ct.key .. "_" .. o.key
+    local _key = "c_bplus_" .. o.key
     ct.cards[_key] = true
     SMODS.Consumable(o)
-  end)
+  end, opt)
   SMODS.ConsumableType(ct)
 end
 
@@ -87,6 +86,53 @@ function M.status_text(card, text, colour)
     message = text,
     colour = colour,
   })
+end
+
+function M.joker_destroyed_trigger(jokers)
+  for _, card in ipairs(G.jokers.cards) do
+    card:calculate_joker { joker_destroyed = true, destroyed_cards = jokers }
+  end
+end
+
+function M.random_seal(seed_key)
+  return pseudorandom_element({
+    "Red",
+    "Blue",
+    "Purple",
+    "Gold",
+  }, pseudoseed(seed_key))
+end
+
+function M.random_enhancement(seed_key)
+  local enhancements = {}
+  for key, center in pairs(G.P_CENTERS) do
+    if key:match("m_.+") then
+      enhancements[#enhancements + 1] = center
+    end
+  end
+  return pseudorandom_element(enhancements, pseudoseed(seed_key))
+end
+
+function M.most_played_poker_hand()
+  local _planet, _hand, _tally = nil, nil, 0
+  for _, handname in ipairs(G.handlist) do
+    if G.GAME.hands[handname].visible and G.GAME.hands[handname].played > _tally then
+      _hand = handname
+      _tally = G.GAME.hands[handname].played
+    end
+  end
+  return _hand
+end
+
+function M.get_editions(filter)
+  local editions = {}
+  for key, _ in pairs(G.P_CENTERS) do
+    local key = key:match("^e_(.+)")
+    if key and key ~= "base" and (not filter or filter(key)) then
+      editions[#editions + 1] = key
+    end
+  end
+  return editions
 end
 
 return M
