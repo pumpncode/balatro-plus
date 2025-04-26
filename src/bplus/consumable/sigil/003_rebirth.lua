@@ -40,12 +40,13 @@ return {
       func = function()
         play_sound("timpani")
         for _, rarity in ipairs(rarities) do
-          local joker = create_card("Joker", G.jokers, nil, nil, nil, nil, nil, "c_bplus_sigil_rebirth_joker", {
-            forced_rarity = rarity,
-          })
-          joker:add_to_deck()
-          G.jokers:emplace(joker)
-          joker:start_materialize()
+          SMODS.add_card {
+            set = "Joker",
+            area = G.jokers,
+            legendary = rarity == 4 or nil,
+            rarity = rarity ~= 4 and BPlus.u.rarity_to_poll(rarity) or nil,
+            key_append = "c_bplus_sigil_rebirth_joker",
+          }
         end
         card:juice_up(0.3, 0.5)
         return true

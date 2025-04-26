@@ -6,7 +6,7 @@ return {
   end,
 
   can_use = function(self, card)
-    return G.hand and #G.hand.cards >= card.ability.extra and #G.jokers.cards < G.jokers.config.card_limit
+    return G.hand and #G.hand.cards > card.ability.extra and #G.jokers.cards < G.jokers.config.card_limit
   end,
 
   use = function(self, card)
@@ -55,12 +55,12 @@ return {
       trigger = "after",
       delay = 0.2,
       func = function()
-        local joker = create_card("Joker", G.jokers, nil, nil, nil, nil, nil, "c_bplus_sigil_sacre", {
-          forced_rarity = 3,
-        })
-        joker:add_to_deck()
-        G.jokers:emplace(joker)
-        joker:start_materialize()
+        SMODS.add_card {
+          set = "Joker",
+          area = G.jokers,
+          rarity = BPlus.u.rarity_to_poll(3),
+          key_append = "c_bplus_sigil_sacre",
+        }
         return true
       end,
     })

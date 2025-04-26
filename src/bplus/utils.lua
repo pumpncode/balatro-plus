@@ -135,4 +135,13 @@ function M.get_editions(filter)
   return editions
 end
 
+local rarity_table = {
+  0, -- Common
+  0.71, -- Uncommon
+  0.96, -- Rare
+}
+function M.rarity_to_poll(rarity)
+  return rarity_table[rarity] or 0
+end
+
 return M
