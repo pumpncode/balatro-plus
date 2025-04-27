@@ -44,7 +44,6 @@ require("bplus.uidef")
 require("bplus.funcs")
 
 BPlus.u.load_object("joker", SMODS.Joker)
-
 BPlus.u.load_consumable("consumable/sigil", {
   cost = 4,
   primary = HEX("8e32db"),
@@ -53,6 +52,7 @@ BPlus.u.load_consumable("consumable/sigil", {
   default = "c_bplus_sigil_blank",
 })
 BPlus.u.load_object("booster", SMODS.Booster, { asset_row = 4 })
+BPlus.u.load_object("enhancement", SMODS.Enhancement)
 
 local game_init_game_object = Game.init_game_object
 function Game:init_game_object()

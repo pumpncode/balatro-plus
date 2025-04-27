@@ -144,4 +144,8 @@ function M.rarity_to_poll(rarity)
   return rarity_table[rarity] or 0
 end
 
+function M.getting_destroyed(c)
+  return c.removed or c.destroyed or c.shattered or c.getting_sliced
+end
+
 return M

@@ -23,3 +23,16 @@ G.SPLASH_LOGO = Sprite(0, 0,
   13*SC_scale*(G.ASSET_ATLAS[key].py/G.ASSET_ATLAS[key].px),
   G.ASSET_ATLAS[key], {x=0,y=0})
 '''
+
+# Call modify_effect function when main scoring on played cards
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "-- TARGET: main scoring on played cards"
+position = "after"
+match_indent = true
+payload = """
+if card.config.center.modify_effect then
+  card.config.center:modify_effect(card, context, ret.playing_card)
+end
+"""

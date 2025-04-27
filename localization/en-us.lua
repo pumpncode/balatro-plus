@@ -19,6 +19,43 @@ return {
       },
     },
 
+    Enhanced = {
+      m_bplus_premium = {
+        name = "Premium Card",
+        text = {
+          "{X:mult,C:white} X#1# {} Mult",
+          "#3# {C:money}$#2#",
+        },
+      },
+
+      m_bplus_framed = {
+        name = "Framed Card",
+        text = {
+          "Gains {C:chips}+#1#{} Chips",
+          "each {C:attention}triggered",
+        },
+      },
+
+      m_bplus_balanced = {
+        name = "Balanced Card",
+        text = {
+          "{C:attention}Balance{} this card",
+          "{C:chips}Chips{} and {C:mult}Mult",
+        },
+      },
+
+      m_bplus_burned = {
+        name = "Burned Card",
+        text = {
+          "{X:mult,C:white} X#1# {} Mult",
+          "If {C:attention}held in hand{} at the",
+          "{C:attention}end of round{}, enhance",
+          "adjacent card to {C:attention}Burned",
+          "{C:attention}Card{} and {C:red}burn{} this card",
+        },
+      },
+    },
+
     sigil = {
       c_bplus_sigil_blank = {
         name = "Blank",
