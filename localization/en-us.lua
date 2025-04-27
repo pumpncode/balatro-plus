@@ -124,6 +124,101 @@ return {
       },
     },
 
+    Tag = {
+      tag_bplus_glow = {
+        name = "Glow Tag",
+        text = {
+          "Add random {C:dark_edition}edition{} to",
+          "random Joker if any",
+        },
+      },
+      tag_bplus_glove = {
+        name = "Glove Tag",
+        text = {
+          "{C:blue}+#1#{} Hands",
+          "next round",
+        },
+      },
+      tag_bplus_dish = {
+        name = "Dish Tag",
+        text = {
+          "Create random",
+          "{C:attention}Food Joker",
+          "{C:inactive}(Must have room)",
+        },
+      },
+      tag_bplus_collector = {
+        name = "Collector Tag",
+        text = {
+          "Earn {C:money}$#1#{} for each",
+          "card above {C:attention}#2#{}",
+          "in your full deck",
+          "{C:inactive}(Max of {C:money}$#3#{C:inactive})",
+          "{C:inactive}(Currently {C:money}$#4#{C:inactive})",
+        },
+      },
+      tag_bplus_booster = {
+        name = "Booster Tag",
+        text = {
+          "Adds {C:attention}#1# Booster Pack",
+          "to the next shop",
+        },
+      },
+      tag_bplus_bounty = {
+        name = "Bounty Tag",
+        text = {
+          "Earn {X:money,C:white}X#1#{} {C:money}dollars{} of the {C:attention}Blinds",
+          "reward when defeated",
+        },
+      },
+      tag_bplus_enhanced = {
+        name = "Enhanced Tag",
+        text = {
+          "Enhance all cards",
+          "held in hand to",
+          "{C:attention}#1#s",
+          "when round begin",
+        },
+      },
+      tag_bplus_mysthic = {
+        name = "Mysthic Tag",
+        text = {
+          "Gives a free",
+          "{C:bplus_sigil}Mega Mysthic Pack",
+        },
+      },
+      tag_bplus_burning = {
+        name = "Burning Tag",
+        text = {
+          "{C:red}+#1#{} Discards",
+          "next round",
+        },
+      },
+      tag_bplus_symbolic = {
+        name = "Symbolic Tag",
+        text = {
+          "Earn {C:money}$#1#{} for every",
+          "{V:1}#2#{} cards you have",
+          "{C:inactive}(Currently {C:money}$#3#{C:inactive})",
+          "{C:inactive}(Max of {C:money}$#4#{C:inactive})",
+        },
+      },
+      tag_bplus_recycle = {
+        name = "Recycle Tag",
+        text = {
+          "Create last added tag",
+          "{s:0.8,C:green}Recycle Tag {s:0.8}excluded",
+        },
+      },
+      tag_bplus_backpack = {
+        name = "Backpack Tag",
+        text = {
+          "Create {C:dark_edition}negative{} copies of all",
+          "cards in your {C:attention}Consumable slot",
+        },
+      },
+    },
+
     sigil = {
       c_bplus_sigil_blank = {
         name = "Blank",

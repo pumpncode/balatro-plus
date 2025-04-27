@@ -184,4 +184,15 @@ function M.open_pack(key, from_tag)
   card:start_materialize()
 end
 
+function M.get_editions(filter)
+  local editions = {}
+  for key, center in pairs(G.P_CENTERS) do
+    local key = key:match("^e_(.+)")
+    if key and key ~= "base" and (not filter or filter(key)) then
+      editions[#editions + 1] = key
+    end
+  end
+  return editions
+end
+
 return M

@@ -1,0 +1,21 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "SMODS.calculate_context({first_hand_drawn = not G.GAME.current_round.any_hand_drawn and G.GAME.facing_blind,"
+position = "before"
+match_indent = true
+payload = """
+for _, t in ipairs(G.GAME.tags) do
+  t:apply_to_run {
+    type = "hand_drawn",
+    first_hand = not G.GAME.current_round.any_hand_drawn and G.GAME.facing_blind,
+    hand_drawn = G.GAME.facing_blind and SMODS.drawn_cards,
+    other_drawn = not G.GAME.facing_blind and SMODS.drawn_cards,
+  }
+end
+"""
