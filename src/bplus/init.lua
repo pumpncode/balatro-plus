@@ -6,9 +6,42 @@ package.path = package.path .. string.format(";%s/src/?.lua;%s/src/?/init.lua", 
 
 BPlus = {
   u = require("bplus.utils"),
+  mod = cmod,
   path = path,
   round_vars = {},
+  config = SMODS.current_mod.config,
+  config_ui = {
+    { label = "Replace Splash Logo", type = "toggle", mod_config = "replace_splash_logo" },
+  },
 }
+
+SMODS.Atlas {
+  key = "balatro_plus",
+  path = "balatro_plus.png",
+  px = G.ASSET_ATLAS.balatro.px,
+  py = G.ASSET_ATLAS.balatro.py,
+}
+
+SMODS.Atlas {
+  key = "modicon",
+  path = "modicon.png",
+  px = 39,
+  py = 39,
+}
+
+function BPlus.update_splash_logo()
+  local key = "balatro"
+  if BPlus.config.replace_splash_logo then
+    key = "bplus_balatro_plus"
+  end
+
+  if G.SPLASH_LOGO then
+    G.SPLASH_LOGO.atlas = G.ASSET_ATLAS[key]
+  end
+end
+
+require("bplus.uidef")
+require("bplus.funcs")
 
 BPlus.u.load_object("joker", SMODS.Joker)
 
