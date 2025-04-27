@@ -148,4 +148,23 @@ function M.getting_destroyed(c)
   return c.removed or c.destroyed or c.shattered or c.getting_sliced
 end
 
+function M.enhancement_tarot(enhancement, max_highlight)
+  return {
+    config = {
+      mod_conv = enhancement,
+      max_highlighted = max_highlight or 1,
+    },
+
+    loc_vars = function(self, infoq)
+      infoq[#infoq + 1] = G.P_CENTERS[self.config.mod_conv]
+      return {
+        vars = {
+          self.config.max_highlighted,
+          localize { type = "name_text", set = "Enhanced", key = self.config.mod_conv },
+        },
+      }
+    end,
+  }
+end
+
 return M

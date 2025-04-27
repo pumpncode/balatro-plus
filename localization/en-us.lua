@@ -7,6 +7,12 @@ local mysthic_pack = {
   },
 }
 
+local enhancement_tarot_text = {
+  "Enhances {C:attention}#1#{}",
+  "selected cards to",
+  "{C:attention}#2#s",
+}
+
 return {
   descriptions = {
     Joker = {
@@ -17,6 +23,13 @@ return {
           "opening any {C:attention}Booster pack{}",
         },
       },
+    },
+
+    Tarot = {
+      c_bplus_rich = { name = "The Rich", text = enhancement_tarot_text },
+      c_bplus_craftsman = { name = "The Craftsman", text = enhancement_tarot_text },
+      c_bplus_balance = { name = "Balance", text = enhancement_tarot_text },
+      c_bplus_hell = { name = "The Hell", text = enhancement_tarot_text },
     },
 
     Enhanced = {
