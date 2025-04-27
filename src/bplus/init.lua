@@ -56,3 +56,4 @@ BPlus.u.load_consumable("consumable/sigil", {
 BPlus.u.load_object("booster", SMODS.Booster, { asset_row = 4 })
 BPlus.u.load_object("enhancement", SMODS.Enhancement)
 BPlus.u.load_object("consumable/tarot", SMODS.Consumable, { set = "Tarot", cost = 3 })
+BPlus.u.load_object("deck", SMODS.Back)

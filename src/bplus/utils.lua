@@ -167,4 +167,21 @@ function M.enhancement_tarot(enhancement, max_highlight)
   }
 end
 
+function M.open_pack(key, from_tag)
+  stop_use()
+  local card = Card(
+    G.play.T.x + G.play.T.w / 2 - G.CARD_W * 1.27 / 2,
+    G.play.T.y + G.play.T.h / 2 - G.CARD_H * 1.27 / 2,
+    G.CARD_W * 1.27,
+    G.CARD_H * 1.27,
+    G.P_CARDS.empty,
+    G.P_CENTERS[key],
+    { bypass_discovery_center = true, bypass_discovery_ui = true }
+  )
+  card.cost = 0
+  card.from_tag = from_tag
+  G.FUNCS.use_card { config = { ref_table = card } }
+  card:start_materialize()
+end
+
 return M

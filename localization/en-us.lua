@@ -15,6 +15,42 @@ local enhancement_tarot_text = {
 
 return {
   descriptions = {
+    Back = {
+      b_bplus_purple = {
+        name = "Purple Deck",
+        text = {
+          "Reroll also refresh {C:attention}Booster Pack{}",
+          "reroll cost {C:money}$#1#{} more",
+        },
+      },
+      b_bplus_illusion = {
+        name = "Illusion Deck",
+        text = {
+          "Playing cards has more {C:chips}Chips",
+          "start run with {C:attention}#1#{}",
+          "random cards destroyed",
+        },
+      },
+      b_bplus_jokered = {
+        name = "Jokered Deck",
+        text = {
+          "Start with {C:money}$#1#{},",
+          "{C:attention,T:p_buffoon_jumbo_1}Jumbo Buffoon Pack{}",
+          "and {C:attention,T:v_hone}Hone{} voucher",
+        },
+      },
+      b_bplus_mysthical = {
+        name = "Mysthical Deck",
+        text = {
+          "Create a random {C:bplus_sigil}Sigil{} card",
+          "when blind is selected",
+          "{C:inactive}(Must have room)",
+          "Shop {C:attention}slot{} and Shop {C:attention}Booster",
+          "{C:attention}Pack{} has {C:attention}1{} less slot",
+        },
+      },
+    },
+
     Joker = {
       j_bplus_pickpocket = {
         name = "Pickpocket",
