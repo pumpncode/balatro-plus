@@ -36,3 +36,16 @@ if card.config.center.modify_effect then
   card.config.center:modify_effect(card, context, ret.playing_card)
 end
 """
+
+# Add some colors to loc_colour function
+[[patches]]
+[patches.pattern]
+target = "functions/misc_functions.lua"
+pattern = "G.ARGS.LOC_COLOURS = G.ARGS.LOC_COLOURS or {"
+position = "after"
+match_indent = true
+payload = """
+  eternal = G.C.ETERNAL,
+  rental = G.C.RENTAL,
+  bplus_sigil = G.C.SET.sigil,
+"""
