@@ -105,6 +105,25 @@ return {
       },
     },
 
+    Voucher = {
+      v_bplus_refund = {
+        name = "Refund",
+        text = {
+          "Earn {C:money}$#1#{} per {C:attention}choose{}",
+          "remaining when any",
+          "{C:attention}Booster Pack{} is skipped",
+        },
+      },
+      v_bplus_big_pack = {
+        name = "Big Pack",
+        text = {
+          "{C:attention}Booster Pack{} has",
+          "{C:attention}+#1#{} choose and",
+          "{C:attention}+#2#{} card slot",
+        },
+      },
+    },
+
     sigil = {
       c_bplus_sigil_blank = {
         name = "Blank",
