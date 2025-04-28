@@ -8,24 +8,6 @@ function pairs(t)
   end
 end
 
-function BPlus.apply_metatable_to_probabilities(go)
-  go.real_probabilities = go.probabilities
-  go.probabilities = setmetatable({}, {
-    __index = function(_, k)
-      if G.GAME and G.GAME.blind and not G.GAME.blind.disabled and G.GAME.blind.name == "bl_bplus_thirteen" then
-        return 0
-      end
-      return G.GAME.real_probabilities[k]
-    end,
-    __newindex = function(_, k, v)
-      go.real_probabilities[k] = v
-    end,
-    __pairs = function()
-      return next, G.GAME.real_probabilities, nil
-    end,
-  })
-end
-
 local game_init_game_object = Game.init_game_object
 function Game:init_game_object()
   local ret = game_init_game_object(self)
@@ -118,4 +100,38 @@ function Card:calculate_seal(ctx)
   end
 
   return ret
+end
+
+local old_localize = localize
+function localize(args, misc_cat)
+  if type(args.key) == "table" and args.key.bplus_custom then
+    return args.key.bplus_custom(args, misc_cat)
+  end
+
+  if args.key == "bplus_food_jokers" then
+    if args.nodes then
+      args.nodes[#args.nodes + 1] = BPlus.food_jokers_tooltip()
+      return
+    else
+      return "Food Jokers"
+    end
+  else
+    return old_localize(args, misc_cat)
+  end
+end
+
+local center_overrides = {
+  j_gros_michel = { bplus_food_joker = true },
+  j_egg = { bplus_food_joker = true },
+  j_ice_cream = { bplus_food_joker = true },
+  j_cavendish = { bplus_food_joker = true },
+  j_turtle_bean = { bplus_food_joker = true },
+  j_popcorn = { bplus_food_joker = true },
+  j_ramen = { bplus_food_joker = true },
+}
+
+for key, override in pairs(center_overrides) do
+  for field, value in pairs(override) do
+    G.P_CENTERS[key][field] = value
+  end
 end

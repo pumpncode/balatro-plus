@@ -1,5 +1,12 @@
 {
   "workspace.library": [
-    "src"
+    "src",
+    "../Steamodded/lsp_def"
+  ],
+  "diagnostics.globals": [
+    "G"
+  ],
+  "diagnostics.disable": [
+      "lowercase-global"
   ]
 }

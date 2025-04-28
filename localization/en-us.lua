@@ -52,11 +52,13 @@ return {
     },
 
     Joker = {
-      j_bplus_pickpocket = {
-        name = "Pickpocket",
+      j_bplus_hungry = {
+        name = "Hungry Joker",
         text = {
-          "Choose one more card when",
-          "opening any {C:attention}Booster pack{}",
+          "At the {C:attention}end of shop{} destroy all",
+          "{C:attention}Food Jokers{} and gain {X:mult,C:white} X1 {} Mult",
+          "for each destroyed joker",
+          "{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)",
         },
       },
     },
