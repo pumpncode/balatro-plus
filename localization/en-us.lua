@@ -86,6 +86,46 @@ return {
           "become {C:dark_edition}negative",
         },
       },
+      j_bplus_treasure_map = {
+        name = "Treasure Map",
+        text = {
+          "Earn {C:money}$#1#{} up to {C:money}$#2#{}",
+          "every {C:attention}#3#{} trigger",
+          "{C:inactive}(#4#){}",
+        },
+      },
+      j_bplus_magnifying_glass = {
+        name = "Magnifying Glass",
+        text = {
+          "Add {C:attention}triple{} of each",
+          "played {C:attention}2{} and {C:attention}3{} Chips",
+          "value to the {C:chips}Chips{}",
+        },
+      },
+      j_bplus_crown = {
+        name = "Crown",
+        text = {
+          "Gain {X:mult,C:white} X#1# {} Mult when",
+          "playing {C:attention}Royal Flush{}",
+          "{C:inactive}(Currently {X:mult,C:white} X#2# {}{C:inactive} Mult)",
+        },
+      },
+      j_bplus_pickpocket = {
+        name = "Pickpocket",
+        text = {
+          "Choose one more card when",
+          "opening any {C:attention}Booster pack{}",
+        },
+      },
+      j_bplus_four_leaf_clover = {
+        name = "4 Leaf Clover",
+        text = {
+          "{X:green,C:white} X4 {} all {C:green,E:1,s:1.1}probabilities{} after",
+          "playing hand that is contain",
+          "exactly {C:attention}4{} {C:clubs}Clubs{}, inactive",
+          "after {C:attention}Boss Blind{} is defeated",
+        },
+      },
     },
 
     Tarot = {
