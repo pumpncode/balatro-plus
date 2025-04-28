@@ -124,6 +124,78 @@ return {
       },
     },
 
+    Blind = {
+      bl_bplus_loop = {
+        name = "The Loop",
+        text = {
+          "Set score to 0 if score",
+          "is less than required",
+        },
+      },
+      bl_bplus_extra = {
+        name = "The Extra",
+        text = {
+          "Each hand played add",
+          "random normal card",
+        },
+      },
+      bl_bplus_low = {
+        name = "The Low",
+        text = {
+          "Played cards enhancement",
+          "are removed",
+        },
+      },
+      bl_bplus_hammer = {
+        name = "The Hammer",
+        text = {
+          "Destroy 1 random card",
+          "every hand drawn",
+        },
+      },
+      bl_bplus_thunder = {
+        name = "The Thunder",
+        text = {
+          "Score more for each",
+          "Jokers you have",
+        },
+      },
+      bl_bplus_brake = {
+        name = "The Brake",
+        text = {
+          "Cannot play/discard",
+          "consecutively",
+        },
+      },
+      bl_bplus_lazy = {
+        name = "The Lazy",
+        text = {
+          "Retrigger effects",
+          "are not allowed",
+        },
+      },
+      bl_bplus_scales = {
+        name = "The Scales",
+        text = {
+          "Loss $1 for each",
+          "cards held in hend",
+        },
+      },
+      bl_bplus_thirteen = {
+        name = "The 13",
+        text = {
+          "All probabilities are 0",
+        },
+      },
+      bl_bplus_handcuffs = {
+        name = "The Handcuffs",
+        text = {
+          "Debuff all cards held in",
+          "hand per hand played",
+        },
+      },
+    },
+
     Tag = {
       tag_bplus_glow = {
         name = "Glow Tag",
@@ -137,14 +209,6 @@ return {
         text = {
           "{C:blue}+#1#{} Hands",
           "next round",
-        },
-      },
-      tag_bplus_dish = {
-        name = "Dish Tag",
-        text = {
-          "Create random",
-          "{C:attention}Food Joker",
-          "{C:inactive}(Must have room)",
         },
       },
       tag_bplus_collector = {
@@ -162,6 +226,14 @@ return {
         text = {
           "Adds {C:attention}#1# Booster Pack",
           "to the next shop",
+        },
+      },
+      tag_bplus_dish = {
+        name = "Dish Tag",
+        text = {
+          "Create random",
+          "{C:attention}Food Joker",
+          "{C:inactive}(Must have room)",
         },
       },
       tag_bplus_bounty = {

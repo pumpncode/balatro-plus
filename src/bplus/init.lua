@@ -59,3 +59,4 @@ BPlus.u.load_object("consumable/tarot", SMODS.Consumable, { set = "Tarot", cost 
 BPlus.u.load_object("deck", SMODS.Back)
 BPlus.u.load_object("voucher", SMODS.Voucher, { asset_row = 6 })
 BPlus.u.load_object("tag", SMODS.Tag, { asset_row = 6, px = 34, py = 34 })
+BPlus.u.load_object("blind", SMODS.Blind, { asset_row = 1, px = 34, py = 34, frames = 21 })

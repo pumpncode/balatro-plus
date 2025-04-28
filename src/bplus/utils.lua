@@ -12,6 +12,8 @@ function M.load_object(dir, fn, opt)
     px = opt.px or 71,
     py = opt.py or 95,
     path = dir .. ".png",
+    frames = opt.frames,
+    atlas_table = opt.frames and "ANIMATION_ATLAS",
   }
 
   local absdir = BPlus.path .. "/src/bplus/" .. dir

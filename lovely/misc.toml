@@ -49,3 +49,49 @@ payload = """
   rental = G.C.RENTAL,
   bplus_sigil = G.C.SET.sigil,
 """
+
+# Remove metatable from G.GAME.probabities for save table
+[[patches]]
+[patches.pattern]
+target = "functions/misc_functions.lua"
+pattern = "G.culled_table =  recursive_table_cull{"
+position = "before"
+match_indent = true
+payload = """
+local probabilities = G.GAME.probabilities
+G.GAME.probabilities = G.GAME.real_probabilities
+G.GAME.real_probabilities = nil
+"""
+
+[[patches]]
+[patches.pattern]
+target = "functions/misc_functions.lua"
+pattern = "G.ARGS.save_run = G.culled_table"
+position = "before"
+match_indent = true
+payload = """
+G.GAME.real_probabilities = G.GAME.probabilities
+G.GAME.probabilities = probabilities
+"""
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "function Game:start_run(args)"
+position = "after"
+match_indent = true
+payload = """
+if args and args.savetext then
+  BPlus.apply_metatable_to_probabilities(args.savetext.GAME)
+end
+"""
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "if amt > 0 or amt < 0 then"
+position = "before"
+match_indent = true
+payload = """
+if extra then text = extra.message or text end
+"""
