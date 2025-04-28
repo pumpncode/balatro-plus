@@ -1,0 +1,22 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# Space Invader Joker ability
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "if self.seal == 'Blue' and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit and not self.ability.extra_enhancement then"
+position = "at"
+match_indent = true
+payload = """
+local has_space_invader = next(find_joker("j_bplus_space_invader"))
+if self.seal == 'Blue' and (
+  (#G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit and not self.ability.extra_enhancement)
+  or has_space_invader
+) then
+  if has_space_invader then
+    G.GAME.consumeable_buffer = G.GAME.consumeable_buffer - 1
+  end
+"""

@@ -61,6 +61,31 @@ return {
           "{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)",
         },
       },
+      j_bplus_blackjack = {
+        name = "Blackjack",
+        text = {
+          "Gains {C:chips}#1#{} Chips if played",
+          "hand is {C:attention}Blackjack{}",
+          "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)",
+        },
+      },
+      j_bplus_calculator = {
+        name = "Calculator",
+        text = {
+          "If all played cards is",
+          "{C:attention}numbered{} card {C:inactive}(2 to 10){},",
+          "add the sum of all played",
+          "cards to the {C:mult}Mult",
+        },
+      },
+      j_bplus_space_invader = {
+        name = "Space Invader",
+        text = {
+          "{C:planet}Planet{} card added",
+          "to {C:attention}Consumable slot{}",
+          "become {C:dark_edition}negative",
+        },
+      },
     },
 
     Tarot = {
