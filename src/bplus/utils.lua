@@ -83,13 +83,6 @@ function M.load_consumable(dir, opt)
   SMODS.ConsumableType(ct)
 end
 
-function M.status_text(card, text, colour)
-  card_eval_status_text(card, "jokers", nil, nil, nil, {
-    message = text,
-    colour = colour,
-  })
-end
-
 function M.joker_destroyed_trigger(jokers)
   for _, card in ipairs(G.jokers.cards) do
     card:calculate_joker { joker_destroyed = true, destroyed_cards = jokers }

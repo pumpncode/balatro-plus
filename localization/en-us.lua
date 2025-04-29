@@ -126,6 +126,91 @@ return {
           "after {C:attention}Boss Blind{} is defeated",
         },
       },
+      j_bplus_toilet = {
+        name = "Toilet",
+        text = {
+          "Gain {C:chips}Chips{} from half {C:chips}Chips{}",
+          "value of {C:attention}Flush{} poker hand",
+          "when {C:attention}Flush{} is discarded",
+          "{s:0.8}only work once each round{}",
+          "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)",
+        },
+      },
+      j_bplus_boxer = {
+        name = "Boxer",
+        text = {
+          "Gives {X:mult,C:white} X#1# {} for each",
+          "remaining {C:blue}hands{} above {C:attention}#2#",
+          "{C:inactive}(Currently {X:mult,C:white} X#3# {C:inactive} Mult)",
+        },
+      },
+      j_bplus_memory_card = {
+        name = "Memory Card",
+        text = {
+          "Save remaining {C:blue}hand",
+          "for next round",
+          "{C:inactive}({C:blue}#1#{C:inactive}/{C:blue}#2#{C:inactive} Saved)",
+        },
+      },
+      j_bplus_jim130 = {
+        name = "Joker JIM130",
+        text = {
+          "Gain {X:mult,C:white} X#1# {} each",
+          "triggered {C:attention}Steel Card",
+          "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
+        },
+      },
+      j_bplus_archeologist = {
+        name = "Archeologist",
+        text = {
+          "Gain {C:mult}#1#{} Mult for every {C:spades}Spade",
+          "cards in your {C:attention}full hand",
+          "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
+        },
+      },
+      j_bplus_golden_cheese = {
+        name = "Golden Cheese",
+        text = {
+          "Earn {C:money}$#1#{} at the end",
+          "of round, loss {C:money}$#2#",
+          "each blind is {C:attention}skipped",
+        },
+      },
+      j_bplus_anonymous_mask = {
+        name = "Anonymous Mask",
+        text = {
+          "All {C:attention}face cards{}",
+          "can't be {C:red}debuffed{}",
+        },
+      },
+      j_bplus_santa_claus = {
+        name = "Santa Claus",
+        text = {
+          "Each {C:attention}#1#{} rounds played give",
+          "a {C:dark_edition}negative{} {C:red}Rare{} Joker",
+          "at the end of round",
+          "{C:inactive}(#2#)",
+        },
+      },
+      j_bplus_shopping_bill = {
+        name = "Shopping Bill",
+        text = {
+          "All {C:attention}numbered{} cards held in",
+          "hand at the end of round",
+          "have {C:green}#1# in #2#{} chance to earn",
+          "{C:attention}rank{} value of card {C:money}dollars{}",
+        },
+      },
+      j_bplus_ufo = {
+        name = "UFO",
+        text = {
+          "Gain {C:chips}+#1#{} Chips for each",
+          "{C:attention}unique{} {C:planet}Planet{} card on",
+          "your {C:attention}consumables{} slot at",
+          "the end of the {C:attention}shop",
+          "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)",
+        },
+      },
     },
 
     Tarot = {
@@ -515,6 +600,7 @@ return {
     },
 
     v_dictionary = {
+      k_bplus_saved_ex = "#1# Saved!",
       k_bplus_plus_choose_ex = "+#1# Choose!",
       k_bplus_plus_sigil_ex = "+#1# Sigil!",
     },

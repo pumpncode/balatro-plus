@@ -20,6 +20,10 @@ function BPlus.mod.reset_game_globals()
 end
 
 function BPlus.mod.set_debuff(card)
+  if next(find_joker("j_bplus_anonymous_mask")) and card:is_face() then
+    return "prevent_debuff"
+  end
+
   if card.ability.bplus_debuffed_by_sigil_froze and card.ability.bplus_debuffed_by_sigil_froze > 0 then
     return true
   end
