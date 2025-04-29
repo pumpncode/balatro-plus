@@ -211,6 +211,45 @@ return {
           "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)",
         },
       },
+      j_bplus_zombie_hand = {
+        name = "Zombie Hand",
+        text = {
+          "Level up played {C:attention}poker hand{}",
+          "by {C:attention}#1#{} level on final hand",
+        },
+      },
+      j_bplus_jackpot = {
+        name = "Jackpot",
+        text = {
+          "Gain {C:mult}+#1#{} Mult every {C:attention}#2#{} {C:inactive}[#5#]",
+          "times {C:attention}#3#{} is triggered",
+          "{C:inactive}(Currently {C:mult}+#4#{C:inactive} Mult)",
+        },
+      },
+      j_bplus_snowman = {
+        name = "Snowman",
+        text = {
+          "{C:chips}+#1#{} Chips and gain {C:chips}+#2#",
+          "Chips for each cards",
+          "{C:attention}held in hand{}, resets",
+          "at the end of round",
+        },
+      },
+      j_bplus_trash_can = {
+        name = "Trash Can",
+        text = {
+          "Retrigger all card",
+          "{C:red}discard{} ability",
+        },
+      },
+      j_bplus_blacksmith = {
+        name = "Blacksmith",
+        text = {
+          "Gains {C:chips}+#1#{} Chips when",
+          "enhancing card",
+          "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)",
+        },
+      },
     },
 
     Tarot = {

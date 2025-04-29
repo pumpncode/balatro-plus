@@ -10,7 +10,7 @@ return {
 
   calculate = function(_, _, ctx)
     if
-      ctx.card_added
+      ctx.bplus_card_added
       and ctx.cardarea == G.consumeables
       and ctx.other_card.config.center.set == "Planet"
     then

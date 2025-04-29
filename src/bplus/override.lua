@@ -25,7 +25,7 @@ local cardarea_emplace = CardArea.emplace
 function CardArea:emplace(card, location, stay_flipped)
   if G.jokers then
     for _, j in ipairs(G.jokers.cards) do
-      j:calculate_joker { card_added = true, other_card = card, cardarea = self }
+      j:calculate_joker { bplus_card_added = true, other_card = card, cardarea = self }
     end
   end
   for _, t in ipairs(G.GAME.tags or {}) do

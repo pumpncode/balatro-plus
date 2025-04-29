@@ -95,3 +95,97 @@ match_indent = true
 payload = """
 if extra then text = extra.message or text end
 """
+
+# Add 'bplus_enhance' context for Joker trigger
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "local old_center = self.config.center"
+position = "before"
+match_indent = true
+payload = """
+if not initial then
+  if G.jokers and not self._bplus_copying_card and self.config.card.name and center ~= G.P_CENTERS.c_base then
+    SMODS.calculate_context { bplus_enhance = true, other_card = self, from = self.config.center, to = center }
+  end
+end
+"""
+
+# Prevent copy_card to triggering 'bplus_enhance' context for joker trigger
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "new_card:set_ability(other.config.center)"
+position = "at"
+match_indent = true
+payload = """
+new_card._bplus_copying_card = true
+new_card:set_ability(other.config.center)
+new_card._bplus_copying_card = nil
+"""
+
+# Add 'repetition' for discard
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "-- TARGET: pre_discard"
+position = "after"
+match_indent = true
+payload = """
+local reps = {0}
+for _, card in ipairs(G.hand.highlighted) do
+  local rep = card:calculate_seal { repetition = true }
+  if rep and rep.repetitions and rep.repetitions > 0 then
+    for _ = 1, rep.repetitions do
+      if not rep.card then rep.card = card end
+      reps[#reps+1] = rep
+    end
+  end
+end
+
+for _, joker in ipairs(G.jokers.cards) do
+  local rep = joker:calculate_joker { bplus_discard_repetition = true }
+  if rep and rep.repetitions and rep.repetitions > 0 then
+    for _ = 1, rep.repetitions do
+      reps[#reps+1] = rep
+    end
+  end
+end
+"""
+
+# TODO: don't show 'Again!' message if nothing is triggered
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "for i=1, highlighted_count do"
+position = "after"
+match_indent = true
+payload = """
+local removed = false
+for _, rep in ipairs(reps) do
+  if removed then break end
+  if rep ~= 0 then
+    card_eval_status_text(rep.card or G.hand.highlighted[i], 'extra', nil, nil, nil, {
+      message = rep.message or localize('k_again_ex'),
+      colour = rep.colour or G.C.ORANGE,
+    })
+  end
+"""
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "local removed = false"
+position = "at"
+match_indent = true
+payload = ""
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "table.insert(cards, G.hand.highlighted[i])"
+position = "after"
+match_indent = true
+payload = """
+end
+"""

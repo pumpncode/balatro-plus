@@ -85,7 +85,7 @@ end
 
 function M.joker_destroyed_trigger(jokers)
   for _, card in ipairs(G.jokers.cards) do
-    card:calculate_joker { joker_destroyed = true, destroyed_cards = jokers }
+    card:calculate_joker { bplus_joker_destroyed = true, destroyed_cards = jokers }
   end
 end
 
