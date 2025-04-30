@@ -96,7 +96,7 @@ payload = """
 if extra then text = extra.message or text end
 """
 
-# Add 'bplus_enhance' context for Joker trigger
+# Add 'bplus_enhance' context for trigger
 [[patches]]
 [patches.pattern]
 target = "card.lua"
@@ -111,7 +111,7 @@ if not initial then
 end
 """
 
-# Prevent copy_card to triggering 'bplus_enhance' context for joker trigger
+# Prevent copy_card to triggering 'bplus_enhance' context for trigger
 [[patches]]
 [patches.pattern]
 target = "functions/common_events.lua"

@@ -292,6 +292,47 @@ return {
           "{C:inactive}(Must have room)",
         },
       },
+      j_bplus_potato_chips = {
+        name = "Potato Chips",
+        text = {
+          "{C:chips}+#1#{} Chips",
+          "{C:chips}-#2#{} Chips for",
+          "every card trigger",
+        },
+      },
+      j_bplus_membership_card = {
+        name = "Membership Card",
+        text = {
+          "Reduce {C:attention}Premium Card",
+          "cost by {C:money}$#1#{}",
+        },
+      },
+      j_bplus_art_exhibition = {
+        name = "Art Exhibition",
+        text = {
+          "Gains {C:chips}+#1#{} Chips for",
+          "each {C:attention}Framed Cards",
+          "in your {C:attention}played hand",
+          "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)",
+        },
+      },
+      j_bplus_wizard = {
+        name = "Wizard",
+        text = {
+          "After {C:attention}#1#{} {C:inactive}[#2#]{} cards destroyed",
+          "create a random {C:bplus_sigil}Sigil{} card",
+          "when blind is selected",
+          "{C:inactive}(Must have room)",
+        },
+      },
+      j_bplus_seller = {
+        name = "Seller",
+        text = {
+          "Earn {C:attention}sell value{} of",
+          "Joker to the {C:attention}right{} at",
+          "the end of round",
+        },
+      },
     },
 
     Tarot = {
