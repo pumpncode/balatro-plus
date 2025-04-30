@@ -189,3 +189,68 @@ match_indent = true
 payload = """
 end
 """
+
+# Add 'bplus_joker_destroyed' context for trigger
+[[patches]]
+[patches.regex]
+target = "functions/state_events.lua"
+pattern = '''(?<indent>[ \t])*G\.E_MANAGER:add_event\(Event\(\{
+[ \t]*trigger = 'immediate',
+[ \t]*func = function\(\)
+[ \t]*G\.STATE = G\.STATES\.DRAW_TO_HAND
+'''
+line_prepend = "$indent"
+position = "before"
+payload = """
+local destroyed_jokers = {}
+for _, card in ipairs(G.jokers.cards) do
+  if BPlus.u.getting_destroyed(card) then
+    destroyed_jokers[#destroyed_jokers + 1] = card
+  end
+end
+
+if next(destroyed_jokers) then
+  SMODS.calculate_context { bplus_joker_destroyed = true, destroyed_cards = destroyed_jokers }
+end
+
+"""
+
+[[patches]]
+[patches.regex]
+target = "card.lua"
+pattern = '''(?<indent>[ \t])*G\.E_MANAGER:add_event\(Event\(\{trigger = 'before', delay = 0\.75, func = function\(\)
+[ \t]*for k, v in pairs\(deletable_jokers\) do
+'''
+line_prepend = "$indent"
+position = "before"
+payload = """
+SMODS.calculate_context { bplus_joker_destroyed = true, destroyed_cards = deletable_jokers }
+"""
+
+[[patches]]
+[patches.regex]
+target = "card.lua"
+pattern = '''[ \t]*for k, v in pairs\(G\.jokers\.cards\) do
+[ \t]*if v ~= eligible_card and \(not v\.ability\.eternal\) then v:start_dissolve\(nil, _first_dissolve\);_first_dissolve = true end
+[ \t]*end
+'''
+position = "at"
+payload = """
+local destroyed_jokers = {}
+for k, v in pairs(G.jokers.cards) do
+  if v ~= eligible_card and (not v.ability.eternal) then
+    destroyed_jokers[#destroyed_jokers + 1] = v
+  end
+end
+
+SMODS.calculate_context { bplus_joker_destroyed = true, destroyed_cards = destroyed_jokers }
+G.E_MANAGER:add_event(Event {
+  func = function()
+    for _, card in ipairs(destroyed_jokers) do
+      card:start_dissolve(nil, _first_dissolve)
+      _first_dissolve = true
+    end
+    return true
+  end
+})
+"""

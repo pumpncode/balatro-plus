@@ -333,6 +333,55 @@ return {
           "the end of round",
         },
       },
+      j_bplus_chance_card = {
+        name = "Chance Card",
+        text = {
+          "{C:green}#1# in #2#{} chance to",
+          "{C:attention}retrigger{} played card",
+        },
+      },
+      j_bplus_paper_shredder = {
+        name = "Paper Shredder",
+        text = {
+          "After hand played {C:red}destroy{} the",
+          "{C:attention}right most{} card in your {C:attention}played",
+          "cards and gain {C:mult}+#1#{} Mult",
+          "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
+        },
+      },
+      j_bplus_meteor = {
+        name = "Meteor",
+        text = {
+          "Upgrade a random {C:attention}poker",
+          "{C:attention}hand{} when blind is",
+          "selected",
+        },
+      },
+      j_bplus_jumbo = {
+        name = "Jumbo",
+        text = {
+          "Give {X:mult,C:white} X#1# {} Mult, destroy",
+          "{C:attention}right most{} joker if",
+          "there is no {C:attention}empty{} space",
+          "when blind is selected",
+        },
+      },
+      j_bplus_blured = {
+        name = "Blured Joker",
+        text = {
+          "All {V:1}#1#{} is",
+          "also a {V:2}#2#",
+          "{s:0.8}changes every round",
+        },
+      },
+      j_bplus_murderer = {
+        name = "Murderer",
+        text = {
+          "Gain {X:mult,C:white} X#1# {} Mult when",
+          "Joker is destroyed",
+          "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
+        },
+      },
     },
 
     Tarot = {

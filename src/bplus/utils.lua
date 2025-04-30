@@ -18,12 +18,12 @@ function M.load_object(dir, fn, opt)
 
   local absdir = BPlus.path .. "/src/bplus/" .. dir
   for _, fname in ipairs(NFS.getDirectoryItems(absdir)) do
-    local atlas_number, soul_number, id = fname:match("^(%d+):?(%d*)_([^.]+)%.lua$")
+    local atlas_number, soul_number, id = fname:match("^(%d*):?(%d*)_?([^.]+)%.lua$")
     atlas_number = tonumber(atlas_number)
     soul_number = tonumber(soul_number)
     local obj = load(NFS.read(absdir .. "/" .. fname), fname, "t", _G)()
 
-    if not obj.atlas then
+    if not obj.atlas and atlas_number then
       local n = atlas_number
       obj.atlas = atlas
       local x = n % row
@@ -188,6 +188,16 @@ function M.get_editions(filter)
     end
   end
   return editions
+end
+
+function M.has_empty_joker_space()
+  local empty_space = G.jokers.config.card_limit - #G.jokers.cards
+  for _, c in ipairs(G.jokers.cards) do
+    if M.getting_destroyed(c) or c.ability.name == G.P_CENTERS.j_stencil.name then
+      empty_space = empty_space + 1
+    end
+  end
+  return empty_space > 0
 end
 
 return M
