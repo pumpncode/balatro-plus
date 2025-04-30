@@ -250,6 +250,48 @@ return {
           "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)",
         },
       },
+      j_bplus_wheel = {
+        name = "Wheel",
+        text = {
+          "Gain {X:mult,C:white} X#1# {} each discarded",
+          "cards, resets after",
+          "playing a {C:blue}hand",
+          "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
+        },
+      },
+      j_bplus_fragile = {
+        name = "Fragile",
+        text = {
+          "{C:attention}Glass Card{} is",
+          "destroyed when",
+          "{C:red}discarded{}",
+        },
+      },
+      j_bplus_stone_skipping = {
+        name = "Stone Skipping",
+        text = {
+          "Give {X:mult,C:white} X#1# {} Mult when {C:attention}Stone Card{}",
+          "is triggered, increase {X:mult,C:white} X#2# {}",
+          "per {C:attention}Stone Card{} triggered,",
+          "reset after playing hand",
+        },
+      },
+      j_bplus_stone_carving = {
+        name = "Stone Carving",
+        text = {
+          "All {C:attention}Stone Card{} is",
+          "{C:attention}#1#{} of {V:1}#2#",
+          "{s:0.8}Card changes every round",
+        },
+      },
+      j_bplus_chef = {
+        name = "Chef",
+        text = {
+          "Create a {C:attention}Food Joker",
+          "when blind is {C:attention}selected",
+          "{C:inactive}(Must have room)",
+        },
+      },
     },
 
     Tarot = {

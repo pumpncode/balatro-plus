@@ -153,6 +153,14 @@ for _, joker in ipairs(G.jokers.cards) do
 end
 """
 
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "local removed = false"
+position = "at"
+match_indent = true
+payload = ""
+
 # TODO: don't show 'Again!' message if nothing is triggered
 [[patches]]
 [patches.pattern]
@@ -171,14 +179,6 @@ for _, rep in ipairs(reps) do
     })
   end
 """
-
-[[patches]]
-[patches.pattern]
-target = "functions/state_events.lua"
-pattern = "local removed = false"
-position = "at"
-match_indent = true
-payload = ""
 
 [[patches]]
 [patches.pattern]

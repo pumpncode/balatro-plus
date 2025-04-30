@@ -76,6 +76,48 @@ function Blind:hand_played()
   end
 end
 
+local card_is_suit = Card.is_suit
+function Card:is_suit(suit, bypass_debuff, flush_calc)
+  if flush_calc then
+    if SMODS.has_enhancement(self, "m_stone") and not self.debuff and next(find_joker("j_bplus_stone_carving")) then
+      return G.GAME.current_round.bplus_stone_carving_card.suit == suit
+    end
+
+    if not self.debuff and next(find_joker("j_bplus_blured")) then
+      local blured_suit
+      local transform = G.GAME.current_round.bplus_blured_suit
+      if self.base.suit == transform.from then
+        blured_suit = transform.to
+      end
+      return self.base.suit == suit or blured_suit == suit
+    end
+  else
+    if self.debuff and not bypass_debuff then return end
+
+    if self.ability.name == G.P_CENTERS.m_stone.name and next(find_joker("j_bplus_stone_carving")) then
+      return G.GAME.current_round.bplus_stone_carving_card.suit == suit
+    end
+
+    if next(find_joker("j_bplus_blured")) then
+      local blured_suit
+      local transform = G.GAME.current_round.bplus_blured_suit
+      if self.base.suit == transform.from then
+        blured_suit = transform.to
+      end
+      return self.base.suit == suit or blured_suit == suit
+    end
+  end
+  return card_is_suit(self, suit, bypass_debuff, flush_calc)
+end
+
+local card_get_id = Card.get_id
+function Card:get_id()
+  if SMODS.has_enhancement(self, "m_stone") and not self.debuff and next(find_joker("j_bplus_stone_carving")) then
+    return G.GAME.current_round.bplus_stone_carving_card.id
+  end
+  return card_get_id(self)
+end
+
 local card_calculate_joker = Card.calculate_joker
 function Card:calculate_joker(ctx)
   local ret = card_calculate_joker(self, ctx)
