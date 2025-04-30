@@ -382,6 +382,47 @@ return {
           "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
         },
       },
+      j_bplus_scorched = {
+        name = "Scorched Joker",
+        text = {
+          "Gain {X:mult,C:white} X#1# {} Mult when",
+          "{C:attention}Burned Card{} is burned",
+          "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
+        },
+      },
+      j_bplus_not_found = {
+        name = "Joker Not Found",
+        text = {
+          "{C:blue}Common{} Jokers no longer",
+          "{C:attention}appear{} in the {C:attention}shop",
+        },
+      },
+      j_bplus_puzzle = {
+        name = "Puzzle",
+        text = {
+          "Gain {C:chips}+#1#{} Chips if",
+          "{C:attention}scoring{} hand contains",
+          "{C:attention}#2#{} of {V:1}#3#",
+          "{s:0.8}Card changes after gain chips",
+          "{C:inactive}(Currently {C:chips}+#4#{C:inactive} Chips)",
+        },
+      },
+      j_bplus_rgb = {
+        name = "RGB Joker",
+        text = {
+          "{C:mult}+#1#{} Mult if scoring",
+          "hand contains {C:attention}exactly",
+          "{C:attention}3{} different {C:attention}suits",
+        },
+      },
+      j_bplus_newspaper = {
+        name = "Newspaper",
+        text = {
+          "Each played {C:attention}#1#",
+          "gives {C:mult}+#2#{} Mult",
+          "{s:0.8}Rank changes every round",
+        },
+      },
     },
 
     Tarot = {

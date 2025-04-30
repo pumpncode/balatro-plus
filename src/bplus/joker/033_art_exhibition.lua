@@ -15,7 +15,7 @@ return {
     if ctx.before and not ctx.blueprint then
       local framed_cards = 0
       for _, c in ipairs(ctx.full_hand) do
-        if c.ability.name == "m_bplus_framed" then
+        if SMODS.has_enhancement(c, "m_bplus_framed") then
           framed_cards = framed_cards + 1
         end
       end

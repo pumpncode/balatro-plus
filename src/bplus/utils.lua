@@ -200,4 +200,34 @@ function M.has_empty_joker_space()
   return empty_space > 0
 end
 
+function M.poll_rarity(pool_key, rand_key, opt)
+  opt = opt or {}
+  local _rarities = SMODS.ObjectTypes[pool_key].rarities
+  local rarities = {}
+  local total_weight = 0
+
+  for _, _rarity in ipairs(_rarities) do
+    if not opt.filter or opt.filter(_rarity) then
+      local mod = G.GAME[tostring(_rarity.key):lower() .. "_mod"] or 1
+      local rarity = { weight = _rarity.weight, key = _rarity.key }
+      local r = SMODS.Rarities[rarity.key]
+      if r and type(r.get_weight) == "function" then
+        rarity.weight = r:get_weight(rarity.weight, SMODS.ObjectTypes[pool_key])
+      end
+      rarity.weight = rarity.weight * mod
+      total_weight = total_weight + rarity.weight
+      rarities[#rarities + 1] = rarity
+    end
+  end
+
+  local poll = pseudorandom(pseudoseed(rand_key)) * total_weight
+  local cur_weight = 0
+  for _, rarity in ipairs(rarities) do
+    cur_weight = cur_weight + rarity.weight
+    if poll <= cur_weight then
+      return ({ Common = 1, Uncommon = 2, Rare = 3, Legendary = 4 })[rarity.key] or rarity.key
+    end
+  end
+end
+
 return M

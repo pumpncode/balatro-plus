@@ -254,3 +254,25 @@ G.E_MANAGER:add_event(Event {
   end
 })
 """
+
+# Trigger effect when destroyed playing card on hand
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "G.FUNCS.draw_from_hand_to_discard()"
+position = "before"
+match_indent = true
+payload = """
+local destroyed_cards = {}
+for _, c in ipairs(G.hand.cards) do
+  if BPlus.u.getting_destroyed(c) then
+    destroyed_cards[#destroyed_cards + 1] = c
+  end
+end
+if next(destroyed_cards) then
+  for i = 1, #G.jokers.cards do
+    G.jokers.cards[i]:calculate_joker({remove_playing_cards = true, removed = destroyed_cards})
+  end
+end
+
+"""
