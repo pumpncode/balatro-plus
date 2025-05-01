@@ -423,6 +423,13 @@ return {
           "{s:0.8}Rank changes every round",
         },
       },
+      j_bplus_time_machine = {
+        name = "Time Machine",
+        text = {
+          "Sell this card to",
+          "{C:attention}#1#{} ante",
+        },
+      },
     },
 
     Tarot = {
