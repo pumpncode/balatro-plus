@@ -430,6 +430,13 @@ return {
           "{C:attention}#1#{} ante",
         },
       },
+      j_bplus_add_4 = {
+        name = "Add 4",
+        text = {
+          "When round begins,",
+          "draw {C:attention}4{} cards",
+        },
+      },
     },
 
     Tarot = {
@@ -820,6 +827,7 @@ return {
 
     v_dictionary = {
       k_bplus_saved_ex = "#1# Saved!",
+      k_bplus_draw_ex = "Draw #1#!",
       k_bplus_plus_choose_ex = "+#1# Choose!",
       k_bplus_plus_sigil_ex = "+#1# Sigil!",
     },
