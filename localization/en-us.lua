@@ -446,6 +446,14 @@ return {
           "or {X:mult,C:white} X#4# {} Mult",
         },
       },
+      j_bplus_magnetic = {
+        name = "Magnetic Joker",
+        text = {
+          "After hand drawn,",
+          "draw 1 {C:attention}Steel Card{}",
+          "from your deck",
+        },
+      },
     },
 
     Tarot = {
