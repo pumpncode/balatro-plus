@@ -437,6 +437,15 @@ return {
           "draw {C:attention}4{} cards",
         },
       },
+      j_bplus_in_a_box = {
+        name = "Joker In a Box",
+        text = {
+          "Give {C:mult}+#1#{} Mult",
+          "or {C:chips}+#2#{} Chips",
+          "or {C:money}+#3#{} dollars",
+          "or {X:mult,C:white} X#4# {} Mult",
+        },
+      },
     },
 
     Tarot = {
