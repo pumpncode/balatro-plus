@@ -423,6 +423,37 @@ return {
           "{s:0.8}Rank changes every round",
         },
       },
+      j_bplus_time_machine = {
+        name = "Time Machine",
+        text = {
+          "Sell this card to",
+          "{C:attention}#1#{} ante",
+        },
+      },
+      j_bplus_add_4 = {
+        name = "Add 4",
+        text = {
+          "When round begins,",
+          "draw {C:attention}4{} cards",
+        },
+      },
+      j_bplus_in_a_box = {
+        name = "Joker In a Box",
+        text = {
+          "Give {C:mult}+#1#{} Mult",
+          "or {C:chips}+#2#{} Chips",
+          "or {C:money}+#3#{} dollars",
+          "or {X:mult,C:white} X#4# {} Mult",
+        },
+      },
+      j_bplus_magnetic = {
+        name = "Magnetic Joker",
+        text = {
+          "After hand drawn,",
+          "draw 1 {C:attention}Steel Card{}",
+          "from your deck",
+        },
+      },
     },
 
     Tarot = {
@@ -813,6 +844,7 @@ return {
 
     v_dictionary = {
       k_bplus_saved_ex = "#1# Saved!",
+      k_bplus_draw_ex = "Draw #1#!",
       k_bplus_plus_choose_ex = "+#1# Choose!",
       k_bplus_plus_sigil_ex = "+#1# Sigil!",
     },
