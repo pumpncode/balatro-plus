@@ -1,18 +1,18 @@
 return {
   config = { extra = 3 },
 
-  loc_vars = function(self, _, card)
+  loc_vars = function(_, _, card)
     return { vars = { card.ability.extra } }
   end,
 
-  can_use = function(self, card)
+  can_use = function(_, card)
     return G.hand
       and #G.hand.highlighted > 0
       and #G.hand.highlighted <= card.ability.extra
       and #G.hand.cards - #G.hand.highlighted >= #G.hand.highlighted
   end,
 
-  use = function(self, card)
+  use = function()
     local enhancement = BPlus.u.random_enhancement("c_bplus_sigil_beast_enhancement")
     local seal = BPlus.u.random_seal("c_bplus_sigil_beast_seal")
     local destroyables = {}
@@ -23,7 +23,7 @@ return {
       end
     end
 
-    for i = 1, #G.hand.highlighted do
+    for _ = 1, #G.hand.highlighted do
       local card_to_destroy = pseudorandom_element(destroyables, pseudoseed("c_bplus_sigil_beast_destroy"))
       destroyed_cards[#destroyed_cards + 1] = card_to_destroy
       G.E_MANAGER:add_event(Event {
