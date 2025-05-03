@@ -15,6 +15,12 @@ return {
   end,
 
   create_card = function(self)
-    return create_card("sigil", G.pack_cards, nil, nil, true, true, nil, "p_mysthic_normal2_card")
+    return SMODS.create_card {
+      set = "sigil",
+      area = G.pack_cards,
+      skip_materialize = true,
+      soulable = true,
+      key_append = "p_mysthic_normal1_card"
+    }
   end,
 }
