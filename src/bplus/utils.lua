@@ -90,22 +90,12 @@ function M.joker_destroyed_trigger(jokers)
 end
 
 function M.random_seal(seed_key)
-  return pseudorandom_element({
-    "Red",
-    "Blue",
-    "Purple",
-    "Gold",
-  }, pseudoseed(seed_key))
+  return SMODS.poll_seal { key = seed_key, guaranteed = true }
 end
 
 function M.random_enhancement(seed_key)
-  local enhancements = {}
-  for key, center in pairs(G.P_CENTERS) do
-    if key:match("m_.+") then
-      enhancements[#enhancements + 1] = center
-    end
-  end
-  return pseudorandom_element(enhancements, pseudoseed(seed_key))
+  local m = SMODS.poll_enhancement { key = seed_key, guaranteed = true }
+  return G.P_CENTERS[m]
 end
 
 function M.most_played_poker_hand()
@@ -128,15 +118,6 @@ function M.get_editions(filter)
     end
   end
   return editions
-end
-
-local rarity_table = {
-  0, -- Common
-  0.71, -- Uncommon
-  0.96, -- Rare
-}
-function M.rarity_to_poll(rarity)
-  return rarity_table[rarity] or 0
 end
 
 function M.getting_destroyed(c)

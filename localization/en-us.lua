@@ -123,7 +123,7 @@ return {
           "{X:green,C:white} X4 {} all {C:green,E:1,s:1.1}probabilities{} after",
           "playing hand that is contain",
           "exactly {C:attention}4{} {C:clubs}Clubs{}, inactive",
-          "after {C:attention}Boss Blind{} is defeated",
+          "after {C:attention}Boss Blind{} defeated",
         },
       },
       j_bplus_toilet = {
@@ -454,6 +454,14 @@ return {
           "from your deck",
         },
       },
+      j_bplus_fortune_cookie = {
+        name = "Fortune Cookie",
+        text = {
+          "{X:green,C:white} X#1# {} all {C:green,E:1,s:1.1}probabilities",
+          "After {C:attention}Boss Blind",
+          "defeated, loss {X:green,C:white} X1 ",
+        },
+      },
     },
 
     Tarot = {
@@ -471,7 +479,6 @@ return {
           "#3# {C:money}$#2#",
         },
       },
-
       m_bplus_framed = {
         name = "Framed Card",
         text = {
@@ -479,7 +486,6 @@ return {
           "each {C:attention}triggered",
         },
       },
-
       m_bplus_balanced = {
         name = "Balanced Card",
         text = {
@@ -487,7 +493,6 @@ return {
           "{C:chips}Chips{} and {C:mult}Mult",
         },
       },
-
       m_bplus_burned = {
         name = "Burned Card",
         text = {

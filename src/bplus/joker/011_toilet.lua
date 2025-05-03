@@ -32,7 +32,12 @@ return {
         chip_mod = card.ability.extra.chips,
         colour = G.C.CHIPS,
       }
-    elseif ctx.end_of_round and not ctx.blueprint then
+    elseif
+      ctx.end_of_round
+      and not ctx.repetition
+      and not ctx.individual
+      and not ctx.blueprint
+    then
       card.ability.extra.flushed = false
     end
   end,

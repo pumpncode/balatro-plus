@@ -58,7 +58,7 @@ return {
         SMODS.add_card {
           set = "Joker",
           area = G.jokers,
-          rarity = BPlus.u.rarity_to_poll(3),
+          rarity = "Rare",
           key_append = "c_bplus_sigil_sacre",
         }
         return true

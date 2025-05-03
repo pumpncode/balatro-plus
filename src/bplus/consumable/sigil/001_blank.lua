@@ -23,9 +23,12 @@ return {
     G.E_MANAGER:add_event(Event {
       delay = 0.5,
       func = function ()
-        local sig = create_card("sigil", G.consumeables, nil, nil, nil, nil, nil, "c_bplus_sigil_blank_card")
-        sig:add_to_deck()
-        G.consumeables:emplace(sig)
+        SMODS.add_card {
+          set = "sigil",
+          area = G.consumeables,
+          skip_materialize = true,
+          key_append = "c_bplus_sigil_blank_card",
+        }
         return true
       end
     })
