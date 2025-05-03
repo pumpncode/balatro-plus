@@ -27,7 +27,12 @@ return {
           card = ctx.other_card,
         }
       end
-    elseif not ctx.blueprint and ctx.end_of_round and not ctx.individual and not ctx.repetition then
+    elseif
+      not ctx.blueprint
+      and ctx.end_of_round
+      and not ctx.individual
+      and not ctx.repetition
+    then
       card.ability.extra.chips = 0
       return {
         message = localize("k_reset"),

@@ -57,7 +57,13 @@ return {
           colour = G.C.GREEN,
         }
       end
-    elseif ctx.end_of_round and G.GAME.blind.boss and card.ability.extra then
+    elseif
+      ctx.end_of_round
+      and G.GAME.blind.boss
+      and not ctx.individual
+      and not ctx.repetition
+      and card.ability.extra
+    then
       for k, v in pairs(G.GAME.probabilities) do
         G.GAME.probabilities[k] = v / 4
       end

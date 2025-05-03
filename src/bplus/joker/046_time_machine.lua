@@ -13,7 +13,7 @@ return {
   calculate = function(_, card, ctx)
     if ctx.selling_self then
       ease_ante(card.ability.extra)
-    elseif ctx.end_of_round and not ctx.repetition then
+    elseif ctx.end_of_round and not ctx.repetition and not ctx.individual then
       card.ability.extra = -card.ability.extra
     end
   end,
