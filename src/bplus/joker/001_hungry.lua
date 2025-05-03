@@ -13,11 +13,17 @@ return {
 
   calculate = function(_, card, ctx)
     if ctx.ending_shop and not ctx.blueprint then
-      local upgrade = false
+      local destroyed = {}
       for _, joker in ipairs(G.jokers.cards) do
         if joker.config.center.bplus_food_joker then
           joker.getting_sliced = true
-          upgrade = true
+          table.insert(destroyed, joker)
+        end
+      end
+
+      if next(destroyed) then
+        BPlus.u.joker_destroyed_trigger(destroyed)
+        for _, joker in ipairs(destroyed) do
           G.E_MANAGER:add_event(Event {
             func = function()
               play_sound("tarot1")
@@ -48,9 +54,7 @@ return {
 
           card.ability.x_mult = card.ability.x_mult + card.ability.extra
         end
-      end
 
-      if upgrade then
         card_eval_status_text(card, "extra", nil, nil, nil, {
           message = localize { type = "variable", key = "a_xmult", vars = { card.ability.x_mult } },
         })
