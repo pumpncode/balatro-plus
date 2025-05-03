@@ -44,7 +44,7 @@ return {
             set = "Joker",
             area = G.jokers,
             legendary = rarity == 4 or nil,
-            rarity = rarity ~= 4 and BPlus.u.rarity_to_poll(rarity) or nil,
+            rarity = rarity ~= 4 and (({"Common", "Uncommon", "Rare"})[rarity] or rarity) or nil,
             key_append = "c_bplus_sigil_rebirth_joker",
           }
         end

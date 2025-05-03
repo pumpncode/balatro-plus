@@ -51,7 +51,7 @@ return {
             local joker = SMODS.create_card {
               set = "Joker",
               area = G.jokers,
-              rarity = BPlus.u.rarity_to_poll(3),
+              rarity = "Rare",
               key_append = "j_bplus_santa_claus_gift",
             }
             joker:set_edition({ negative = true }, true)
