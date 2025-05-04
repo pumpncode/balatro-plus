@@ -49,6 +49,14 @@ return {
           "{C:attention}Pack{} has {C:attention}1{} less slot",
         },
       },
+      b_bplus_random = {
+        name = "Random Deck",
+        text = {
+          "Start with random {C:attention}Voucher{}",
+          "and random {C:blue}Common{} Joker",
+          "Random {C:blue}hand{} every round",
+        },
+      },
     },
 
     Joker = {
