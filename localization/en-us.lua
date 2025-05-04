@@ -845,6 +845,8 @@ return {
       k_bplus_no_retrigger = "No Retrigger",
       k_bplus_inactive_ex = "Inactive!",
       k_bplus_burn_ex = "Burn!",
+
+      ph_bplus_defeat_the_blind="Defeat the Blind",
     },
 
     v_dictionary = {
