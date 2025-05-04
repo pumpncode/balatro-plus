@@ -99,7 +99,7 @@ function M.random_enhancement(seed_key)
 end
 
 function M.most_played_poker_hand()
-  local _planet, _hand, _tally = nil, nil, 0
+  local _, _hand, _tally = nil, nil, 0
   for _, handname in ipairs(G.handlist) do
     if G.GAME.hands[handname].visible and G.GAME.hands[handname].played > _tally then
       _hand = handname
@@ -109,15 +109,8 @@ function M.most_played_poker_hand()
   return _hand
 end
 
-function M.get_editions(filter)
-  local editions = {}
-  for key, _ in pairs(G.P_CENTERS) do
-    local key = key:match("^e_(.+)")
-    if key and key ~= "base" and (not filter or filter(key)) then
-      editions[#editions + 1] = key
-    end
-  end
-  return editions
+function M.poll_edition(key, no_neg)
+  return poll_edition(key, nil, no_neg or false, true)
 end
 
 function M.getting_destroyed(c)
@@ -158,17 +151,6 @@ function M.open_pack(key, from_tag)
   card.from_tag = from_tag
   G.FUNCS.use_card { config = { ref_table = card } }
   card:start_materialize()
-end
-
-function M.get_editions(filter)
-  local editions = {}
-  for key, center in pairs(G.P_CENTERS) do
-    local key = key:match("^e_(.+)")
-    if key and key ~= "base" and (not filter or filter(key)) then
-      editions[#editions + 1] = key
-    end
-  end
-  return editions
 end
 
 function M.has_empty_joker_space()

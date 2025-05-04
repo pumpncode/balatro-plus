@@ -522,6 +522,21 @@ return {
           "{C:attention}+#2#{} card slot",
         },
       },
+      v_bplus_dash = {
+        name = "Dash",
+        text = {
+          "When {C:attention}Blind{} is",
+          "skipped, earn {C:money}$#1#{}",
+        },
+      },
+      v_bplus_rainbow = {
+        name = "Rainbow",
+        text = {
+          "When {C:attention}Blind{} is skipped,",
+          "give any {C:dark_edition}edition",
+          "to random Joker",
+        },
+      },
     },
 
     Blind = {
@@ -639,7 +654,7 @@ return {
       tag_bplus_bounty = {
         name = "Bounty Tag",
         text = {
-          "Earn {X:money,C:white}X#1#{} {C:money}dollars{} of the {C:attention}Blinds",
+          "Earn {X:money,C:white} X#1# {} {C:money}dollars{} of the {C:attention}Blinds",
           "reward when defeated",
         },
       },
@@ -845,6 +860,8 @@ return {
       k_bplus_no_retrigger = "No Retrigger",
       k_bplus_inactive_ex = "Inactive!",
       k_bplus_burn_ex = "Burn!",
+
+      ph_bplus_defeat_the_blind="Defeat the Blind",
     },
 
     v_dictionary = {

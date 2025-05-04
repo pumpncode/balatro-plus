@@ -1,8 +1,8 @@
 local function set_edition(tag, joker)
-  local edition = pseudorandom_element(BPlus.u.get_editions(), pseudoseed("tag_bplus_glow_edition"))
+  local edition = BPlus.u.poll_edition("tag_bplus_glow_edition")
   joker._edition = edition
   tag:yep("+", G.C.DARK_EDITION, function()
-    joker:set_edition({ [edition] = true }, true)
+    joker:set_edition(edition, true)
     joker._edition = nil
     return true
   end)

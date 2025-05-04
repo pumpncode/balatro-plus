@@ -27,7 +27,7 @@ return {
 
     local joker = pseudorandom_element(compat_jokers, pseudoseed("c_bplus_sigil_curse_joker"))
     if _edition then
-      local edition = poll_edition("c_bplus_sigil_curse_edition", nil, false, true)
+      local edition = BPlus.u.poll_edition("c_bplus_sigil_curse_edition")
       joker:set_edition(edition, true)
     else
       joker:set_eternal(true)
