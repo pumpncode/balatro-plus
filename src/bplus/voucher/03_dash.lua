@@ -1,5 +1,5 @@
 return {
-  config = { reward = 6 },
+  config = { reward = 8 },
 
   loc_vars = function(self)
     return { vars = { self.config.reward } }
