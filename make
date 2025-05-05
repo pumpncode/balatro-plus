@@ -15,7 +15,7 @@ fi
 
 mkdir $OUT
 mkdir $OUT/assets
-cp -r ./assets/!(collection.png) $OUT/assets/
+cp -r ./assets/!(preview) $OUT/assets/
 cp -r ./localization $OUT/
 cp -r ./lovely $OUT/
 cp -r ./src $OUT/
