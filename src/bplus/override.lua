@@ -78,36 +78,43 @@ end
 
 local card_is_suit = Card.is_suit
 function Card:is_suit(suit, bypass_debuff, flush_calc)
-  if flush_calc then
-    if SMODS.has_enhancement(self, "m_stone") and not self.debuff and next(find_joker("j_bplus_stone_carving")) then
-      return G.GAME.current_round.bplus_stone_carving_card.suit == suit
-    end
-
-    if not self.debuff and next(find_joker("j_bplus_blured")) then
-      local blured_suit
-      local transform = G.GAME.current_round.bplus_blured_suit
-      if self.base.suit == transform.from then
-        blured_suit = transform.to
-      end
-      return self.base.suit == suit or blured_suit == suit
-    end
-  else
-    if self.debuff and not bypass_debuff then return end
-
-    if self.ability.name == G.P_CENTERS.m_stone.name and next(find_joker("j_bplus_stone_carving")) then
-      return G.GAME.current_round.bplus_stone_carving_card.suit == suit
-    end
-
-    if next(find_joker("j_bplus_blured")) then
-      local blured_suit
-      local transform = G.GAME.current_round.bplus_blured_suit
-      if self.base.suit == transform.from then
-        blured_suit = transform.to
-      end
-      return self.base.suit == suit or blured_suit == suit
-    end
+  local opt
+  local first_pass
+  local res
+  local orig_suit = self.base.suit
+  if not G.bplus_card_is_suit_opt then
+    G.bplus_card_is_suit_opt = {}
+    first_pass = true
   end
-  return card_is_suit(self, suit, bypass_debuff, flush_calc)
+  opt = G.bplus_card_is_suit_opt
+
+  if self.debuff and not bypass_debuff then return end
+
+  if not res and not opt.stone_carving and SMODS.has_enhancement(self, "m_stone") and next(find_joker("j_bplus_stone_carving")) then
+    opt.stone_carving = true
+    local orig_center = self.config.center
+    self.config.center = G.P_CENTERS.c_base
+    self.base.suit = G.GAME.current_round.bplus_stone_carving_card.suit
+    res = self:is_suit(suit, bypass_debuff, flush_calc)
+    self.config.center = orig_center
+    self.base.suit = orig_suit
+  end
+
+  if not res and not opt.blured and next(find_joker("j_bplus_blured")) then
+    opt.blured = true
+    local transform = G.GAME.current_round.bplus_blured_suit
+    if self:is_suit(transform.from, bypass_debuff, flush_calc) then
+      self.base.suit = transform.to
+    end
+    res = self:is_suit(suit, bypass_debuff, flush_calc)
+    self.base.suit = orig_suit
+    res = res or self:is_suit(suit, bypass_debuff, flush_calc)
+  end
+
+  if first_pass then
+    G.bplus_card_is_suit_opt = nil
+  end
+  return res or card_is_suit(self, suit, bypass_debuff, flush_calc)
 end
 
 local card_get_id = Card.get_id
