@@ -847,6 +847,14 @@ return {
       p_bplus_mysthic_jumbo = mysthic_pack,
       p_bplus_mysthic_mega = mysthic_pack,
 
+      bplus_green_seal = {
+        name = "Green Seal",
+        text = {
+          "{C:green}#1# in #2#{} chance",
+          "for {X:mult,C:white} X#3# {} Mult",
+        },
+      },
+
       undiscovered_sigil = {
         name = "Not Dicovered",
         text = {
@@ -877,6 +885,10 @@ return {
       k_bplus_draw_ex = "Draw #1#!",
       k_bplus_plus_choose_ex = "+#1# Choose!",
       k_bplus_plus_sigil_ex = "+#1# Sigil!",
+    },
+
+    labels = {
+        bplus_green_seal = "Green Seal",
     },
   },
 }

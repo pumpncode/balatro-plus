@@ -15,6 +15,7 @@ BPlus.u.load_object("tag", SMODS.Tag, { asset_row = 6, px = 34, py = 34 })
 BPlus.u.load_object("blind", SMODS.Blind, { asset_row = 1, px = 34, py = 34, frames = 21 })
 BPlus.u.load_object("booster", SMODS.Booster, { asset_row = 4 })
 BPlus.u.load_object("consumable/tarot", SMODS.Consumable, { set = "Tarot", cost = 3 })
+BPlus.u.load_object("seal", SMODS.Seal)
 BPlus.u.load_consumable("consumable/sigil", {
   cost = 4,
   primary = HEX("8e32db"),
