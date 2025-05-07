@@ -48,10 +48,17 @@ return {
       else
         card.ability.extra.chips = card.ability.extra.chips - card.ability.extra.chip_mod
         return {
-          message = localize {
-            type = "variable",
-            key = "a_chips_minus",
-            vars = { card.ability.extra.chip_mod },
+          extra = {
+            func = function()
+              card_eval_status_text(card, 'extra', nil, nil, nil, {
+                message = localize {
+                  type = "variable",
+                  key = "a_chips_minus",
+                  vars = { card.ability.extra.chip_mod },
+                },
+                colour = G.C.CHIPS,
+              })
+            end
           },
           colour = G.C.CHIPS,
           card = card,
