@@ -63,10 +63,10 @@ return {
       j_bplus_hungry = {
         name = "Hungry Joker",
         text = {
-          "At the {C:attention}end of shop{} destroy all",
-          "{C:attention}Food Jokers{} and gain {X:mult,C:white} X1 {} Mult",
-          "for each destroyed joker",
-          "{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)",
+          "At the {C:attention}end of shop",
+          "destroy {C:attention}Food Joker",
+          "to gain {X:mult,C:white} X#1# {} Mult",
+          "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
         },
       },
       j_bplus_blackjack = {
