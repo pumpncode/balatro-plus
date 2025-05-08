@@ -129,6 +129,7 @@ local card_calculate_joker = Card.calculate_joker
 function Card:calculate_joker(ctx)
   local ret = card_calculate_joker(self, ctx)
   if not ret then return end
+  if ret == true then return ret end
 
   if ret.repetitions and not G.GAME.blind.disabled and G.GAME.blind.name == "bl_bplus_lazy" then
     BPlus.bl_lazy_trigger(ret.card or self)
