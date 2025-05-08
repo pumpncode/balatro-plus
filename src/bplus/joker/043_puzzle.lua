@@ -17,7 +17,7 @@ local function set_piece(card)
 end
 
 return {
-  config = { extra = { chips = 0, chip_mod = 10, rank = "Ace", suit = "Spades", id = 14 } },
+  config = { extra = { chips = 0, chip_mod = 20, rank = "Ace", suit = "Spades", id = 14 } },
   rarity = 1,
 
   blueprint_compat = true,
