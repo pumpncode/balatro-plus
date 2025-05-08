@@ -105,7 +105,7 @@ position = "before"
 match_indent = true
 payload = """
 if not initial then
-  if G.jokers and not self._bplus_copying_card and self.config.card.name and center ~= G.P_CENTERS.c_base then
+  if G.jokers and not self._bplus_copying_card and self.config.card and self.config.card.name and center ~= G.P_CENTERS.c_base then
     SMODS.calculate_context { bplus_enhance = true, other_card = self, from = self.config.center, to = center }
   end
 end
