@@ -4,7 +4,9 @@ return {
   mult = 2.5,
 
   hand_played = function(self)
-    if G.GAME.blind.disabled then return end
+    if G.GAME.blind.disabled then
+      return
+    end
 
     G.E_MANAGER:add_event(Event {
       delay = 0.5,

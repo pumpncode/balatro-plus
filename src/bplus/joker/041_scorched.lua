@@ -23,20 +23,13 @@ return {
         card.ability.x_mult = card.ability.x_mult + (card.ability.extra * burned)
         G.E_MANAGER:add_event(Event {
           func = function()
-            card_eval_status_text(
-              card,
-              "extra",
-              nil,
-              nil,
-              nil,
-              {
-                message = localize {
-                  type = "variable",
-                  key = "a_xmult",
-                  vars = { card.ability.x_mult },
-                },
-              }
-            )
+            card_eval_status_text(card, "extra", nil, nil, nil, {
+              message = localize {
+                type = "variable",
+                key = "a_xmult",
+                vars = { card.ability.x_mult },
+              },
+            })
             return true
           end,
         })

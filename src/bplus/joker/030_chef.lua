@@ -11,10 +11,7 @@ return {
 
   calculate = function(_, card, ctx)
     if ctx.setting_blind and not card.getting_sliced then
-      local jokers_to_create = math.min(
-        card.ability.extra,
-        G.jokers.config.card_limit - (#G.jokers.cards + G.GAME.joker_buffer)
-      )
+      local jokers_to_create = math.min(card.ability.extra, G.jokers.config.card_limit - (#G.jokers.cards + G.GAME.joker_buffer))
       if jokers_to_create < 1 then
         return
       end

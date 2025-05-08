@@ -10,11 +10,7 @@ return {
   end,
 
   calculate = function(self, card, ctx)
-    if
-      ctx.individual
-      and ctx.cardarea == G.play
-      and SMODS.has_enhancement(ctx.other_card, "m_stone")
-    then
+    if ctx.individual and ctx.cardarea == G.play and SMODS.has_enhancement(ctx.other_card, "m_stone") then
       local xmult = card.ability.extra.xmult
       if not ctx.blueprint then
         card.ability.extra.xmult = xmult + card.ability.extra.scale

@@ -26,12 +26,7 @@ return {
   end,
 
   calculate = function(_, card, ctx)
-    if
-      ctx.setting_blind
-      and not ctx.blueprint
-      and not card.getting_sliced
-      and not BPlus.u.has_empty_joker_space()
-    then
+    if ctx.setting_blind and not ctx.blueprint and not card.getting_sliced and not BPlus.u.has_empty_joker_space() then
       local destroyed
       for i = #G.jokers.cards, 1, -1 do
         local c = G.jokers.cards[i]

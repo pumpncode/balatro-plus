@@ -65,8 +65,7 @@ function BPlus.food_jokers_tooltip()
   local function add_line(line)
     local parts = {}
     for _, part in ipairs(line) do
-      parts[#parts + 1] =
-        { n = G.UIT.T, config = { text = part[1], colour = part[2] or G.C.GREY, scale = 0.33 } }
+      parts[#parts + 1] = { n = G.UIT.T, config = { text = part[1], colour = part[2] or G.C.GREY, scale = 0.33 } }
     end
     text[#text + 1] = {
       n = G.UIT.R,
@@ -124,14 +123,5 @@ function BPlus.create_food_joker(seed_key)
     keys = { "j_popcorn" }
   end
 
-  return create_card(
-    "Joker",
-    G.jokers,
-    nil,
-    nil,
-    nil,
-    nil,
-    pseudorandom_element(keys, pseudoseed(_pool_key)),
-    "top"
-  )
+  return create_card("Joker", G.jokers, nil, nil, nil, nil, pseudorandom_element(keys, pseudoseed(_pool_key)), "top")
 end

@@ -32,10 +32,7 @@ return {
       if destroyed then
         card.ability.mult = card.ability.mult + card.ability.extra
         for j = 1, #G.jokers.cards do
-          eval_card(
-            G.jokers.cards[j],
-            { cardarea = G.jokers, remove_playing_cards = true, removed = { destroyed } }
-          )
+          eval_card(G.jokers.cards[j], { cardarea = G.jokers, remove_playing_cards = true, removed = { destroyed } })
         end
         G.E_MANAGER:add_event(Event {
           func = function()

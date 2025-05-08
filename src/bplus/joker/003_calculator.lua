@@ -19,7 +19,9 @@ return {
         end
       end
 
-      if not is_numbered then return end
+      if not is_numbered then
+        return
+      end
 
       return {
         message = localize {

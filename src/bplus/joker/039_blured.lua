@@ -14,10 +14,7 @@ function BPlus.round_vars.blured_suit(v, init)
     end
   end
   if next(valid_cards) then
-    v.from = pseudorandom_element(
-      valid_cards,
-      pseudoseed("j_bplus_blured_from_suit" .. G.GAME.round_resets.ante)
-    ).base.suit
+    v.from = pseudorandom_element(valid_cards, pseudoseed("j_bplus_blured_from_suit" .. G.GAME.round_resets.ante)).base.suit
   end
 
   local suits = {}

@@ -6,7 +6,7 @@ return {
       local jokers = {}
       for _, joker in ipairs(G.jokers.cards) do
         if not joker.edition then
-          jokers[#jokers+1] = joker
+          jokers[#jokers + 1] = joker
         end
       end
 

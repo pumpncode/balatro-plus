@@ -9,11 +9,7 @@ return {
   end,
 
   calculate = function(_, _, ctx)
-    if
-      ctx.bplus_card_added
-      and ctx.cardarea == G.consumeables
-      and ctx.other_card.config.center.set == "Planet"
-    then
+    if ctx.bplus_card_added and ctx.cardarea == G.consumeables and ctx.other_card.config.center.set == "Planet" then
       if (not ctx.other_card.edition) or not ctx.other_card.edition.negative then
         ctx.other_card:set_edition({ negative = true }, true)
       end

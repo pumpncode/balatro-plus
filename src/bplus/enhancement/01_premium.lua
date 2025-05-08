@@ -29,7 +29,7 @@ return {
         self.config.Xmult,
         dollars < 0 and -dollars or dollars,
         dollars < 0 and "Loss" or "Earn",
-      }
+      },
     }
   end,
 

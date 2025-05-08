@@ -18,9 +18,9 @@ return {
 
   calculate = function(_, card, ctx)
     if ctx.joker_main then
-      local result = pseudorandom_element({"mult", "chips", "dollars", "x_mult"}, pseudoseed('j_bplus_in_a_box_result'))
+      local result = pseudorandom_element({ "mult", "chips", "dollars", "x_mult" }, pseudoseed("j_bplus_in_a_box_result"))
       return {
-        [result] = card.ability.extra[result]
+        [result] = card.ability.extra[result],
       }
     end
   end,

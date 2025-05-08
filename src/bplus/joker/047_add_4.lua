@@ -6,7 +6,7 @@ return {
 
   calculate = function(_, card, ctx)
     if ctx.first_hand_drawn then
-      card_eval_status_text(ctx.blueprint_card or card, 'extra', nil, nil, nil, {
+      card_eval_status_text(ctx.blueprint_card or card, "extra", nil, nil, nil, {
         message = localize { type = "variable", key = "k_bplus_draw_ex", vars = { 4 } },
       })
       for _ = 1, 4 do

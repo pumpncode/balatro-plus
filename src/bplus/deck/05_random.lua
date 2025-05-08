@@ -6,7 +6,7 @@ return {
         local vouchers = {}
         for key, center in pairs(G.P_CENTERS) do
           if center.set == "Voucher" then
-            vouchers[#vouchers+1] = key
+            vouchers[#vouchers + 1] = key
           end
         end
         local voucher = get_next_voucher_key()
@@ -16,7 +16,7 @@ return {
           func = function()
             Card.apply_to_run(nil, G.P_CENTERS[voucher])
             return true
-          end
+          end,
         })
 
         SMODS.add_card {
@@ -34,7 +34,7 @@ return {
     if ctx.setting_blind then
       local hands = pseudorandom("b_bplus_random_hands", back.effect.config.min, back.effect.config.max)
       if G.GAME.round_resets.hands + hands > 0 then
-        local hand_UI = G.HUD:get_UIE_by_ID('hand_UI_count')
+        local hand_UI = G.HUD:get_UIE_by_ID("hand_UI_count")
         G.GAME.current_round.hands_left = G.GAME.current_round.hands_left + hands
         G.HUD:recalculate()
         attention_text {
@@ -45,8 +45,8 @@ return {
           cover_colour = G.C.BLUE,
           align = "cm",
         }
-        play_sound('chips2')
+        play_sound("chips2")
       end
     end
-  end
+  end,
 }

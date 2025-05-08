@@ -42,10 +42,8 @@ return {
       end
     end
     if next(valid_cards) then
-      tag.ability.bplus_symbolic_tag_suit = pseudorandom_element(
-        valid_cards,
-        pseudoseed("tag_bplus_symbolic_card" .. G.GAME.round_resets.ante)
-      ).base.suit
+      tag.ability.bplus_symbolic_tag_suit =
+        pseudorandom_element(valid_cards, pseudoseed("tag_bplus_symbolic_card" .. G.GAME.round_resets.ante)).base.suit
     end
   end,
 
