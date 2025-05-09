@@ -17,8 +17,7 @@ return {
   calculate = function(self, _, ctx)
     if ctx.joker_main then
       local above = self.config.hands_above
-      local hands = ((G.GAME and (G.GAME.current_round and G.GAME.current_round.hands_left) or 0) + 1)
-      - above
+      local hands = ((G.GAME and (G.GAME.current_round and G.GAME.current_round.hands_left) or 0) + 1) - above
       if hands < 0 then
         hands = 0
       end

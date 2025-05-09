@@ -53,24 +53,24 @@ end
 function Blind:hand_played()
   if self.config.blind.hand_played then
     if self.config.blind.hand_played(self) then
-      G.E_MANAGER:add_event(Event({
-        trigger = 'immediate',
-        func = (function()
+      G.E_MANAGER:add_event(Event {
+        trigger = "immediate",
+        func = function()
           SMODS.juice_up_blind()
           G.E_MANAGER:add_event(Event {
-            trigger = 'after',
+            trigger = "after",
             delay = 0.06 * G.SETTINGS.GAMESPEED,
             blockable = false,
             blocking = false,
             func = function()
-              play_sound('tarot2', 0.76, 0.4)
+              play_sound("tarot2", 0.76, 0.4)
               return true
             end,
           })
-          play_sound('tarot2', 1, 0.4)
+          play_sound("tarot2", 1, 0.4)
           return true
-        end)
-      }))
+        end,
+      })
       delay(0.4)
     end
   end
@@ -88,7 +88,9 @@ function Card:is_suit(suit, bypass_debuff, flush_calc)
   end
   opt = G.bplus_card_is_suit_opt
 
-  if self.debuff and not bypass_debuff then return end
+  if self.debuff and not bypass_debuff then
+    return
+  end
 
   if not res and not opt.stone_carving and SMODS.has_enhancement(self, "m_stone") and next(find_joker("j_bplus_stone_carving")) then
     opt.stone_carving = true
@@ -128,8 +130,12 @@ end
 local card_calculate_joker = Card.calculate_joker
 function Card:calculate_joker(ctx)
   local ret = card_calculate_joker(self, ctx)
-  if not ret then return end
-  if ret == true then return ret end
+  if not ret then
+    return
+  end
+  if ret == true then
+    return ret
+  end
 
   if ret.repetitions and not G.GAME.blind.disabled and G.GAME.blind.name == "bl_bplus_lazy" then
     BPlus.bl_lazy_trigger(ret.card or self)
@@ -142,7 +148,9 @@ end
 local card_calculate_seal = Card.calculate_seal
 function Card:calculate_seal(ctx)
   local ret = card_calculate_seal(self, ctx)
-  if not ret then return end
+  if not ret then
+    return
+  end
 
   if ret.repetitions and not G.GAME.blind.disabled and G.GAME.blind.name == "bl_bplus_lazy" then
     BPlus.bl_lazy_trigger(ret.card or self)

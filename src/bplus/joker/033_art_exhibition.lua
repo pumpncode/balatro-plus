@@ -28,7 +28,11 @@ return {
       end
     elseif ctx.joker_main and card.ability.extra.chips > 0 then
       return {
-        message = localize { type = "variable", key = "a_chips", vars = { card.ability.extra.chips } },
+        message = localize {
+          type = "variable",
+          key = "a_chips",
+          vars = { card.ability.extra.chips },
+        },
         chip_mod = card.ability.extra.chips,
         colour = G.C.CHIPS,
       }

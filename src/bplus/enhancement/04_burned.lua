@@ -6,12 +6,7 @@ return {
   end,
 
   calculate = function(self, card, ctx)
-    if
-      ctx.end_of_round
-      and ctx.cardarea == G.hand
-      and not ctx.repetition
-      and ctx.playing_card_end_of_round
-    then
+    if ctx.end_of_round and ctx.cardarea == G.hand and not ctx.repetition and ctx.playing_card_end_of_round then
       local left, right
       for i, c in ipairs(ctx.cardarea.cards) do
         if c == card then

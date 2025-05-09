@@ -32,12 +32,7 @@ return {
         mult_mod = card.ability.mult,
         colour = G.C.MULT,
       }
-    elseif
-      not ctx.blueprint
-      and ctx.individual
-      and ctx.cardarea == G.play
-      and ctx.other_card.base.value == card.ability.extra.rank
-    then
+    elseif not ctx.blueprint and ctx.individual and ctx.cardarea == G.play and ctx.other_card.base.value == card.ability.extra.rank then
       card.ability.extra.remaining = card.ability.extra.remaining - 1
       if card.ability.extra.remaining <= 0 then
         card.ability.extra.remaining = card.ability.extra.every

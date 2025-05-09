@@ -14,7 +14,7 @@ return {
         end
       end
       if steel_card then
-        card_eval_status_text(ctx.blueprint_card or card, 'extra', nil, nil, nil, {
+        card_eval_status_text(ctx.blueprint_card or card, "extra", nil, nil, nil, {
           message = localize { type = "variable", key = "k_bplus_draw_ex", vars = { 1 } },
         })
         draw_card(G.deck, G.hand, nil, "up", true, steel_card)

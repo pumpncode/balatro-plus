@@ -22,7 +22,7 @@ return {
 
     G.E_MANAGER:add_event(Event {
       delay = 0.5,
-      func = function ()
+      func = function()
         SMODS.add_card {
           set = "sigil",
           area = G.consumeables,
@@ -30,13 +30,13 @@ return {
           key_append = "c_bplus_sigil_blank_card",
         }
         return true
-      end
+      end,
     })
   end,
 
-  calculate = function (self, card, ctx)
+  calculate = function(self, card, ctx)
     if ctx.end_of_round and ctx.cardarea == G.consumeables then
       card.ability.extra = math.max(card.ability.extra - 1, 1)
     end
-  end
+  end,
 }

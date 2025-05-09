@@ -20,7 +20,7 @@ return {
       area = G.pack_cards,
       skip_materialize = true,
       soulable = true,
-      key_append = "p_mysthic_normal1_card"
+      key_append = "p_mysthic_normal1_card",
     }
   end,
 }

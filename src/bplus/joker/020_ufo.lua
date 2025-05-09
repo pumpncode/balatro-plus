@@ -18,7 +18,11 @@ return {
   calculate = function(_, card, ctx)
     if ctx.joker_main then
       return {
-        message = localize { type = "variable", key = "a_chips", vars = { card.ability.extra.chips } },
+        message = localize {
+          type = "variable",
+          key = "a_chips",
+          vars = { card.ability.extra.chips },
+        },
         chip_mod = card.ability.extra.chips,
         colour = G.C.CHIPS,
       }

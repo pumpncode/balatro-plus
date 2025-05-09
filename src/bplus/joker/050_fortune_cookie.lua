@@ -24,38 +24,33 @@ return {
   end,
 
   calculate = function(_, card, ctx)
-    if
-      ctx.end_of_round
-      and G.GAME.blind.boss
-      and not ctx.individual
-      and not ctx.repetition
-    then
+    if ctx.end_of_round and G.GAME.blind.boss and not ctx.individual and not ctx.repetition then
       if card.ability.extra - 1 <= 1 then
         G.E_MANAGER:add_event(Event {
           func = function()
-            play_sound('tarot1')
+            play_sound("tarot1")
             card:juice_up(0.3, 0.4)
             card.T.r = -0.2
             card.states.drag.is = true
             card.children.center.pinch.x = true
             G.E_MANAGER:add_event(Event {
-              trigger = 'after',
+              trigger = "after",
               delay = 0.3,
               blockable = false,
               func = function()
                 G.jokers:remove_card(card)
                 card:remove()
                 card = nil
-                return true;
-              end
+                return true
+              end,
             })
             return true
-          end
+          end,
         })
         return {
           card = card,
-          message = localize('k_eaten_ex'),
-          colour = G.C.FILTER
+          message = localize("k_eaten_ex"),
+          colour = G.C.FILTER,
         }
       else
         for k, v in pairs(G.GAME.probabilities) do

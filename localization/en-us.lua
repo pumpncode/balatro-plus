@@ -877,7 +877,7 @@ return {
       k_bplus_inactive_ex = "Inactive!",
       k_bplus_burn_ex = "Burn!",
 
-      ph_bplus_defeat_the_blind="Defeat the Blind",
+      ph_bplus_defeat_the_blind = "Defeat the Blind",
     },
 
     v_dictionary = {
@@ -888,7 +888,7 @@ return {
     },
 
     labels = {
-        bplus_green_seal = "Green Seal",
+      bplus_green_seal = "Green Seal",
     },
   },
 }

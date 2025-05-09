@@ -3,7 +3,9 @@ return {
   boss_colour = HEX("2e9c10"),
 
   hand_played = function(self)
-    if G.GAME.blind.disabled then return end
+    if G.GAME.blind.disabled then
+      return
+    end
 
     G.E_MANAGER:add_event(Event {
       delay = 1,

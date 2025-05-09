@@ -16,10 +16,7 @@ function BPlus.round_vars.stone_carving_card(v, init)
     end
 
     if next(valid_cards) then
-      local card = pseudorandom_element(
-        valid_cards,
-        pseudoseed("j_bplus_stone_carving_card" .. G.GAME.round_resets.ante)
-      )
+      local card = pseudorandom_element(valid_cards, pseudoseed("j_bplus_stone_carving_card" .. G.GAME.round_resets.ante))
       v.rank = card.base.value
       v.suit = card.base.suit
       v.id = card.base.id

@@ -1,8 +1,7 @@
 return {
   loc_vars = function(self, infoq, card)
     local last_card = G.GAME.last_tarot_planet and G.P_CENTERS[G.GAME.last_tarot_planet] or nil
-    local last_card_text = last_card and localize { type = "name_text", key = last_card.key, set = last_card.set }
-      or localize("k_none")
+    local last_card_text = last_card and localize { type = "name_text", key = last_card.key, set = last_card.set } or localize("k_none")
     local colour = (not last_card) and G.C.RED or G.C.GREEN
     if last_card then
       infoq[#infoq + 1] = last_card
@@ -56,8 +55,7 @@ return {
         trigger = "after",
         delay = 0.2,
         func = function()
-          local last_card =
-            create_card("Tarot_Planet", G.consumeables, nil, nil, nil, nil, G.GAME.last_tarot_planet, "c_bplus_sigil_rewind_card")
+          local last_card = create_card("Tarot_Planet", G.consumeables, nil, nil, nil, nil, G.GAME.last_tarot_planet, "c_bplus_sigil_rewind_card")
           last_card:add_to_deck()
           G.consumeables:emplace(last_card)
           card:juice_up(0.3, 0.5)

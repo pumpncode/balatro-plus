@@ -5,10 +5,7 @@ return {
   end,
 
   calculate = function(_, _, ctx)
-    if
-      ctx.setting_blind
-      and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit
-    then
+    if ctx.setting_blind and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
       G.E_MANAGER:add_event(Event {
         trigger = "after",
         func = function()

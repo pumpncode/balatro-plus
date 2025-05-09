@@ -13,7 +13,7 @@ return {
       tag.triggered = true
       return {
         dollars = G.GAME.blind.dollars * self.config.reward,
-        condition = localize('ph_bplus_defeat_the_blind'),
+        condition = localize("ph_bplus_defeat_the_blind"),
         pos = tag.pos,
         tag = tag,
       }

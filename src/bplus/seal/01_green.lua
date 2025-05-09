@@ -1,9 +1,11 @@
 return {
   config = { chance = 8, x_mult = 2 },
-  badge_colour = HEX('56a786'),
+  badge_colour = HEX("56a786"),
 
   loc_vars = function(_, _, card)
-    return { vars = { G.GAME.probabilities.normal, card.ability.seal.chance, card.ability.seal.x_mult } }
+    return {
+      vars = { G.GAME.probabilities.normal, card.ability.seal.chance, card.ability.seal.x_mult },
+    }
   end,
 
   calculate = function(_, card, ctx)
