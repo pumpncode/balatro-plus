@@ -4,24 +4,20 @@ return {
 
   blueprint_compat = true,
 
+  ---@param ctx CalcContext
   calculate = function(_, _, ctx)
     if ctx.joker_main then
-      local is_numbered = true
+      print("CALCULATING")
       local total = 0
       for _, c in ipairs(ctx.full_hand) do
-        if not c.debuff and not c:is_face() then
-          local id = c:get_id()
-          if id < 2 or id > 10 then
-            is_numbered = false
-            break
-          end
-          total = total + id
+        local id = c:get_id()
+        if c.debuff or c:is_face() or id < 2 or id > 10 then
+          return
         end
+        total = total + id
       end
 
-      if not is_numbered then
-        return
-      end
+      print("TOTAL: " .. total)
 
       return {
         message = localize {

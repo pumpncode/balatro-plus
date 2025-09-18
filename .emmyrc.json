@@ -1,12 +1,12 @@
 {
   "workspace.library": [
     "src",
-    "../Steamodded/lsp_def"
+    "../smods/lsp_def"
   ],
   "diagnostics.globals": [
     "G"
   ],
   "diagnostics.disable": [
-      "lowercase-global"
+    "lowercase-global"
   ]
 }
