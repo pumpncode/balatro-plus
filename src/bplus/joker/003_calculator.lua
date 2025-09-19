@@ -7,7 +7,6 @@ return {
   ---@param ctx CalcContext
   calculate = function(_, _, ctx)
     if ctx.joker_main then
-      print("CALCULATING")
       local total = 0
       for _, c in ipairs(ctx.full_hand) do
         local id = c:get_id()
@@ -16,8 +15,6 @@ return {
         end
         total = total + id
       end
-
-      print("TOTAL: " .. total)
 
       return {
         message = localize {
