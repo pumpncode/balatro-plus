@@ -18,7 +18,7 @@ function M.load_object(dir, fn, opt)
 
   local absdir = BPlus.path .. "/src/bplus/" .. dir
   for _, fname in ipairs(NFS.getDirectoryItems(absdir)) do
-    local atlas_number, soul_number, id = fname:match("^(%d*):?(%d*)_?([^.]+)%.lua$")
+    local atlas_number, soul_number, id = fname:match("^(%d*)%-?(%d*)_?([^.]+)%.lua$")
     atlas_number = tonumber(atlas_number)
     soul_number = tonumber(soul_number)
     local obj = load(NFS.read(absdir .. "/" .. fname), fname, "t", _G)()

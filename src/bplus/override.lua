@@ -116,7 +116,10 @@ function Card:is_suit(suit, bypass_debuff, flush_calc)
   if first_pass then
     G.bplus_card_is_suit_opt = nil
   end
-  return res or card_is_suit(self, suit, bypass_debuff, flush_calc)
+  if res ~= nil then
+    return res
+  end
+  return card_is_suit(self, suit, bypass_debuff, flush_calc)
 end
 
 local card_get_id = Card.get_id
